@@ -148,11 +148,11 @@ namespace luanma
                         }
                         if (checkBox8.Checked)
                         {
-
+                            richTextBox1.Text += deUnicode("1" + GetRandomHexNumber(4));
                         }
                         if (checkBox9.Checked)
                         {
-
+                            //richTextBox1.Text += deUnicode("20" + );
                         }
                     }
                 }
@@ -374,3 +374,4 @@ namespace luanma
         }
     }
 }
+//
