@@ -158,7 +158,7 @@ namespace luanma
                 }
                 else
                 {
-                    for (int i2 = 1; i2 < numericUpDown1.Value; i2++)
+                    for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
                     {
                         if (ran.Next(0,1) == 0)
                         {
@@ -172,15 +172,9 @@ namespace luanma
                 }
                 if (checkBox1.Checked)
                 {
-                    string[] str = new string[richTextBox1.Text.Length];
-                    for (int i = 0; i < richTextBox1.Text.Length / (int)numericUpDown2.Value; i++)
-                    {
-                        str[i] = richTextBox1.Text.Substring(i * (int)numericUpDown2.Value, (int)numericUpDown2.Value);
-                    }
-                    foreach (string str2 in str)
-                    {
-                        richTextBox1.Text += str2 + "\n";
-                    }
+                    string str = System.Text.RegularExpressions.Regex.Replace(richTextBox1.Text, @"(?<=\b(.{" + numericUpDown2.Value + "})+)", "$0,");
+                    string[] strs = str.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries);
+                    richTextBox1.Text = String.Join("\n",strs);
                 }
             }).Start();
         }
@@ -190,6 +184,7 @@ namespace luanma
             byte[] buffer = new byte[digits / 2];
             random.NextBytes(buffer);
             string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            System.Threading.Thread.Sleep(1);
             if (digits % 2 == 0)
                 return result;
             return result + random.Next(16).ToString("X");
