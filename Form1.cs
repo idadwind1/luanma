@@ -177,7 +177,7 @@ namespace luanma
                     richTextBox1.Text = String.Join("\n",strs);
                 }
             }).Start();
-        }//
+        }
         public static string GetRandomHexNumber(int digits)
         {
             Random random = new Random();
