@@ -116,6 +116,7 @@ namespace luanma
         {
             new Task(() =>
             {
+                button4.Enabled = false;
                 richTextBox1.Text = "";
                 if (!radioButton1.Checked)
                 {
@@ -176,6 +177,7 @@ namespace luanma
                     string[] strs = str.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries);
                     richTextBox1.Text = String.Join("\n",strs);
                 }
+                button4.Enabled = true;
             }).Start();
         }
         public static string GetRandomHexNumber(int digits)
