@@ -116,6 +116,9 @@ namespace luanma
         {
             new Task(() =>
             {
+                numericUpDown1.Enabled = false;
+                numericUpDown2.Enabled = false;
+                checkBox1.Enabled = false;
                 button4.Enabled = false;
                 richTextBox1.Text = "";
                 if (!radioButton1.Checked)
@@ -178,6 +181,9 @@ namespace luanma
                     richTextBox1.Text = String.Join("\n",strs);
                 }
                 button4.Enabled = true;
+                numericUpDown1.Enabled = true;
+                numericUpDown2.Enabled = true;
+                checkBox1.Enabled = true;
             }).Start();
         }
         public static string GetRandomHexNumber(int digits)
