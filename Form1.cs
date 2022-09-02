@@ -13,19 +13,64 @@ namespace luanma
 {
     public partial class Form1 : Form
     {
+
+        #region arrs
+        string[] arra = { "ä", "ā", "á", "ǎ", "à", "ă", "å", "ǻ", "ǟ", "ǡ", "ǻ", "ȁ", "ȃ", "ȧ", "ᶏ", "ḁ", "ẚ", "ạ", "ả", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "ɑ", "α", "ά", "ὰ", "ἀ", "ἁ", "ἂ", "ἃ", "ἆ", "ἇ", "ᾂ", "ᾃ", "ᾰ", "ᾱ", "ᾲ", "ᾳ", "ᾴ", "ᾶ", "ᾷ", "ⱥ", "𐓘", "𐓙", "𐓚" };
+        string[] arraa = { "Ā", "Á", "Ǎ", "À", "Â", "Ã", "Ä", "Å", "Ǻ", "Ά", "Ă", "Δ", "Λ", "Д", "Ą" };
+        string[] arrb = { "b", "ь", "в", "Ъ", "Б", "б", "β", "ƀ", "ƃ", "ɓ", "ᵬ", "ᶀ", "ḃ", "ḅ", "ḇ", "ꞗ" };
+        string[] arrbb = { "ß", "฿" };
+        string[] arrc = { "c", "ç", "ς", "ĉ", "č", "ċ", "ć", "ĉ", "ċ", "ƈ", "ȼ", "¢", "ɕ", "ḉ", "ꞓ", "ꞔ" };
+        string[] arrcc = { "Č", "Ç", "Ĉ", "Ć", "€" };
+        string[] arrd = { "d", "ď", "đ", "₫", "ð", "δ" };
+        string[] arrdd = { "Ď", "Ð" };
+        string[] arre = { "e", "ē", "é", "ě", "è", "ê", "ĕ", "ė", "ë", "ę", "з", "ε", "έ", "э", "℮" };
+        string[] arree = { "E", "Ē", "É", "Ě", "È", "Ĕ", "Ё", "Σ", "Έ", "Є", "Э", "З" };
+        string[] arrf = { "f", "ƒ" };
+        string[] arrff = { "F", "₣" };
+        string[] arrg = { "ḡ", "ģ", "ǧ", "ĝ", "ğ", "ġ", "ǥ", "ǵ", "ɠ", "ᶃ", "ꞡ" };
+        string[] arrgg = { "Ḡ", "Ǵ", "Ǧ", "Ĝ", "Ğ", "Ģ", "Ġ", "Ɠ", "Ǥ", "Ꞡ" };
+        string[] arrh = { "ĥ", "ħ", "ђ", "н" };
+        string[] arrhh = { "H", "Ĥ", "Ħ" };
+        string[] arri = { "ı", "ī", "í", "ǐ", "ì", "ĭ", "î", "ï", "ί", "į", "ΐ" };
+        string[] arrii = { "Ī", "Í", "Ǐ", "Ì", "Î", "Ï", "Ĭ", "Ί" };
+        string[] arrj = { "j" };
+        string[] arrjj = { "J", "Ĵ" };
+        string[] arrk = { "ƙ", "κ" };
+        string[] arrkk = { "К" };
+        string[] arrl = { "ŀ", "ļ", "ℓ", "ĺ", "ļ", "ľ", "ł", "ι" };
+        string[] arrll = { "Ŀ", "£", "Ļ", "Ł", "Ĺ" };
+        string[] arrm = { "m", "₥", "м" };
+        string[] arrmm = { "M" };
+        string[] arrn = { "ń", "ň", "ŉ", "η", "ή", "и", "й", "ñ", "л", "п", "π" };
+        string[] arrnn = { "Ń", "Ň", "И", "Й", "Π", "Л" };
+        string[] arro = { "ō", "ó", "ŏ", "ò", "ô", "õ", "ö", "ő", "σ", "ø", "ǿ" };
+        string[] arroo = { "Ō", "Ó", "Ǒ", "Ò", "Ô", "Õ", "Ö", "Ό", "Θ", "Ǿ" };
+        string[] arrp = { "p", "ρ", "ƥ", "φ" };
+        string[] arrpp = { "P", "Þ", "₽" };
+        string[] arrq = { "q", "ʠ", "ɋ" };
+        string[] arrqq = { "Q", "Ɋ" };
+        string[] arrr = { "ř", "ŗ", "г", "ѓ", "ґ", "я" };
+        string[] arrrr = { "Ř", "Я", "Г", "Ґ" };
+        string[] arrs = { "ś", "š", "ŝ", "ș", "ş", "ƨ" };
+        string[] arrss = { "Š", "Ş", "Ș", "§" };
+        string[] arrt = { "ț", "ţ", "ť", "ŧ", "т", "τ" };
+        string[] arrtt = { "Ť", "Ţ", "Ț", "Ŧ" };
+        string[] arru = { "ū", "ú", "ǔ", "ù", "û", "ũ", "ů", "ų", "ü", "ǖ", "ǘ", "ǚ", "ǜ", "ύ", "ϋ", "ΰ", "µ", "ц", "џ" };
+        string[] arruu = { "Ū", "Ǔ", "Ǖ", "Ǘ", "Ǚ", "Ǜ", "Ц" };
+        string[] arrv = { "ν" };
+        string[] arrvv = { "V", "V", "Ṽ", "Ṿ", "Ꝟ" };
+        string[] arrw = { "ẃ", "ẁ", "ẅ", "ŵ", "ш", "щ", "ω", "ώ" };
+        string[] arrww = { "Ẁ", "Ẃ", "Ẅ", "Ŵ", "Ш", "Щ" };
+        string[] arrx = { "x", "ж" };
+        string[] arrxx = { "X", "Ж" };
+        string[] arry = { "y", "ỳ", "ŷ", "ч", "γ" };
+        string[] arryy = { "Ϋ", "Ÿ", "Ŷ", "Ỳ", "Ύ", "Ψ", "￥", "У", "Ў", "Ч" };
+        string[] arrz = { "z", "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" };
+        string[] arrzz = { "Z", "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" };
+        #endregion
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -116,74 +161,303 @@ namespace luanma
         {
             new Task(() =>
             {
+                tabControl1.Enabled = false;
+                label4.Visible = true;
+                progressBar1.Value = 0;
                 numericUpDown1.Enabled = false;
                 numericUpDown2.Enabled = false;
                 checkBox1.Enabled = false;
                 button4.Enabled = false;
                 richTextBox1.Text = "";
-                if (!radioButton1.Checked)
+                if (tabControl1.SelectedIndex == 0)
                 {
-                    string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                    if (checkBox6.Checked)
+                    if (!radioButton1.Checked)
                     {
-                        for (int i2 = 0; i2 < (int)Math.Floor(numericUpDown1.Value / 30); i2++)
+                        string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                        if (checkBox6.Checked)
                         {
-                            richTextBox1.Text += GetRandomChinese(30);
+                            for (int i2 = 0; i2 < (int)Math.Floor(numericUpDown1.Value / 30); i2++)
+                            {
+                                richTextBox1.Text += GetRandomChinese(30);
+                            }
+                            richTextBox1.Text += GetRandomChinese((int)(numericUpDown1.Value - Math.Floor(numericUpDown1.Value / 30) * 30));
                         }
-                        richTextBox1.Text += GetRandomChinese((int)(numericUpDown1.Value - Math.Floor(numericUpDown1.Value / 30) * 30));
+                        for (int i = 1; i < numericUpDown1.Value + 1; i++)
+                        {
+                            if (checkBox3.Checked)
+                            {
+                                richTextBox1.Text += characters[ran.Next(characters.Length)];
+                            }
+                            if (checkBox4.Checked)
+                            {
+                                richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();
+                            }
+                            if (checkBox5.Checked)
+                            {
+                                richTextBox1.Text += ran.Next(0, 9);
+                            }
+                            if (checkBox7.Checked)
+                            {
+                                richTextBox1.Text += deUnicode("04" + GetRandomHexNumber(2));
+                            }
+                            if (checkBox8.Checked)
+                            {
+                                richTextBox1.Text += deUnicode("1" + GetRandomHexNumber(4));
+                            }
+                            if (checkBox9.Checked)
+                            {
+                                //richTextBox1.Text += deUnicode("20" + );
+                            }
+                        }
                     }
-                    for (int i = 1; i < numericUpDown1.Value + 1; i++)
+                    else
                     {
-                        if (checkBox3.Checked)
+                        for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
                         {
-                            richTextBox1.Text += characters[ran.Next(characters.Length)];
+                            if (ran.Next(0, 1) == 0)
+                            {
+                                richTextBox1.Text += deUnicode(GetRandomHexNumber(5));
+                            }
+                            else
+                            {
+                                richTextBox1.Text += deUnicode(GetRandomHexNumber(4));
+                            }
                         }
-                        if (checkBox4.Checked)
-                        {
-                            richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();
-                        }
-                        if (checkBox5.Checked)
-                        {
-                            richTextBox1.Text += ran.Next(0, 9);
-                        }
-                        if (checkBox7.Checked)
-                        {
-                            richTextBox1.Text += deUnicode("04" + GetRandomHexNumber(2));
-                        }
-                        if (checkBox8.Checked)
-                        {
-                            richTextBox1.Text += deUnicode("1" + GetRandomHexNumber(4));
-                        }
-                        if (checkBox9.Checked)
-                        {
-                            //richTextBox1.Text += deUnicode("20" + );
-                        }
+                    }
+                    if (checkBox1.Checked)
+                    {
+                        string str = System.Text.RegularExpressions.Regex.Replace(richTextBox1.Text, @"(?<=\b(.{" + numericUpDown2.Value + "})+)", "$0,");
+                        string[] strs = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        richTextBox1.Text = String.Join("\n", strs);
                     }
                 }
-                else
+                else if (tabControl1.SelectedIndex == 3)
                 {
-                    for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
+                    foreach (char c in richTextBox2.Text)
                     {
-                        if (ran.Next(0,1) == 0)
+                        #region if
+                        if (c == 'A')
                         {
-                            richTextBox1.Text += deUnicode(GetRandomHexNumber(5));
+                            richTextBox1.Text += arraa[ran.Next(0, arraa.Length)];
+                        }
+                        else if (c == 'B')
+                        {
+                            richTextBox1.Text += arrbb[ran.Next(0, arrbb.Length)];
+                        }
+                        else if (c == 'C')
+                        {
+                            richTextBox1.Text += arrcc[ran.Next(0, arrcc.Length)];
+                        }
+                        else if (c == 'D')
+                        {
+                            richTextBox1.Text += arrdd[ran.Next(0, arrdd.Length)];
+                        }
+                        else if (c == 'E')
+                        {
+                            richTextBox1.Text += arree[ran.Next(0, arree.Length)];
+                        }
+                        else if (c == 'F')
+                        {
+                            richTextBox1.Text += arrff[ran.Next(0, arra.Length)];
+                        }
+                        else if (c == 'G')
+                        {
+                            richTextBox1.Text += arrgg[ran.Next(0, arrgg.Length)];
+                        }
+                        else if (c == 'H')
+                        {
+                            richTextBox1.Text += arrhh[ran.Next(0, arrhh.Length)];
+                        }
+                        else if (c == 'I')
+                        {
+                            richTextBox1.Text += arrii[ran.Next(0, arrii.Length)];
+                        }
+                        else if (c == 'J')
+                        {
+                            richTextBox1.Text += arrjj[ran.Next(0, arrjj.Length)];
+                        }
+                        else if (c == 'K')
+                        {
+                            richTextBox1.Text += arrkk[ran.Next(0, arrkk.Length)];
+                        }
+                        else if (c == 'L')
+                        {
+                            richTextBox1.Text += arrll[ran.Next(0, arrll.Length)];
+                        }
+                        else if (c == 'M')
+                        {
+                            richTextBox1.Text += arrmm[ran.Next(0, arrmm.Length)];
+                        }
+                        else if (c == 'N')
+                        {
+                            richTextBox1.Text += arrnn[ran.Next(0, arrnn.Length)];
+                        }
+                        else if (c == 'O')
+                        {
+                            richTextBox1.Text += arroo[ran.Next(0, arroo.Length)];
+                        }
+                        else if (c == 'P')
+                        {
+                            richTextBox1.Text += arrpp[ran.Next(0, arrpp.Length)];
+                        }
+                        else if (c == 'Q')
+                        {
+                            richTextBox1.Text += arrqq[ran.Next(0, arrqq.Length)];
+                        }
+                        else if (c == 'R')
+                        {
+                            richTextBox1.Text += arrrr[ran.Next(0, arrrr.Length)];
+                        }
+                        else if (c == 'S')
+                        {
+                            richTextBox1.Text += arrss[ran.Next(0, arrss.Length)];
+                        }
+                        else if (c == 'T')
+                        {
+                            richTextBox1.Text += arrtt[ran.Next(0, arrtt.Length)];
+                        }
+                        else if (c == 'U')
+                        {
+                            richTextBox1.Text += arruu[ran.Next(0, arruu.Length)];
+                        }
+                        else if (c == 'V')
+                        {
+                            richTextBox1.Text += arrvv[ran.Next(0, arrvv.Length)];
+                        }
+                        else if (c == 'W')
+                        {
+                            richTextBox1.Text += arrww[ran.Next(0, arrww.Length)];
+                        }
+                        else if (c == 'X')
+                        {
+                            richTextBox1.Text += arrxx[ran.Next(0, arrxx.Length)];
+                        }
+                        else if (c == 'Y')
+                        {
+                            richTextBox1.Text += arryy[ran.Next(0, arryy.Length)];
+                        }
+                        else if (c == 'Z')
+                        {
+                            richTextBox1.Text += arrzz[ran.Next(0, arrzz.Length)];
+                        }
+                        else if (c == 'a')
+                        {
+                            richTextBox1.Text += arra[ran.Next(0, arra.Length)];
+                        }
+                        else if (c == 'b')
+                        {
+                            richTextBox1.Text += arrb[ran.Next(0, arrb.Length)];
+                        }
+                        else if (c == 'c')
+                        {
+                            richTextBox1.Text += arrc[ran.Next(0, arrc.Length)];
+                        }
+                        else if (c == 'd')
+                        {
+                            richTextBox1.Text += arrd[ran.Next(0, arrd.Length)];
+                        }
+                        else if (c == 'e')
+                        {
+                            richTextBox1.Text += arre[ran.Next(0, arre.Length)];
+                        }
+                        else if (c == 'f')
+                        {
+                            richTextBox1.Text += arrf[ran.Next(0, arrf.Length)];
+                        }
+                        else if (c == 'g')
+                        {
+                            richTextBox1.Text += arrg[ran.Next(0, arrg.Length)];
+                        }
+                        else if (c == 'h')
+                        {
+                            richTextBox1.Text += arrh[ran.Next(0, arrh.Length)];
+                        }
+                        else if (c == 'i')
+                        {
+                            richTextBox1.Text += arri[ran.Next(0, arri.Length)];
+                        }
+                        else if (c == 'j')
+                        {
+                            richTextBox1.Text += arrj[ran.Next(0, arrj.Length)];
+                        }
+                        else if (c == 'k')
+                        {
+                            richTextBox1.Text += arrk[ran.Next(0, arrk.Length)];
+                        }
+                        else if (c == 'l')
+                        {
+                            richTextBox1.Text += arrl[ran.Next(0, arrl.Length)];
+                        }
+                        else if (c == 'm')
+                        {
+                            richTextBox1.Text += arrm[ran.Next(0, arrm.Length)];
+                        }
+                        else if (c == 'n')
+                        {
+                            richTextBox1.Text += arrn[ran.Next(0, arrn.Length)];
+                        }
+                        else if (c == 'o')
+                        {
+                            richTextBox1.Text += arro[ran.Next(0, arro.Length)];
+                        }
+                        else if (c == 'p')
+                        {
+                            richTextBox1.Text += arrp[ran.Next(0, arrp.Length)];
+                        }
+                        else if (c == 'q')
+                        {
+                            richTextBox1.Text += arrq[ran.Next(0, arrq.Length)];
+                        }
+                        else if (c == 'r')
+                        {
+                            richTextBox1.Text += arrr[ran.Next(0, arrr.Length)];
+                        }
+                        else if (c == 's')
+                        {
+                            richTextBox1.Text += arrs[ran.Next(0, arrs.Length)];
+                        }
+                        else if (c == 't')
+                        {
+                            richTextBox1.Text += arrt[ran.Next(0, arrt.Length)];
+                        }
+                        else if (c == 'u')
+                        {
+                            richTextBox1.Text += arru[ran.Next(0, arru.Length)];
+                        }
+                        else if (c == 'v')
+                        {
+                            richTextBox1.Text += arrv[ran.Next(0, arrv.Length)];
+                        }
+                        else if (c == 'w')
+                        {
+                            richTextBox1.Text += arrw[ran.Next(0, arrw.Length)];
+                        }
+                        else if (c == 'x')
+                        {
+                            richTextBox1.Text += arrx[ran.Next(0, arrx.Length)];
+                        }
+                        else if (c == 'y')
+                        {
+                            richTextBox1.Text += arry[ran.Next(0, arry.Length)];
+                        }
+                        else if (c == 'z')
+                        {
+                            richTextBox1.Text += arrz[ran.Next(0, arrz.Length)];
                         }
                         else
                         {
-                            richTextBox1.Text += deUnicode(GetRandomHexNumber(4));
+                            richTextBox1.Text += c;
                         }
+                    #endregion
                     }
-                }
-                if (checkBox1.Checked)
-                {
-                    string str = System.Text.RegularExpressions.Regex.Replace(richTextBox1.Text, @"(?<=\b(.{" + numericUpDown2.Value + "})+)", "$0,");
-                    string[] strs = str.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries);
-                    richTextBox1.Text = String.Join("\n",strs);
                 }
                 button4.Enabled = true;
                 numericUpDown1.Enabled = true;
                 numericUpDown2.Enabled = true;
                 checkBox1.Enabled = true;
+                label4.Visible = false;
+                progressBar1.Value = 0;
+                tabControl1.Enabled = true;
             }).Start();
         }
         public static string GetRandomHexNumber(int digits)
@@ -374,6 +648,18 @@ namespace luanma
                 checkBox8.Enabled = true;
                 checkBox9.Enabled = true;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            new Task(() =>
+            {
+                while (true)
+                {
+                    label4.Text = "运行中，已完成" + progressBar1.Value + "%";
+                }
+            }).Start();
+            label4.Visible = false;
         }
     }
 }
