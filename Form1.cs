@@ -162,7 +162,6 @@ namespace luanma
             new Task(() =>
             {
                 tabControl1.Enabled = false;
-                label4.Visible = true;
                 progressBar1.Value = 0;
                 numericUpDown1.Enabled = false;
                 numericUpDown2.Enabled = false;
@@ -233,6 +232,8 @@ namespace luanma
                 }
                 else if (tabControl1.SelectedIndex == 3)
                 {
+                    if (checkBox12.Checked) richTextBox1.Text += "[";
+                    double probar = 0.0;
                     foreach (char c in richTextBox2.Text)
                     {
                         #region if
@@ -449,14 +450,30 @@ namespace luanma
                             richTextBox1.Text += c;
                         }
                     #endregion
+                        probar += (double)100 / richTextBox2.Text.Length;
+                        progressBar1.Value = (int)probar;
                     }
+                    if (checkBox13.Checked)
+                    {
+                        richTextBox1.Text += " ";
+                        string[] spl = richTextBox2.Text.Split(' ');
+                        for (int i = 0; i < spl.Length; i++)
+                        {
+                            if (i % 4 == 0)
+                            {
+                                richTextBox1.Text += " ";
+                                continue;
+                            }
+                            richTextBox1.Text += "!";
+                        }
+                    }
+                    if (checkBox12.Checked) richTextBox1.Text += "]";
                 }
                 button4.Enabled = true;
                 numericUpDown1.Enabled = true;
                 numericUpDown2.Enabled = true;
                 checkBox1.Enabled = true;
-                label4.Visible = false;
-                progressBar1.Value = 0;
+                progressBar1.Value = 100;
                 tabControl1.Enabled = true;
             }).Start();
         }
@@ -656,10 +673,8 @@ namespace luanma
             {
                 while (true)
                 {
-                    label4.Text = "运行中，已完成" + progressBar1.Value + "%";
                 }
             }).Start();
-            label4.Visible = false;
         }
     }
 }

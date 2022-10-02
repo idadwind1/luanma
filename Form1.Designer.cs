@@ -51,6 +51,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -58,12 +59,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -71,7 +72,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.richTextBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -361,6 +361,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.checkBox13);
+            this.tabPage4.Controls.Add(this.checkBox12);
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.richTextBox2);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
@@ -371,11 +373,20 @@
             this.tabPage4.Text = "伪本地化";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(187, 15);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "需要转为伪本地化的文字：";
+            // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(7, 25);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(860, 106);
+            this.richTextBox2.Size = new System.Drawing.Size(860, 82);
             this.richTextBox2.TabIndex = 0;
             this.richTextBox2.Text = "";
             // 
@@ -446,7 +457,6 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Controls.Add(this.label4);
             this.richTextBox1.Location = new System.Drawing.Point(11, 25);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
@@ -454,17 +464,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(875, 112);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label4.Location = new System.Drawing.Point(0, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(875, 21);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "运行中，已完成0%";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // progressBar1
             // 
@@ -487,14 +486,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label5
+            // checkBox12
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(187, 15);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "需要转为伪本地化的文字：";
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(7, 112);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(89, 19);
+            this.checkBox12.TabIndex = 2;
+            this.checkBox12.Text = "添加括号";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Location = new System.Drawing.Point(102, 112);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(104, 19);
+            this.checkBox13.TabIndex = 3;
+            this.checkBox13.Text = "添加感叹号";
+            this.checkBox13.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -520,7 +530,6 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.richTextBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -559,10 +568,11 @@
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkBox13;
     }
 }
 
