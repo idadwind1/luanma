@@ -31,26 +31,29 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.c8 = new System.Windows.Forms.CheckBox();
+            this.c7 = new System.Windows.Forms.CheckBox();
+            this.c6 = new System.Windows.Forms.CheckBox();
+            this.c4 = new System.Windows.Forms.CheckBox();
+            this.c2 = new System.Windows.Forms.CheckBox();
+            this.c1 = new System.Windows.Forms.CheckBox();
+            this.c3 = new System.Windows.Forms.CheckBox();
+            this.c5 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -63,13 +66,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -101,23 +103,16 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.checkBox11);
-            this.tabPage1.Controls.Add(this.checkBox10);
+            this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.radioButton2);
             this.tabPage1.Controls.Add(this.radioButton1);
-            this.tabPage1.Controls.Add(this.checkBox9);
-            this.tabPage1.Controls.Add(this.checkBox8);
-            this.tabPage1.Controls.Add(this.checkBox7);
-            this.tabPage1.Controls.Add(this.checkBox6);
-            this.tabPage1.Controls.Add(this.checkBox5);
-            this.tabPage1.Controls.Add(this.checkBox4);
-            this.tabPage1.Controls.Add(this.checkBox3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.numericUpDown2);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.numericUpDown1);
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
@@ -127,27 +122,16 @@
             this.tabPage1.Text = "生成";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // checkBox11
+            // button5
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(803, 111);
-            this.checkBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(59, 19);
-            this.checkBox11.TabIndex = 17;
-            this.checkBox11.Text = "其他";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(737, 111);
-            this.checkBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(59, 19);
-            this.checkBox10.TabIndex = 16;
-            this.checkBox10.Text = "日文";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.button5.Location = new System.Drawing.Point(803, 94);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(64, 36);
+            this.button5.TabIndex = 18;
+            this.button5.Text = "其它";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
@@ -182,83 +166,6 @@
             this.radioButton1.Text = "所有";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(643, 111);
-            this.checkBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(89, 19);
-            this.checkBox9.TabIndex = 12;
-            this.checkBox9.Text = "标点符号";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(539, 111);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(97, 19);
-            this.checkBox8.TabIndex = 11;
-            this.checkBox8.Text = "表情/图形";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(427, 111);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(104, 19);
-            this.checkBox7.TabIndex = 10;
-            this.checkBox7.Text = "西里尔字母";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(361, 111);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(59, 19);
-            this.checkBox6.TabIndex = 9;
-            this.checkBox6.Text = "中文";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(251, 111);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(104, 19);
-            this.checkBox5.TabIndex = 8;
-            this.checkBox5.Text = "阿拉伯数字";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(125, 112);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(119, 19);
-            this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "字母（小写）";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(11, 112);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(119, 19);
-            this.checkBox3.TabIndex = 6;
-            this.checkBox3.Text = "字母（大写）";
-            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -337,6 +244,110 @@
             0,
             0});
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.c8);
+            this.panel1.Controls.Add(this.c7);
+            this.panel1.Controls.Add(this.c6);
+            this.panel1.Controls.Add(this.c4);
+            this.panel1.Controls.Add(this.c2);
+            this.panel1.Controls.Add(this.c1);
+            this.panel1.Controls.Add(this.c3);
+            this.panel1.Controls.Add(this.c5);
+            this.panel1.Location = new System.Drawing.Point(3, 111);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(793, 19);
+            this.panel1.TabIndex = 19;
+            // 
+            // c8
+            // 
+            this.c8.AutoSize = true;
+            this.c8.Location = new System.Drawing.Point(731, 1);
+            this.c8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c8.Name = "c8";
+            this.c8.Size = new System.Drawing.Size(59, 19);
+            this.c8.TabIndex = 16;
+            this.c8.Text = "日文";
+            this.c8.UseVisualStyleBackColor = true;
+            // 
+            // c7
+            // 
+            this.c7.AutoSize = true;
+            this.c7.Location = new System.Drawing.Point(639, 1);
+            this.c7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c7.Name = "c7";
+            this.c7.Size = new System.Drawing.Size(89, 19);
+            this.c7.TabIndex = 12;
+            this.c7.Text = "标点符号";
+            this.c7.UseVisualStyleBackColor = true;
+            // 
+            // c6
+            // 
+            this.c6.AutoSize = true;
+            this.c6.Location = new System.Drawing.Point(536, 1);
+            this.c6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c6.Name = "c6";
+            this.c6.Size = new System.Drawing.Size(97, 19);
+            this.c6.TabIndex = 11;
+            this.c6.Text = "表情/图形";
+            this.c6.UseVisualStyleBackColor = true;
+            // 
+            // c4
+            // 
+            this.c4.AutoSize = true;
+            this.c4.Location = new System.Drawing.Point(359, 0);
+            this.c4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c4.Name = "c4";
+            this.c4.Size = new System.Drawing.Size(59, 19);
+            this.c4.TabIndex = 9;
+            this.c4.Text = "中文";
+            this.c4.UseVisualStyleBackColor = true;
+            // 
+            // c2
+            // 
+            this.c2.AutoSize = true;
+            this.c2.Location = new System.Drawing.Point(119, 1);
+            this.c2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c2.Name = "c2";
+            this.c2.Size = new System.Drawing.Size(119, 19);
+            this.c2.TabIndex = 7;
+            this.c2.Text = "字母（小写）";
+            this.c2.UseVisualStyleBackColor = true;
+            // 
+            // c1
+            // 
+            this.c1.AutoSize = true;
+            this.c1.Location = new System.Drawing.Point(4, 1);
+            this.c1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c1.Name = "c1";
+            this.c1.Size = new System.Drawing.Size(119, 19);
+            this.c1.TabIndex = 6;
+            this.c1.Text = "字母（大写）";
+            this.c1.UseVisualStyleBackColor = true;
+            // 
+            // c3
+            // 
+            this.c3.AutoSize = true;
+            this.c3.Location = new System.Drawing.Point(248, 1);
+            this.c3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c3.Name = "c3";
+            this.c3.Size = new System.Drawing.Size(104, 19);
+            this.c3.TabIndex = 8;
+            this.c3.Text = "阿拉伯数字";
+            this.c3.UseVisualStyleBackColor = true;
+            // 
+            // c5
+            // 
+            this.c5.AutoSize = true;
+            this.c5.Location = new System.Drawing.Point(427, 0);
+            this.c5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.c5.Name = "c5";
+            this.c5.Size = new System.Drawing.Size(104, 19);
+            this.c5.TabIndex = 10;
+            this.c5.Text = "西里尔字母";
+            this.c5.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -366,17 +377,40 @@
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.richTextBox2);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Size = new System.Drawing.Size(873, 137);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "伪本地化";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Location = new System.Drawing.Point(101, 112);
+            this.checkBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(104, 19);
+            this.checkBox13.TabIndex = 3;
+            this.checkBox13.Text = "添加感叹号";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(7, 112);
+            this.checkBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(89, 19);
+            this.checkBox12.TabIndex = 2;
+            this.checkBox12.Text = "添加括号";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 7);
+            this.label5.Location = new System.Drawing.Point(7, 8);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(187, 15);
             this.label5.TabIndex = 1;
@@ -385,6 +419,7 @@
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(7, 25);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(860, 82);
             this.richTextBox2.TabIndex = 0;
@@ -411,7 +446,7 @@
             // 
             this.checkBox2.BackColor = System.Drawing.Color.Transparent;
             this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox2.Location = new System.Drawing.Point(10, 149);
+            this.checkBox2.Location = new System.Drawing.Point(11, 149);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(64, 22);
@@ -486,26 +521,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(7, 112);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(89, 19);
-            this.checkBox12.TabIndex = 2;
-            this.checkBox12.Text = "添加括号";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox13
-            // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(102, 112);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(104, 19);
-            this.checkBox13.TabIndex = 3;
-            this.checkBox13.Text = "添加感叹号";
-            this.checkBox13.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -527,6 +542,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -553,19 +570,18 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox c1;
+        private System.Windows.Forms.CheckBox c2;
+        private System.Windows.Forms.CheckBox c3;
+        private System.Windows.Forms.CheckBox c4;
+        private System.Windows.Forms.CheckBox c5;
+        private System.Windows.Forms.CheckBox c6;
+        private System.Windows.Forms.CheckBox c7;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.CheckBox c8;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TabPage tabPage4;
@@ -573,6 +589,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

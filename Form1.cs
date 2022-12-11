@@ -8,12 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
+using System.Diagnostics.Eventing.Reader;
 
 namespace luanma
 {
     public partial class Form1 : Form
     {
-
+        bool[] bools = new bool[15];
+        string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         #region arrs
         string[] arra = { "ä", "ā", "á", "ǎ", "à", "ă", "å", "ǻ", "ǟ", "ǡ", "ǻ", "ȁ", "ȃ", "ȧ", "ᶏ", "ḁ", "ẚ", "ạ", "ả", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "ɑ", "α", "ά", "ὰ", "ἀ", "ἁ", "ἂ", "ἃ", "ἆ", "ἇ", "ᾂ", "ᾃ", "ᾰ", "ᾱ", "ᾲ", "ᾳ", "ᾴ", "ᾶ", "ᾷ", "ⱥ", "𐓘", "𐓙", "𐓚" };
         string[] arraa = { "Ā", "Á", "Ǎ", "À", "Â", "Ã", "Ä", "Å", "Ǻ", "Ά", "Ă", "Δ", "Λ", "Д", "Ą" };
@@ -166,51 +171,34 @@ namespace luanma
                 numericUpDown1.Enabled = false;
                 numericUpDown2.Enabled = false;
                 checkBox1.Enabled = false;
-                button4.Enabled = false;
                 richTextBox1.Text = "";
                 if (tabControl1.SelectedIndex == 0)
                 {
                     if (!radioButton1.Checked)
                     {
-                        string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                        if (checkBox6.Checked)
+                        List<int> ints = new List<int>();
+                        foreach (Control control in panel1.Controls)
                         {
-                            for (int i2 = 0; i2 < (int)Math.Floor(numericUpDown1.Value / 30); i2++)
+                            if (control is CheckBox && (control as CheckBox).Checked)
                             {
-                                richTextBox1.Text += GetRandomChinese(30);
+                                CheckBox checkBox = (CheckBox)control;
+                                ints.Add(int.Parse(checkBox.Name.Replace("c", string.Empty)) - 1);
                             }
-                            richTextBox1.Text += GetRandomChinese((int)(numericUpDown1.Value - Math.Floor(numericUpDown1.Value / 30) * 30));
                         }
-                        for (int i = 1; i < numericUpDown1.Value + 1; i++)
+                        for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 15);
+                        double probar = 0d;
+                        for (int i = 0; i < numericUpDown1.Value; i++)
                         {
-                            if (checkBox3.Checked)
-                            {
-                                richTextBox1.Text += characters[ran.Next(characters.Length)];
-                            }
-                            if (checkBox4.Checked)
-                            {
-                                richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();
-                            }
-                            if (checkBox5.Checked)
-                            {
-                                richTextBox1.Text += ran.Next(0, 9);
-                            }
-                            if (checkBox7.Checked)
-                            {
-                                richTextBox1.Text += deUnicode("04" + GetRandomHexNumber(2));
-                            }
-                            if (checkBox8.Checked)
-                            {
-                                richTextBox1.Text += deUnicode("1" + GetRandomHexNumber(4));
-                            }
-                            if (checkBox9.Checked)
-                            {
-                                //richTextBox1.Text += deUnicode("20" + );
-                            }
+                            //if (!c1.Checked && !c2.Checked && !c3.Checked && !c4.Checked && !c5.Checked && !c6.Checked && !c7.Checked && !c8.Checked && !a && !b && !c && !d && !this.e && !f && !g && !h) break;
+                            System.Threading.Thread.Sleep(10);
+                            GenerateChars(ints);
+                            probar += 100 / (double)numericUpDown1.Value;
+                            progressBar1.Value = (int)probar;
                         }
                     }
                     else
                     {
+                        double probar = 0d;
                         for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
                         {
                             if (ran.Next(0, 1) == 0)
@@ -221,6 +209,8 @@ namespace luanma
                             {
                                 richTextBox1.Text += deUnicode(GetRandomHexNumber(4));
                             }
+                            probar += 100 / (double)numericUpDown1.Value;
+                            progressBar1.Value = (int)probar;
                         }
                     }
                     if (checkBox1.Checked)
@@ -233,7 +223,7 @@ namespace luanma
                 else if (tabControl1.SelectedIndex == 3)
                 {
                     if (checkBox12.Checked) richTextBox1.Text += "[";
-                    double probar = 0.0;
+                    double probar = 0d;
                     foreach (char c in richTextBox2.Text)
                     {
                         #region if
@@ -469,13 +459,44 @@ namespace luanma
                     }
                     if (checkBox12.Checked) richTextBox1.Text += "]";
                 }
-                button4.Enabled = true;
                 numericUpDown1.Enabled = true;
                 numericUpDown2.Enabled = true;
                 checkBox1.Enabled = true;
                 progressBar1.Value = 100;
                 tabControl1.Enabled = true;
             }).Start();
+        }
+
+        public string GetRandomArrows()
+        {
+            return "";
+        }
+
+        public string GetRandomMathematicalOperator()
+        {
+            return "";
+        }
+
+        public string GetRandomMiscellaneousTechnical()
+        {
+            return deUnicode("23" + GetRandomHexNumber(2));
+        }
+
+        public string GetRandomGeometricShapes()
+        {
+            return "";
+        }
+        public string GetRandomMiscellaneousSymbols()
+        {
+            return "";
+        }
+        public string GetRandomDingbats()
+        {
+            return "";
+        }
+        public string GetRandomCoptic()
+        {
+            return "";
         }
         public static string GetRandomHexNumber(int digits)
         {
@@ -488,24 +509,57 @@ namespace luanma
                 return result;
             return result + random.Next(16).ToString("X");
         }
+
+        private void GenerateChars(List<int> ids)
+        {
+            if (ids.Count == 0) return;
+            switch (ids[new Random().Next(0, ids.Count)])
+            {
+                case 0: richTextBox1.Text += characters[ran.Next(characters.Length)];break;
+                case 1: richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();break;
+                case 2: richTextBox1.Text += ran.Next(0, 9); break;
+                case 3: richTextBox1.Text += GetRandomChinese(1); break;
+                case 4: richTextBox1.Text += GetRandomCyrillic();break;
+                case 5: richTextBox1.Text += deUnicode("1" + GetRandomHexNumber(4));break;
+                case 6: /*if (checkBox9.Checked) richTextBox1.Text += deUnicode("20" + );*/break;
+                case 7: richTextBox1.Text += GetRandomJapanese(); break;
+                case 8: break;
+                case 9: richTextBox1.Text += deUnicode("28" + GetRandomHexNumber(2));break;
+                case 10:richTextBox1.Text += GetRandomMathematicalOperator();break;
+                case 11:break;
+                case 12:break;
+                case 13:break;
+                case 14:break;
+                case 15:richTextBox1.Text += deUnicode("31" + new Random().Next(0, 2) + GetRandomHexNumber(1));break;
+                case 16:richTextBox1.Text += GetRandomMiscellaneousTechnical();break;
+                case 17:break;
+                case 18:break;
+                case 19:break;
+                case 20:break;
+                case 21:break;
+                case 22:break;
+                default:break;
+            }
+        }
+
+        public string GetRandomCyrillic()
+        {
+            if (new Random().Next(0, 1) == 0) return deUnicode("04" + GetRandomHexNumber(2));
+            else return deUnicode("05" + new Random().Next(0, 2) + GetRandomHexNumber(1));
+        }
+
         public static String deUnicode(String content)
         {
             String enUnicode = null;
             String deUnicode = null;
             for (int i = 0; i < content.Length; i++)
             {
-
                 enUnicode += content[i];
-
                 if (i % 4 == 3)
                 {
-
                     deUnicode += (char)(Convert.ToInt32(enUnicode, 16));
-
-
                     enUnicode = null;
                 }
-
             }
             return deUnicode;
         }
@@ -647,24 +701,26 @@ namespace luanma
         {
             if (radioButton1.Checked)
             {
-                checkBox3.Enabled = false;
-                checkBox4.Enabled = false;
-                checkBox5.Enabled = false;
-                checkBox6.Enabled = false;
-                checkBox7.Enabled = false;
-                checkBox8.Enabled = false;
-                checkBox9.Enabled = false;
+                c1.Enabled = false;
+                c2.Enabled = false;
+                c3.Enabled = false;
+                c4.Enabled = false;
+                c5.Enabled = false;
+                c6.Enabled = false;
+                c7.Enabled = false;
+                c8.Enabled = false;
+                button5.Enabled = false;
+                return;
             }
-            else
-            {
-                checkBox3.Enabled = true;
-                checkBox4.Enabled = true;
-                checkBox5.Enabled = true;
-                checkBox6.Enabled = true;
-                checkBox7.Enabled = true;
-                checkBox8.Enabled = true;
-                checkBox9.Enabled = true;
-            }
+            c1.Enabled = true;
+            c2.Enabled = true;
+            c3.Enabled = true;
+            c4.Enabled = true;
+            c5.Enabled = true;
+            c6.Enabled = true;
+            c7.Enabled = true;
+            c8.Enabled = true;
+            button5.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -675,6 +731,44 @@ namespace luanma
                 {
                 }
             }).Start();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3(bools);
+            form3.ShowDialog();
+            for (int i = 0; i < bools.Length; i++) bools[i] = form3.bools[i];
+        }
+        public string GetRandomJapanese()
+        {
+            switch (new Random().Next(0, 11))
+            {
+                case 0:
+                    return deUnicode("304" + GetRandomHexNumber(1));
+                case 1:
+                    return deUnicode("305" + GetRandomHexNumber(1));
+                case 2:
+                    return deUnicode("306" + GetRandomHexNumber(1));
+                case 3:
+                    return deUnicode("307" + GetRandomHexNumber(1));
+                case 4:
+                    return deUnicode("308" + GetRandomHexNumber(1));
+                case 5:
+                    return deUnicode("309" + GetRandomHexNumber(1));
+                case 6:
+                    return deUnicode("30A" + GetRandomHexNumber(1));
+                case 7:
+                    return deUnicode("30B" + GetRandomHexNumber(1));
+                case 8:
+                    return deUnicode("30C" + GetRandomHexNumber(1));
+                case 9:
+                    return deUnicode("30D" + GetRandomHexNumber(1));
+                case 10:
+                    return deUnicode("30E" + GetRandomHexNumber(1));
+                case 11:
+                    return deUnicode("30F" + GetRandomHexNumber(1));
+            }
+            return "";
         }
     }
 }
