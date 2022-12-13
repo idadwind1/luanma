@@ -47,6 +47,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.richTextBox1);
             this.Name = "Form2";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "更多";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
