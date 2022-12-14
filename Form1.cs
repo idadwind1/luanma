@@ -14,6 +14,8 @@ namespace luanma
 {
     public partial class Form1 : Form
     {
+        bool end = true;
+        bool response = true;
         Thread thread;
         bool[] bools = new bool[15];
         string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -71,11 +73,330 @@ namespace luanma
         string[] arrz = { "z", "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" };
         string[] arrzz = { "Z", "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" };
         #endregion
+
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Main()
+        {
+            try
+            {
+                response = true;
+                button1.Enabled = false;
+                button6.Enabled = true;
+                tabControl1.Enabled = false;
+                progressBar1.Value = 0;
+                numericUpDown1.Enabled = false;
+                numericUpDown2.Enabled = false;
+                checkBox1.Enabled = false;
+                richTextBox1.Text = "";
+                if (tabControl1.SelectedIndex == 0)
+                {
+                    if (!radioButton1.Checked)
+                    {
+                        List<int> ints = new List<int>();
+                        foreach (Control control in panel1.Controls)
+                        {
+                            if (control is CheckBox && (control as CheckBox).Checked)
+                            {
+                                CheckBox checkBox = (CheckBox)control;
+                                ints.Add(int.Parse(checkBox.Name.Replace("c", string.Empty)) - 1);
+                            }
+                        }
+                        for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 15);
+                        double probar = 0d;
+                        for (int i = 0; i < numericUpDown1.Value; i++)
+                        {
+                            //if (!c1.Checked && !c2.Checked && !c3.Checked && !c4.Checked && !c5.Checked && !c6.Checked && !c7.Checked && !c8.Checked && !a && !b && !c && !d && !this.e && !f && !g && !h) break;
+                            Thread.Sleep(10);
+                            GenerateChars(ints);
+                            probar += 100 / (double)numericUpDown1.Value;
+                            progressBar1.Value = (int)probar;
+                        }
+                    }
+                    else
+                    {
+                        double probar = 0d;
+                        for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
+                        {
+                            if (ran.Next(0, 1) == 0)
+                            {
+                                richTextBox1.Text += deUnicode(GetRandomHexNumber(5));
+                            }
+                            else
+                            {
+                                richTextBox1.Text += deUnicode(GetRandomHexNumber(4));
+                            }
+                            probar += 100 / (double)numericUpDown1.Value;
+                            progressBar1.Value = (int)probar;
+                        }
+                    }
+                    if (checkBox1.Checked)
+                    {
+                        string str = System.Text.RegularExpressions.Regex.Replace(richTextBox1.Text, @"(?<=\b(.{" + numericUpDown2.Value + "})+)", "$0,");
+                        string[] strs = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        richTextBox1.Text = String.Join("\n", strs);
+                    }
+                }
+                else if (tabControl1.SelectedIndex == 3)
+                {
+                    if (checkBox12.Checked) richTextBox1.Text += "[";
+                    double probar = 0d;
+                    foreach (char c in richTextBox2.Text)
+                    {
+                        #region if
+                        if (c == 'A')
+                        {
+                            richTextBox1.Text += arraa[ran.Next(0, arraa.Length)];
+                        }
+                        else if (c == 'B')
+                        {
+                            richTextBox1.Text += arrbb[ran.Next(0, arrbb.Length)];
+                        }
+                        else if (c == 'C')
+                        {
+                            richTextBox1.Text += arrcc[ran.Next(0, arrcc.Length)];
+                        }
+                        else if (c == 'D')
+                        {
+                            richTextBox1.Text += arrdd[ran.Next(0, arrdd.Length)];
+                        }
+                        else if (c == 'E')
+                        {
+                            richTextBox1.Text += arree[ran.Next(0, arree.Length)];
+                        }
+                        else if (c == 'F')
+                        {
+                            richTextBox1.Text += arrff[ran.Next(0, arra.Length)];
+                        }
+                        else if (c == 'G')
+                        {
+                            richTextBox1.Text += arrgg[ran.Next(0, arrgg.Length)];
+                        }
+                        else if (c == 'H')
+                        {
+                            richTextBox1.Text += arrhh[ran.Next(0, arrhh.Length)];
+                        }
+                        else if (c == 'I')
+                        {
+                            richTextBox1.Text += arrii[ran.Next(0, arrii.Length)];
+                        }
+                        else if (c == 'J')
+                        {
+                            richTextBox1.Text += arrjj[ran.Next(0, arrjj.Length)];
+                        }
+                        else if (c == 'K')
+                        {
+                            richTextBox1.Text += arrkk[ran.Next(0, arrkk.Length)];
+                        }
+                        else if (c == 'L')
+                        {
+                            richTextBox1.Text += arrll[ran.Next(0, arrll.Length)];
+                        }
+                        else if (c == 'M')
+                        {
+                            richTextBox1.Text += arrmm[ran.Next(0, arrmm.Length)];
+                        }
+                        else if (c == 'N')
+                        {
+                            richTextBox1.Text += arrnn[ran.Next(0, arrnn.Length)];
+                        }
+                        else if (c == 'O')
+                        {
+                            richTextBox1.Text += arroo[ran.Next(0, arroo.Length)];
+                        }
+                        else if (c == 'P')
+                        {
+                            richTextBox1.Text += arrpp[ran.Next(0, arrpp.Length)];
+                        }
+                        else if (c == 'Q')
+                        {
+                            richTextBox1.Text += arrqq[ran.Next(0, arrqq.Length)];
+                        }
+                        else if (c == 'R')
+                        {
+                            richTextBox1.Text += arrrr[ran.Next(0, arrrr.Length)];
+                        }
+                        else if (c == 'S')
+                        {
+                            richTextBox1.Text += arrss[ran.Next(0, arrss.Length)];
+                        }
+                        else if (c == 'T')
+                        {
+                            richTextBox1.Text += arrtt[ran.Next(0, arrtt.Length)];
+                        }
+                        else if (c == 'U')
+                        {
+                            richTextBox1.Text += arruu[ran.Next(0, arruu.Length)];
+                        }
+                        else if (c == 'V')
+                        {
+                            richTextBox1.Text += arrvv[ran.Next(0, arrvv.Length)];
+                        }
+                        else if (c == 'W')
+                        {
+                            richTextBox1.Text += arrww[ran.Next(0, arrww.Length)];
+                        }
+                        else if (c == 'X')
+                        {
+                            richTextBox1.Text += arrxx[ran.Next(0, arrxx.Length)];
+                        }
+                        else if (c == 'Y')
+                        {
+                            richTextBox1.Text += arryy[ran.Next(0, arryy.Length)];
+                        }
+                        else if (c == 'Z')
+                        {
+                            richTextBox1.Text += arrzz[ran.Next(0, arrzz.Length)];
+                        }
+                        else if (c == 'a')
+                        {
+                            richTextBox1.Text += arra[ran.Next(0, arra.Length)];
+                        }
+                        else if (c == 'b')
+                        {
+                            richTextBox1.Text += arrb[ran.Next(0, arrb.Length)];
+                        }
+                        else if (c == 'c')
+                        {
+                            richTextBox1.Text += arrc[ran.Next(0, arrc.Length)];
+                        }
+                        else if (c == 'd')
+                        {
+                            richTextBox1.Text += arrd[ran.Next(0, arrd.Length)];
+                        }
+                        else if (c == 'e')
+                        {
+                            richTextBox1.Text += arre[ran.Next(0, arre.Length)];
+                        }
+                        else if (c == 'f')
+                        {
+                            richTextBox1.Text += arrf[ran.Next(0, arrf.Length)];
+                        }
+                        else if (c == 'g')
+                        {
+                            richTextBox1.Text += arrg[ran.Next(0, arrg.Length)];
+                        }
+                        else if (c == 'h')
+                        {
+                            richTextBox1.Text += arrh[ran.Next(0, arrh.Length)];
+                        }
+                        else if (c == 'i')
+                        {
+                            richTextBox1.Text += arri[ran.Next(0, arri.Length)];
+                        }
+                        else if (c == 'j')
+                        {
+                            richTextBox1.Text += arrj[ran.Next(0, arrj.Length)];
+                        }
+                        else if (c == 'k')
+                        {
+                            richTextBox1.Text += arrk[ran.Next(0, arrk.Length)];
+                        }
+                        else if (c == 'l')
+                        {
+                            richTextBox1.Text += arrl[ran.Next(0, arrl.Length)];
+                        }
+                        else if (c == 'm')
+                        {
+                            richTextBox1.Text += arrm[ran.Next(0, arrm.Length)];
+                        }
+                        else if (c == 'n')
+                        {
+                            richTextBox1.Text += arrn[ran.Next(0, arrn.Length)];
+                        }
+                        else if (c == 'o')
+                        {
+                            richTextBox1.Text += arro[ran.Next(0, arro.Length)];
+                        }
+                        else if (c == 'p')
+                        {
+                            richTextBox1.Text += arrp[ran.Next(0, arrp.Length)];
+                        }
+                        else if (c == 'q')
+                        {
+                            richTextBox1.Text += arrq[ran.Next(0, arrq.Length)];
+                        }
+                        else if (c == 'r')
+                        {
+                            richTextBox1.Text += arrr[ran.Next(0, arrr.Length)];
+                        }
+                        else if (c == 's')
+                        {
+                            richTextBox1.Text += arrs[ran.Next(0, arrs.Length)];
+                        }
+                        else if (c == 't')
+                        {
+                            richTextBox1.Text += arrt[ran.Next(0, arrt.Length)];
+                        }
+                        else if (c == 'u')
+                        {
+                            richTextBox1.Text += arru[ran.Next(0, arru.Length)];
+                        }
+                        else if (c == 'v')
+                        {
+                            richTextBox1.Text += arrv[ran.Next(0, arrv.Length)];
+                        }
+                        else if (c == 'w')
+                        {
+                            richTextBox1.Text += arrw[ran.Next(0, arrw.Length)];
+                        }
+                        else if (c == 'x')
+                        {
+                            richTextBox1.Text += arrx[ran.Next(0, arrx.Length)];
+                        }
+                        else if (c == 'y')
+                        {
+                            richTextBox1.Text += arry[ran.Next(0, arry.Length)];
+                        }
+                        else if (c == 'z')
+                        {
+                            richTextBox1.Text += arrz[ran.Next(0, arrz.Length)];
+                        }
+                        else
+                        {
+                            richTextBox1.Text += c;
+                        }
+                        #endregion
+                        probar += (double)100 / richTextBox2.Text.Length;
+                        progressBar1.Value = (int)probar;
+                    }
+                    if (checkBox13.Checked)
+                    {
+                        richTextBox1.Text += " ";
+                        string[] spl = richTextBox2.Text.Split(' ');
+                        for (int i = 0; i < spl.Length; i++)
+                        {
+                            if (i % 4 == 0)
+                            {
+                                richTextBox1.Text += " ";
+                                continue;
+                            }
+                            richTextBox1.Text += "!";
+                        }
+                    }
+                    if (checkBox12.Checked) richTextBox1.Text += "]";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误!\n原因: " + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                numericUpDown1.Enabled = true;
+                numericUpDown2.Enabled = true;
+                checkBox1.Enabled = true;
+                progressBar1.Value = 100;
+                tabControl1.Enabled = true;
+                button6.Enabled = false;
+                button1.Enabled = true;
+                end = true;
+            }
+
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -160,328 +481,20 @@ namespace luanma
             }
         }
         Random ran = new Random();
+
         private void button1_Click(object sender, EventArgs e)
         {
-            thread = new Thread(() =>
+            response = false;
+            end = false;
+            Thread.Sleep(100);
+            if (!response)
             {
-                try
+                if (MessageBox.Show("检测到进程被终止, 重启软件以修复此问题\n单击“确定”重启软件", "错误", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    button1.Enabled = false;
-                    button6.Enabled = true;
-                    tabControl1.Enabled = false;
-                    progressBar1.Value = 0;
-                    numericUpDown1.Enabled = false;
-                    numericUpDown2.Enabled = false;
-                    checkBox1.Enabled = false;
-                    richTextBox1.Text = "";
-                    if (tabControl1.SelectedIndex == 0)
-                    {
-                        if (!radioButton1.Checked)
-                        {
-                            List<int> ints = new List<int>();
-                            foreach (Control control in panel1.Controls)
-                            {
-                                if (control is CheckBox && (control as CheckBox).Checked)
-                                {
-                                    CheckBox checkBox = (CheckBox)control;
-                                    ints.Add(int.Parse(checkBox.Name.Replace("c", string.Empty)) - 1);
-                                }
-                            }
-                            for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 15);
-                            double probar = 0d;
-                            for (int i = 0; i < numericUpDown1.Value; i++)
-                            {
-                                //if (!c1.Checked && !c2.Checked && !c3.Checked && !c4.Checked && !c5.Checked && !c6.Checked && !c7.Checked && !c8.Checked && !a && !b && !c && !d && !this.e && !f && !g && !h) break;
-                                System.Threading.Thread.Sleep(10);
-                                GenerateChars(ints);
-                                probar += 100 / (double)numericUpDown1.Value;
-                                progressBar1.Value = (int)probar;
-                            }
-                        }
-                        else
-                        {
-                            double probar = 0d;
-                            for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
-                            {
-                                if (ran.Next(0, 1) == 0)
-                                {
-                                    richTextBox1.Text += deUnicode(GetRandomHexNumber(5));
-                                }
-                                else
-                                {
-                                    richTextBox1.Text += deUnicode(GetRandomHexNumber(4));
-                                }
-                                probar += 100 / (double)numericUpDown1.Value;
-                                progressBar1.Value = (int)probar;
-                            }
-                        }
-                        if (checkBox1.Checked)
-                        {
-                            string str = System.Text.RegularExpressions.Regex.Replace(richTextBox1.Text, @"(?<=\b(.{" + numericUpDown2.Value + "})+)", "$0,");
-                            string[] strs = str.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                            richTextBox1.Text = String.Join("\n", strs);
-                        }
-                    }
-                    else if (tabControl1.SelectedIndex == 3)
-                    {
-                        if (checkBox12.Checked) richTextBox1.Text += "[";
-                        double probar = 0d;
-                        foreach (char c in richTextBox2.Text)
-                        {
-                            #region if
-                            if (c == 'A')
-                            {
-                                richTextBox1.Text += arraa[ran.Next(0, arraa.Length)];
-                            }
-                            else if (c == 'B')
-                            {
-                                richTextBox1.Text += arrbb[ran.Next(0, arrbb.Length)];
-                            }
-                            else if (c == 'C')
-                            {
-                                richTextBox1.Text += arrcc[ran.Next(0, arrcc.Length)];
-                            }
-                            else if (c == 'D')
-                            {
-                                richTextBox1.Text += arrdd[ran.Next(0, arrdd.Length)];
-                            }
-                            else if (c == 'E')
-                            {
-                                richTextBox1.Text += arree[ran.Next(0, arree.Length)];
-                            }
-                            else if (c == 'F')
-                            {
-                                richTextBox1.Text += arrff[ran.Next(0, arra.Length)];
-                            }
-                            else if (c == 'G')
-                            {
-                                richTextBox1.Text += arrgg[ran.Next(0, arrgg.Length)];
-                            }
-                            else if (c == 'H')
-                            {
-                                richTextBox1.Text += arrhh[ran.Next(0, arrhh.Length)];
-                            }
-                            else if (c == 'I')
-                            {
-                                richTextBox1.Text += arrii[ran.Next(0, arrii.Length)];
-                            }
-                            else if (c == 'J')
-                            {
-                                richTextBox1.Text += arrjj[ran.Next(0, arrjj.Length)];
-                            }
-                            else if (c == 'K')
-                            {
-                                richTextBox1.Text += arrkk[ran.Next(0, arrkk.Length)];
-                            }
-                            else if (c == 'L')
-                            {
-                                richTextBox1.Text += arrll[ran.Next(0, arrll.Length)];
-                            }
-                            else if (c == 'M')
-                            {
-                                richTextBox1.Text += arrmm[ran.Next(0, arrmm.Length)];
-                            }
-                            else if (c == 'N')
-                            {
-                                richTextBox1.Text += arrnn[ran.Next(0, arrnn.Length)];
-                            }
-                            else if (c == 'O')
-                            {
-                                richTextBox1.Text += arroo[ran.Next(0, arroo.Length)];
-                            }
-                            else if (c == 'P')
-                            {
-                                richTextBox1.Text += arrpp[ran.Next(0, arrpp.Length)];
-                            }
-                            else if (c == 'Q')
-                            {
-                                richTextBox1.Text += arrqq[ran.Next(0, arrqq.Length)];
-                            }
-                            else if (c == 'R')
-                            {
-                                richTextBox1.Text += arrrr[ran.Next(0, arrrr.Length)];
-                            }
-                            else if (c == 'S')
-                            {
-                                richTextBox1.Text += arrss[ran.Next(0, arrss.Length)];
-                            }
-                            else if (c == 'T')
-                            {
-                                richTextBox1.Text += arrtt[ran.Next(0, arrtt.Length)];
-                            }
-                            else if (c == 'U')
-                            {
-                                richTextBox1.Text += arruu[ran.Next(0, arruu.Length)];
-                            }
-                            else if (c == 'V')
-                            {
-                                richTextBox1.Text += arrvv[ran.Next(0, arrvv.Length)];
-                            }
-                            else if (c == 'W')
-                            {
-                                richTextBox1.Text += arrww[ran.Next(0, arrww.Length)];
-                            }
-                            else if (c == 'X')
-                            {
-                                richTextBox1.Text += arrxx[ran.Next(0, arrxx.Length)];
-                            }
-                            else if (c == 'Y')
-                            {
-                                richTextBox1.Text += arryy[ran.Next(0, arryy.Length)];
-                            }
-                            else if (c == 'Z')
-                            {
-                                richTextBox1.Text += arrzz[ran.Next(0, arrzz.Length)];
-                            }
-                            else if (c == 'a')
-                            {
-                                richTextBox1.Text += arra[ran.Next(0, arra.Length)];
-                            }
-                            else if (c == 'b')
-                            {
-                                richTextBox1.Text += arrb[ran.Next(0, arrb.Length)];
-                            }
-                            else if (c == 'c')
-                            {
-                                richTextBox1.Text += arrc[ran.Next(0, arrc.Length)];
-                            }
-                            else if (c == 'd')
-                            {
-                                richTextBox1.Text += arrd[ran.Next(0, arrd.Length)];
-                            }
-                            else if (c == 'e')
-                            {
-                                richTextBox1.Text += arre[ran.Next(0, arre.Length)];
-                            }
-                            else if (c == 'f')
-                            {
-                                richTextBox1.Text += arrf[ran.Next(0, arrf.Length)];
-                            }
-                            else if (c == 'g')
-                            {
-                                richTextBox1.Text += arrg[ran.Next(0, arrg.Length)];
-                            }
-                            else if (c == 'h')
-                            {
-                                richTextBox1.Text += arrh[ran.Next(0, arrh.Length)];
-                            }
-                            else if (c == 'i')
-                            {
-                                richTextBox1.Text += arri[ran.Next(0, arri.Length)];
-                            }
-                            else if (c == 'j')
-                            {
-                                richTextBox1.Text += arrj[ran.Next(0, arrj.Length)];
-                            }
-                            else if (c == 'k')
-                            {
-                                richTextBox1.Text += arrk[ran.Next(0, arrk.Length)];
-                            }
-                            else if (c == 'l')
-                            {
-                                richTextBox1.Text += arrl[ran.Next(0, arrl.Length)];
-                            }
-                            else if (c == 'm')
-                            {
-                                richTextBox1.Text += arrm[ran.Next(0, arrm.Length)];
-                            }
-                            else if (c == 'n')
-                            {
-                                richTextBox1.Text += arrn[ran.Next(0, arrn.Length)];
-                            }
-                            else if (c == 'o')
-                            {
-                                richTextBox1.Text += arro[ran.Next(0, arro.Length)];
-                            }
-                            else if (c == 'p')
-                            {
-                                richTextBox1.Text += arrp[ran.Next(0, arrp.Length)];
-                            }
-                            else if (c == 'q')
-                            {
-                                richTextBox1.Text += arrq[ran.Next(0, arrq.Length)];
-                            }
-                            else if (c == 'r')
-                            {
-                                richTextBox1.Text += arrr[ran.Next(0, arrr.Length)];
-                            }
-                            else if (c == 's')
-                            {
-                                richTextBox1.Text += arrs[ran.Next(0, arrs.Length)];
-                            }
-                            else if (c == 't')
-                            {
-                                richTextBox1.Text += arrt[ran.Next(0, arrt.Length)];
-                            }
-                            else if (c == 'u')
-                            {
-                                richTextBox1.Text += arru[ran.Next(0, arru.Length)];
-                            }
-                            else if (c == 'v')
-                            {
-                                richTextBox1.Text += arrv[ran.Next(0, arrv.Length)];
-                            }
-                            else if (c == 'w')
-                            {
-                                richTextBox1.Text += arrw[ran.Next(0, arrw.Length)];
-                            }
-                            else if (c == 'x')
-                            {
-                                richTextBox1.Text += arrx[ran.Next(0, arrx.Length)];
-                            }
-                            else if (c == 'y')
-                            {
-                                richTextBox1.Text += arry[ran.Next(0, arry.Length)];
-                            }
-                            else if (c == 'z')
-                            {
-                                richTextBox1.Text += arrz[ran.Next(0, arrz.Length)];
-                            }
-                            else
-                            {
-                                richTextBox1.Text += c;
-                            }
-                            #endregion
-                            probar += (double)100 / richTextBox2.Text.Length;
-                            progressBar1.Value = (int)probar;
-                        }
-                        if (checkBox13.Checked)
-                        {
-                            richTextBox1.Text += " ";
-                            string[] spl = richTextBox2.Text.Split(' ');
-                            for (int i = 0; i < spl.Length; i++)
-                            {
-                                if (i % 4 == 0)
-                                {
-                                    richTextBox1.Text += " ";
-                                    continue;
-                                }
-                                richTextBox1.Text += "!";
-                            }
-                        }
-                        if (checkBox12.Checked) richTextBox1.Text += "]";
-                    }
+                    System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                    Environment.Exit(0);
                 }
-                catch (ThreadAbortException)
-                {
-                    MessageBox.Show("工作已被用户终止","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("错误!\n原因: " + ex.Message,"错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    numericUpDown1.Enabled = true;
-                    numericUpDown2.Enabled = true;
-                    checkBox1.Enabled = true;
-                    progressBar1.Value = 100;
-                    tabControl1.Enabled = true;
-                    button6.Enabled = false;
-                    button1.Enabled = true;
-                }
-            });
-            thread.Start();
+            }
         }
 
         public string GetRandomArrows()
@@ -503,25 +516,29 @@ namespace luanma
         {
             return "";
         }
+
         public string GetRandomMiscellaneousSymbols()
         {
             return "";
         }
+
         public string GetRandomDingbats()
         {
             return "";
         }
+
         public string GetRandomCoptic()
         {
             return "";
         }
+
         public static string GetRandomHexNumber(int digits)
         {
             Random random = new Random();
             byte[] buffer = new byte[digits / 2];
             random.NextBytes(buffer);
             string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
-            System.Threading.Thread.Sleep(1);
+            Thread.Sleep(1);
             if (digits % 2 == 0)
                 return result;
             return result + random.Next(16).ToString("X");
@@ -565,10 +582,10 @@ namespace luanma
             else return deUnicode("05" + new Random().Next(0, 2) + GetRandomHexNumber(1));
         }
 
-        public static String deUnicode(String content)
+        public static string deUnicode(string content)
         {
-            String enUnicode = null;
-            String deUnicode = null;
+            string enUnicode = null;
+            string deUnicode = null;
             for (int i = 0; i < content.Length; i++)
             {
                 enUnicode += content[i];
@@ -580,6 +597,7 @@ namespace luanma
             }
             return deUnicode;
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -618,6 +636,7 @@ namespace luanma
             }
             checkBox1.Checked = true;
         }
+
         public string GetRandomChinese(int strlength)
         {
             // 获取GB2312编码页（表）
@@ -634,6 +653,7 @@ namespace luanma
 
             return sb.ToString();
         }
+
         private object[] CreateRegionCode(int strlength)
         {
             //定义一个字符串数组储存汉字编码的组成元素
@@ -742,12 +762,20 @@ namespace luanma
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            new Task(() =>
+            thread = new Thread(() => {
+                while (true)
+                {
+                    while (end) Thread.Sleep(1);
+                    Main();
+                }
+            });
+            thread.Start();
+            /*new Task(() =>
             {
                 while (true)
                 {
                 }
-            }).Start();
+            }).Start();*/
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -756,6 +784,7 @@ namespace luanma
             form3.ShowDialog();
             for (int i = 0; i < bools.Length; i++) bools[i] = form3.bools[i];
         }
+
         public string GetRandomJapanese()
         {
             switch (new Random().Next(0, 11))
@@ -791,8 +820,7 @@ namespace luanma
         private void button6_Click(object sender, EventArgs e)
         {
             button6.Enabled = false;
-            thread.Abort();
-            thread.Join();
+            end = true;
         }
     }
 }
