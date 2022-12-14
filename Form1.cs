@@ -18,58 +18,58 @@ namespace luanma
         bool[] bools = new bool[15];
         string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         #region arrs
-        string[] arra = { "ä", "ā", "á", "ǎ", "à", "ă", "å", "ǻ", "ǟ", "ǡ", "ǻ", "ȁ", "ȃ", "ȧ", "ᶏ", "ḁ", "ẚ", "ạ", "ả", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "ɑ", "α", "ά", "ὰ", "ἀ", "ἁ", "ἂ", "ἃ", "ἆ", "ἇ", "ᾂ", "ᾃ", "ᾰ", "ᾱ", "ᾲ", "ᾳ", "ᾴ", "ᾶ", "ᾷ", "ⱥ", "𐓘", "𐓙", "𐓚" };
-        string[] arraa = { "Ā", "Á", "Ǎ", "À", "Â", "Ã", "Ä", "Å", "Ǻ", "Ά", "Ă", "Δ", "Λ", "Д", "Ą" };
-        string[] arrb = { "b", "ь", "в", "Ъ", "Б", "б", "β", "ƀ", "ƃ", "ɓ", "ᵬ", "ᶀ", "ḃ", "ḅ", "ḇ", "ꞗ" };
-        string[] arrbb = { "ß", "฿" };
-        string[] arrc = { "c", "ç", "ς", "ĉ", "č", "ċ", "ć", "ĉ", "ċ", "ƈ", "ȼ", "¢", "ɕ", "ḉ", "ꞓ", "ꞔ" };
-        string[] arrcc = { "Č", "Ç", "Ĉ", "Ć", "€" };
-        string[] arrd = { "d", "ď", "đ", "₫", "ð", "δ" };
-        string[] arrdd = { "Ď", "Ð" };
-        string[] arre = { "e", "ē", "é", "ě", "è", "ê", "ĕ", "ė", "ë", "ę", "з", "ε", "έ", "э", "℮" };
-        string[] arree = { "E", "Ē", "É", "Ě", "È", "Ĕ", "Ё", "Σ", "Έ", "Є", "Э", "З" };
-        string[] arrf = { "f", "ƒ" };
-        string[] arrff = { "F", "₣" };
-        string[] arrg = { "ḡ", "ģ", "ǧ", "ĝ", "ğ", "ġ", "ǥ", "ǵ", "ɠ", "ᶃ", "ꞡ" };
-        string[] arrgg = { "Ḡ", "Ǵ", "Ǧ", "Ĝ", "Ğ", "Ģ", "Ġ", "Ɠ", "Ǥ", "Ꞡ" };
-        string[] arrh = { "ĥ", "ħ", "ђ", "н" };
-        string[] arrhh = { "H", "Ĥ", "Ħ" };
-        string[] arri = { "ı", "ī", "í", "ǐ", "ì", "ĭ", "î", "ï", "ί", "į", "ΐ" };
-        string[] arrii = { "Ī", "Í", "Ǐ", "Ì", "Î", "Ï", "Ĭ", "Ί" };
-        string[] arrj = { "j" };
-        string[] arrjj = { "J", "Ĵ" };
-        string[] arrk = { "ƙ", "κ" };
-        string[] arrkk = { "К" };
-        string[] arrl = { "ŀ", "ļ", "ℓ", "ĺ", "ļ", "ľ", "ł", "ι" };
-        string[] arrll = { "Ŀ", "£", "Ļ", "Ł", "Ĺ" };
-        string[] arrm = { "m", "₥", "м" };
-        string[] arrmm = { "M" };
-        string[] arrn = { "ń", "ň", "ŉ", "η", "ή", "и", "й", "ñ", "л", "п", "π" };
-        string[] arrnn = { "Ń", "Ň", "И", "Й", "Π", "Л" };
-        string[] arro = { "ō", "ó", "ŏ", "ò", "ô", "õ", "ö", "ő", "σ", "ø", "ǿ" };
-        string[] arroo = { "Ō", "Ó", "Ǒ", "Ò", "Ô", "Õ", "Ö", "Ό", "Θ", "Ǿ" };
-        string[] arrp = { "p", "ρ", "ƥ", "φ" };
-        string[] arrpp = { "P", "Þ", "₽" };
-        string[] arrq = { "q", "ʠ", "ɋ" };
-        string[] arrqq = { "Q", "Ɋ" };
-        string[] arrr = { "ř", "ŗ", "г", "ѓ", "ґ", "я" };
-        string[] arrrr = { "Ř", "Я", "Г", "Ґ" };
-        string[] arrs = { "ś", "š", "ŝ", "ș", "ş", "ƨ" };
-        string[] arrss = { "Š", "Ş", "Ș", "§" };
-        string[] arrt = { "ț", "ţ", "ť", "ŧ", "т", "τ" };
-        string[] arrtt = { "Ť", "Ţ", "Ț", "Ŧ" };
-        string[] arru = { "ū", "ú", "ǔ", "ù", "û", "ũ", "ů", "ų", "ü", "ǖ", "ǘ", "ǚ", "ǜ", "ύ", "ϋ", "ΰ", "µ", "ц", "џ" };
-        string[] arruu = { "Ū", "Ǔ", "Ǖ", "Ǘ", "Ǚ", "Ǜ", "Ц" };
-        string[] arrv = { "ν" };
-        string[] arrvv = { "V", "V", "Ṽ", "Ṿ", "Ꝟ" };
-        string[] arrw = { "ẃ", "ẁ", "ẅ", "ŵ", "ш", "щ", "ω", "ώ" };
-        string[] arrww = { "Ẁ", "Ẃ", "Ẅ", "Ŵ", "Ш", "Щ" };
-        string[] arrx = { "x", "ж" };
-        string[] arrxx = { "X", "Ж" };
-        string[] arry = { "y", "ỳ", "ŷ", "ч", "γ" };
-        string[] arryy = { "Ϋ", "Ÿ", "Ŷ", "Ỳ", "Ύ", "Ψ", "￥", "У", "Ў", "Ч" };
-        string[] arrz = { "z", "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" };
-        string[] arrzz = { "Z", "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" };
+        readonly string[] arra = { "ä", "ā", "á", "ǎ", "à", "ă", "å", "ǻ", "ǟ", "ǡ", "ǻ", "ȁ", "ȃ", "ȧ", "ᶏ", "ḁ", "ẚ", "ạ", "ả", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "ɑ", "α", "ά", "ὰ", "ἀ", "ἁ", "ἂ", "ἃ", "ἆ", "ἇ", "ᾂ", "ᾃ", "ᾰ", "ᾱ", "ᾲ", "ᾳ", "ᾴ", "ᾶ", "ᾷ", "ⱥ", "𐓘", "𐓙", "𐓚" };
+        readonly string[] arraa = { "Ā", "Á", "Ǎ", "À", "Â", "Ã", "Ä", "Å", "Ǻ", "Ά", "Ă", "Δ", "Λ", "Д", "Ą" };
+        readonly string[] arrb = { "b", "ь", "в", "Ъ", "Б", "б", "β", "ƀ", "ƃ", "ɓ", "ᵬ", "ᶀ", "ḃ", "ḅ", "ḇ", "ꞗ" };
+        readonly string[] arrbb = { "ß", "฿" };
+        readonly string[] arrc = { "c", "ç", "ς", "ĉ", "č", "ċ", "ć", "ĉ", "ċ", "ƈ", "ȼ", "¢", "ɕ", "ḉ", "ꞓ", "ꞔ" };
+        readonly string[] arrcc = { "Č", "Ç", "Ĉ", "Ć", "€" };
+        readonly string[] arrd = { "d", "ď", "đ", "₫", "ð", "δ" };
+        readonly string[] arrdd = { "Ď", "Ð" };
+        readonly string[] arre = { "e", "ē", "é", "ě", "è", "ê", "ĕ", "ė", "ë", "ę", "з", "ε", "έ", "э", "℮" };
+        readonly string[] arree = { "E", "Ē", "É", "Ě", "È", "Ĕ", "Ё", "Σ", "Έ", "Є", "Э", "З" };
+        readonly string[] arrf = { "f", "ƒ" };
+        readonly string[] arrff = { "F", "₣" };
+        readonly string[] arrg = { "ḡ", "ģ", "ǧ", "ĝ", "ğ", "ġ", "ǥ", "ǵ", "ɠ", "ᶃ", "ꞡ" };
+        readonly string[] arrgg = { "Ḡ", "Ǵ", "Ǧ", "Ĝ", "Ğ", "Ģ", "Ġ", "Ɠ", "Ǥ", "Ꞡ" };
+        readonly string[] arrh = { "ĥ", "ħ", "ђ", "н" };
+        readonly string[] arrhh = { "H", "Ĥ", "Ħ" };
+        readonly string[] arri = { "ı", "ī", "í", "ǐ", "ì", "ĭ", "î", "ï", "ί", "į", "ΐ" };
+        readonly string[] arrii = { "Ī", "Í", "Ǐ", "Ì", "Î", "Ï", "Ĭ", "Ί" };
+        readonly string[] arrj = { "j" };
+        readonly string[] arrjj = { "J", "Ĵ" };
+        readonly string[] arrk = { "ƙ", "κ" };
+        readonly string[] arrkk = { "К" };
+        readonly string[] arrl = { "ŀ", "ļ", "ℓ", "ĺ", "ļ", "ľ", "ł", "ι" };
+        readonly string[] arrll = { "Ŀ", "£", "Ļ", "Ł", "Ĺ" };
+        readonly string[] arrm = { "m", "₥", "м" };
+        readonly string[] arrmm = { "M" };
+        readonly string[] arrn = { "ń", "ň", "ŉ", "η", "ή", "и", "й", "ñ", "л", "п", "π" };
+        readonly string[] arrnn = { "Ń", "Ň", "И", "Й", "Π", "Л" };
+        readonly string[] arro = { "ō", "ó", "ŏ", "ò", "ô", "õ", "ö", "ő", "σ", "ø", "ǿ" };
+        readonly string[] arroo = { "Ō", "Ó", "Ǒ", "Ò", "Ô", "Õ", "Ö", "Ό", "Θ", "Ǿ" };
+        readonly string[] arrp = { "p", "ρ", "ƥ", "φ" };
+        readonly string[] arrpp = { "P", "Þ", "₽" };
+        readonly string[] arrq = { "q", "ʠ", "ɋ" };
+        readonly string[] arrqq = { "Q", "Ɋ" };
+        readonly string[] arrr = { "ř", "ŗ", "г", "ѓ", "ґ", "я" };
+        readonly string[] arrrr = { "Ř", "Я", "Г", "Ґ" };
+        readonly string[] arrs = { "ś", "š", "ŝ", "ș", "ş", "ƨ" };
+        readonly string[] arrss = { "Š", "Ş", "Ș", "§" };
+        readonly string[] arrt = { "ț", "ţ", "ť", "ŧ", "т", "τ" };
+        readonly string[] arrtt = { "Ť", "Ţ", "Ț", "Ŧ" };
+        readonly string[] arru = { "ū", "ú", "ǔ", "ù", "û", "ũ", "ů", "ų", "ü", "ǖ", "ǘ", "ǚ", "ǜ", "ύ", "ϋ", "ΰ", "µ", "ц", "џ" };
+        readonly string[] arruu = { "Ū", "Ǔ", "Ǖ", "Ǘ", "Ǚ", "Ǜ", "Ц" };
+        readonly string[] arrv = { "ν" };
+        readonly string[] arrvv = { "V", "V", "Ṽ", "Ṿ", "Ꝟ" };
+        readonly string[] arrw = { "ẃ", "ẁ", "ẅ", "ŵ", "ш", "щ", "ω", "ώ" };
+        readonly string[] arrww = { "Ẁ", "Ẃ", "Ẅ", "Ŵ", "Ш", "Щ" };
+        readonly string[] arrx = { "x", "ж" };
+        readonly string[] arrxx = { "X", "Ж" };
+        readonly string[] arry = { "y", "ỳ", "ŷ", "ч", "γ" };
+        readonly string[] arryy = { "Ϋ", "Ÿ", "Ŷ", "Ỳ", "Ύ", "Ψ", "￥", "У", "Ў", "Ч" };
+        readonly string[] arrz = { "z", "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" };
+        readonly string[] arrzz = { "Z", "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" };
         #endregion
 
         public Form1()
@@ -397,6 +397,7 @@ namespace luanma
             }
 
         }
+
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -490,37 +491,18 @@ namespace luanma
 
         public string GetRandomArrows()
         {
-            return "";
-        }
-
-        public string GetRandomMathematicalOperator()
-        {
-            return "";
-        }
-
-        public string GetRandomMiscellaneousTechnical()
-        {
-            return deUnicode("23" + GetRandomHexNumber(2));
-        }
-
-        public string GetRandomGeometricShapes()
-        {
-            return "";
-        }
-
-        public string GetRandomMiscellaneousSymbols()
-        {
-            return "";
-        }
-
-        public string GetRandomDingbats()
-        {
-            return "";
-        }
-
-        public string GetRandomCoptic()
-        {
-            return "";
+            switch (new Random().Next(0,3))
+            {
+                case 0:
+                    return deUnicode(GetRandomHexNumberEx(0x27F0,0x27FF));
+                case 1:
+                    return deUnicode(GetRandomHexNumberEx(0x2900,0X297F));
+                case 2:
+                    return deUnicode(GetRandomHexNumberEx(0x2B00,0x2BFF));
+                case 3:
+                    return deUnicode(GetRandomHexNumberEx(0x2190,0x21FF));
+                default:return "";
+            }
         }
 
         public static string GetRandomHexNumber(int digits)
@@ -538,39 +520,33 @@ namespace luanma
         private void GenerateChars(List<int> ids)
         {
             if (ids.Count == 0) return;
-            switch (ids[new Random().Next(0, ids.Count)])
+            switch (ids[new Random().Next(0, ids.Count-1)])
             {
                 case 0: richTextBox1.Text += characters[ran.Next(characters.Length)];break;
                 case 1: richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();break;
                 case 2: richTextBox1.Text += ran.Next(0, 9); break;
                 case 3: richTextBox1.Text += GetRandomChinese(1); break;
-                case 4: richTextBox1.Text += GetRandomCyrillic();break;
-                case 5: richTextBox1.Text += deUnicode("1" + GetRandomHexNumber(4));break;
+                case 4: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0400, 0x052F)); break;
+                case 5: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x10000,0x1FFFF,5));break;
                 case 6: /*if (checkBox9.Checked) richTextBox1.Text += deUnicode("20" + );*/break;
-                case 7: richTextBox1.Text += GetRandomJapanese(); break;
+                case 7: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x3040, 0x30FF)); break;
                 case 8: break;
-                case 9: richTextBox1.Text += deUnicode("28" + GetRandomHexNumber(2));break;
-                case 10:richTextBox1.Text += GetRandomMathematicalOperator();break;
-                case 11:break;
+                case 9: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2800,0x28FF));break;
+                case 10:richTextBox1.Text += "Math"; break;
+                case 11:richTextBox1.Text += ""; break;
                 case 12:break;
                 case 13:break;
                 case 14:break;
-                case 15:richTextBox1.Text += deUnicode("31" + new Random().Next(0, 2) + GetRandomHexNumber(1));break;
-                case 16:richTextBox1.Text += GetRandomMiscellaneousTechnical();break;
-                case 17:break;
+                case 15:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x3100,0x312F));break;
+                case 16:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2300,0x23FF));break;
+                case 17:richTextBox1.Text += GetRandomArrows(); break;
                 case 18:break;
-                case 19:break;
-                case 20:richTextBox1.Text += "1";break;
+                case 19:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2500, 0x257F));break;
+                case 20:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2580, 0x259F));break;
                 case 21:break;
                 case 22:break;
-                default:break;
+                default:richTextBox1.Text += "错误!找不到生成参数\n";throw new ArgumentException("找不到生成选项");
             }
-        }
-
-        public string GetRandomCyrillic()
-        {
-            if (new Random().Next(0, 1) == 0) return deUnicode("04" + GetRandomHexNumber(2));
-            else return deUnicode("05" + new Random().Next(0, 2) + GetRandomHexNumber(1));
         }
 
         public static string deUnicode(string content)
@@ -582,7 +558,7 @@ namespace luanma
                 enUnicode += content[i];
                 if (i % 4 == 3)
                 {
-                    deUnicode += (char)(Convert.ToInt32(enUnicode, 16));
+                    deUnicode += (char)Convert.ToInt32(enUnicode, 16);
                     enUnicode = null;
                 }
             }
@@ -768,43 +744,6 @@ namespace luanma
             for (int i = 0; i < bools.Length; i++) bools[i] = form3.bools[i];
         }
 
-        public string GetRandomBlock()
-        {
-            return "";
-        }
-
-        public string GetRandomJapanese()
-        {
-            switch (new Random().Next(0, 11))
-            {
-                case 0:
-                    return deUnicode("304" + GetRandomHexNumber(1));
-                case 1:
-                    return deUnicode("305" + GetRandomHexNumber(1));
-                case 2:
-                    return deUnicode("306" + GetRandomHexNumber(1));
-                case 3:
-                    return deUnicode("307" + GetRandomHexNumber(1));
-                case 4:
-                    return deUnicode("308" + GetRandomHexNumber(1));
-                case 5:
-                    return deUnicode("309" + GetRandomHexNumber(1));
-                case 6:
-                    return deUnicode("30A" + GetRandomHexNumber(1));
-                case 7:
-                    return deUnicode("30B" + GetRandomHexNumber(1));
-                case 8:
-                    return deUnicode("30C" + GetRandomHexNumber(1));
-                case 9:
-                    return deUnicode("30D" + GetRandomHexNumber(1));
-                case 10:
-                    return deUnicode("30E" + GetRandomHexNumber(1));
-                case 11:
-                    return deUnicode("30F" + GetRandomHexNumber(1));
-            }
-            return "";
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             button6.Enabled = false;
@@ -812,6 +751,11 @@ namespace luanma
             thread.Abort();
             thread.Join();
             button6.Text = "取消";
+        }
+
+        public string GetRandomHexNumberEx(int minValue,int maxValue, int length = 4)
+        {
+            return Convert.ToString(new Random().Next(int.Parse(Convert.ToString(minValue, 10)), int.Parse(Convert.ToString(maxValue, 10))), 16).PadLeft(length, '0');
         }
     }
 }

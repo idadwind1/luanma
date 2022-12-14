@@ -12,7 +12,7 @@ namespace luanma
 {
     public partial class Form3 : Form
     {
-        public bool[] bools = new bool[15];
+        public bool[] bools = new bool[7];
 
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -43,7 +43,7 @@ namespace luanma
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 7; i++) checkedListBox1.SetItemChecked(i, bools[i]);
+            for (int i = 0; i < bools.Length; i++) checkedListBox1.SetItemChecked(i, bools[i]);
         }
     }
 }
