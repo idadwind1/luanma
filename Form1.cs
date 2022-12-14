@@ -14,8 +14,6 @@ namespace luanma
 {
     public partial class Form1 : Form
     {
-        bool end = true;
-        bool response = true;
         Thread thread;
         bool[] bools = new bool[15];
         string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -83,7 +81,6 @@ namespace luanma
         {
             try
             {
-                response = true;
                 button1.Enabled = false;
                 button6.Enabled = true;
                 tabControl1.Enabled = false;
@@ -380,6 +377,10 @@ namespace luanma
                     if (checkBox12.Checked) richTextBox1.Text += "]";
                 }
             }
+            catch (ThreadAbortException)
+            {
+                MessageBox.Show("进程被用户终止", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("错误!\n原因: " + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -393,7 +394,6 @@ namespace luanma
                 tabControl1.Enabled = true;
                 button6.Enabled = false;
                 button1.Enabled = true;
-                end = true;
             }
 
         }
@@ -484,17 +484,8 @@ namespace luanma
 
         private void button1_Click(object sender, EventArgs e)
         {
-            response = false;
-            end = false;
-            Thread.Sleep(100);
-            if (!response)
-            {
-                if (MessageBox.Show("检测到进程被终止, 重启软件以修复此问题\n单击“确定”重启软件", "错误", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
-                {
-                    System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-                    Environment.Exit(0);
-                }
-            }
+            thread = new Thread(new ThreadStart(Main));
+            thread.Start();
         }
 
         public string GetRandomArrows()
@@ -762,14 +753,6 @@ namespace luanma
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            thread = new Thread(() => {
-                while (true)
-                {
-                    while (end) Thread.Sleep(1);
-                    Main();
-                }
-            });
-            thread.Start();
             /*new Task(() =>
             {
                 while (true)
@@ -820,7 +803,10 @@ namespace luanma
         private void button6_Click(object sender, EventArgs e)
         {
             button6.Enabled = false;
-            end = true;
+            button6.Text = "取消中...";
+            thread.Abort();
+            thread.Join();
+            button6.Text = "取消";
         }
     }
 }
