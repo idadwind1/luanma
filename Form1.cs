@@ -102,7 +102,7 @@ namespace luanma
                                 ints.Add(int.Parse(checkBox.Name.Replace("c", string.Empty)) - 1);
                             }
                         }
-                        for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 15);
+                        for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 8);
                         double probar = 0d;
                         for (int i = 0; i < numericUpDown1.Value; i++)
                         {
@@ -560,7 +560,7 @@ namespace luanma
                 case 17:break;
                 case 18:break;
                 case 19:break;
-                case 20:break;
+                case 20:richTextBox1.Text += "1";break;
                 case 21:break;
                 case 22:break;
                 default:break;
@@ -766,6 +766,11 @@ namespace luanma
             Form3 form3 = new Form3(bools);
             form3.ShowDialog();
             for (int i = 0; i < bools.Length; i++) bools[i] = form3.bools[i];
+        }
+
+        public string GetRandomBlock()
+        {
+            return "";
         }
 
         public string GetRandomJapanese()
