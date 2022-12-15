@@ -143,218 +143,218 @@ namespace luanma
                     double probar = 0d;
                     foreach (char c in richTextBox2.Text)
                     {
-                        #region if
-                        if (c == 'A')
+                        #region switch
+                        switch (c)
                         {
-                            richTextBox1.Text += arraa[ran.Next(0, arraa.Length)];
-                        }
-                        else if (c == 'B')
-                        {
-                            richTextBox1.Text += arrbb[ran.Next(0, arrbb.Length)];
-                        }
-                        else if (c == 'C')
-                        {
-                            richTextBox1.Text += arrcc[ran.Next(0, arrcc.Length)];
-                        }
-                        else if (c == 'D')
-                        {
-                            richTextBox1.Text += arrdd[ran.Next(0, arrdd.Length)];
-                        }
-                        else if (c == 'E')
-                        {
-                            richTextBox1.Text += arree[ran.Next(0, arree.Length)];
-                        }
-                        else if (c == 'F')
-                        {
-                            richTextBox1.Text += arrff[ran.Next(0, arra.Length)];
-                        }
-                        else if (c == 'G')
-                        {
-                            richTextBox1.Text += arrgg[ran.Next(0, arrgg.Length)];
-                        }
-                        else if (c == 'H')
-                        {
-                            richTextBox1.Text += arrhh[ran.Next(0, arrhh.Length)];
-                        }
-                        else if (c == 'I')
-                        {
-                            richTextBox1.Text += arrii[ran.Next(0, arrii.Length)];
-                        }
-                        else if (c == 'J')
-                        {
-                            richTextBox1.Text += arrjj[ran.Next(0, arrjj.Length)];
-                        }
-                        else if (c == 'K')
-                        {
-                            richTextBox1.Text += arrkk[ran.Next(0, arrkk.Length)];
-                        }
-                        else if (c == 'L')
-                        {
-                            richTextBox1.Text += arrll[ran.Next(0, arrll.Length)];
-                        }
-                        else if (c == 'M')
-                        {
-                            richTextBox1.Text += arrmm[ran.Next(0, arrmm.Length)];
-                        }
-                        else if (c == 'N')
-                        {
-                            richTextBox1.Text += arrnn[ran.Next(0, arrnn.Length)];
-                        }
-                        else if (c == 'O')
-                        {
-                            richTextBox1.Text += arroo[ran.Next(0, arroo.Length)];
-                        }
-                        else if (c == 'P')
-                        {
-                            richTextBox1.Text += arrpp[ran.Next(0, arrpp.Length)];
-                        }
-                        else if (c == 'Q')
-                        {
-                            richTextBox1.Text += arrqq[ran.Next(0, arrqq.Length)];
-                        }
-                        else if (c == 'R')
-                        {
-                            richTextBox1.Text += arrrr[ran.Next(0, arrrr.Length)];
-                        }
-                        else if (c == 'S')
-                        {
-                            richTextBox1.Text += arrss[ran.Next(0, arrss.Length)];
-                        }
-                        else if (c == 'T')
-                        {
-                            richTextBox1.Text += arrtt[ran.Next(0, arrtt.Length)];
-                        }
-                        else if (c == 'U')
-                        {
-                            richTextBox1.Text += arruu[ran.Next(0, arruu.Length)];
-                        }
-                        else if (c == 'V')
-                        {
-                            richTextBox1.Text += arrvv[ran.Next(0, arrvv.Length)];
-                        }
-                        else if (c == 'W')
-                        {
-                            richTextBox1.Text += arrww[ran.Next(0, arrww.Length)];
-                        }
-                        else if (c == 'X')
-                        {
-                            richTextBox1.Text += arrxx[ran.Next(0, arrxx.Length)];
-                        }
-                        else if (c == 'Y')
-                        {
-                            richTextBox1.Text += arryy[ran.Next(0, arryy.Length)];
-                        }
-                        else if (c == 'Z')
-                        {
-                            richTextBox1.Text += arrzz[ran.Next(0, arrzz.Length)];
-                        }
-                        else if (c == 'a')
-                        {
-                            richTextBox1.Text += arra[ran.Next(0, arra.Length)];
-                        }
-                        else if (c == 'b')
-                        {
-                            richTextBox1.Text += arrb[ran.Next(0, arrb.Length)];
-                        }
-                        else if (c == 'c')
-                        {
-                            richTextBox1.Text += arrc[ran.Next(0, arrc.Length)];
-                        }
-                        else if (c == 'd')
-                        {
-                            richTextBox1.Text += arrd[ran.Next(0, arrd.Length)];
-                        }
-                        else if (c == 'e')
-                        {
-                            richTextBox1.Text += arre[ran.Next(0, arre.Length)];
-                        }
-                        else if (c == 'f')
-                        {
-                            richTextBox1.Text += arrf[ran.Next(0, arrf.Length)];
-                        }
-                        else if (c == 'g')
-                        {
-                            richTextBox1.Text += arrg[ran.Next(0, arrg.Length)];
-                        }
-                        else if (c == 'h')
-                        {
-                            richTextBox1.Text += arrh[ran.Next(0, arrh.Length)];
-                        }
-                        else if (c == 'i')
-                        {
-                            richTextBox1.Text += arri[ran.Next(0, arri.Length)];
-                        }
-                        else if (c == 'j')
-                        {
-                            richTextBox1.Text += arrj[ran.Next(0, arrj.Length)];
-                        }
-                        else if (c == 'k')
-                        {
-                            richTextBox1.Text += arrk[ran.Next(0, arrk.Length)];
-                        }
-                        else if (c == 'l')
-                        {
-                            richTextBox1.Text += arrl[ran.Next(0, arrl.Length)];
-                        }
-                        else if (c == 'm')
-                        {
-                            richTextBox1.Text += arrm[ran.Next(0, arrm.Length)];
-                        }
-                        else if (c == 'n')
-                        {
-                            richTextBox1.Text += arrn[ran.Next(0, arrn.Length)];
-                        }
-                        else if (c == 'o')
-                        {
-                            richTextBox1.Text += arro[ran.Next(0, arro.Length)];
-                        }
-                        else if (c == 'p')
-                        {
-                            richTextBox1.Text += arrp[ran.Next(0, arrp.Length)];
-                        }
-                        else if (c == 'q')
-                        {
-                            richTextBox1.Text += arrq[ran.Next(0, arrq.Length)];
-                        }
-                        else if (c == 'r')
-                        {
-                            richTextBox1.Text += arrr[ran.Next(0, arrr.Length)];
-                        }
-                        else if (c == 's')
-                        {
-                            richTextBox1.Text += arrs[ran.Next(0, arrs.Length)];
-                        }
-                        else if (c == 't')
-                        {
-                            richTextBox1.Text += arrt[ran.Next(0, arrt.Length)];
-                        }
-                        else if (c == 'u')
-                        {
-                            richTextBox1.Text += arru[ran.Next(0, arru.Length)];
-                        }
-                        else if (c == 'v')
-                        {
-                            richTextBox1.Text += arrv[ran.Next(0, arrv.Length)];
-                        }
-                        else if (c == 'w')
-                        {
-                            richTextBox1.Text += arrw[ran.Next(0, arrw.Length)];
-                        }
-                        else if (c == 'x')
-                        {
-                            richTextBox1.Text += arrx[ran.Next(0, arrx.Length)];
-                        }
-                        else if (c == 'y')
-                        {
-                            richTextBox1.Text += arry[ran.Next(0, arry.Length)];
-                        }
-                        else if (c == 'z')
-                        {
-                            richTextBox1.Text += arrz[ran.Next(0, arrz.Length)];
-                        }
-                        else
-                        {
-                            richTextBox1.Text += c;
+                            case 'A':
+                                richTextBox1.Text += arraa[ran.Next(0, arraa.Length)];
+                                break;
+                            case 'B':
+                                richTextBox1.Text += arrbb[ran.Next(0, arrbb.Length)];
+                                break;
+                            case 'C':
+
+                                richTextBox1.Text += arrcc[ran.Next(0, arrcc.Length)];
+                                break;
+                            case 'D':
+
+                                richTextBox1.Text += arrdd[ran.Next(0, arrdd.Length)];
+                                break;
+                            case 'E':
+
+                                richTextBox1.Text += arree[ran.Next(0, arree.Length)];
+                                break;
+                            case 'F':
+
+                                richTextBox1.Text += arrff[ran.Next(0, arra.Length)];
+                                break;
+                            case 'G':
+
+                                richTextBox1.Text += arrgg[ran.Next(0, arrgg.Length)];
+                                break;
+                            case 'H':
+
+                                richTextBox1.Text += arrhh[ran.Next(0, arrhh.Length)];
+                                break;
+                            case 'I':
+
+                                richTextBox1.Text += arrii[ran.Next(0, arrii.Length)];
+                                break;
+                            case 'J':
+
+                                richTextBox1.Text += arrjj[ran.Next(0, arrjj.Length)];
+                                break;
+                            case 'K':
+
+                                richTextBox1.Text += arrkk[ran.Next(0, arrkk.Length)];
+                                break;
+                            case 'L':
+
+                                richTextBox1.Text += arrll[ran.Next(0, arrll.Length)];
+                                break;
+                            case 'M':
+
+                                richTextBox1.Text += arrmm[ran.Next(0, arrmm.Length)];
+                                break;
+                            case 'N':
+
+                                richTextBox1.Text += arrnn[ran.Next(0, arrnn.Length)];
+                                break;
+                            case 'O':
+
+                                richTextBox1.Text += arroo[ran.Next(0, arroo.Length)];
+                                break;
+                            case 'P':
+
+                                richTextBox1.Text += arrpp[ran.Next(0, arrpp.Length)];
+                                break;
+                            case 'Q':
+
+                                richTextBox1.Text += arrqq[ran.Next(0, arrqq.Length)];
+                                break;
+                            case 'R':
+
+                                richTextBox1.Text += arrrr[ran.Next(0, arrrr.Length)];
+                                break;
+                            case 'S':
+
+                                richTextBox1.Text += arrss[ran.Next(0, arrss.Length)];
+                                break;
+                            case 'T':
+
+                                richTextBox1.Text += arrtt[ran.Next(0, arrtt.Length)];
+                                break;
+                            case 'U':
+
+                                richTextBox1.Text += arruu[ran.Next(0, arruu.Length)];
+                                break;
+                            case 'V':
+
+                                richTextBox1.Text += arrvv[ran.Next(0, arrvv.Length)];
+                                break;
+                            case 'W':
+
+                                richTextBox1.Text += arrww[ran.Next(0, arrww.Length)];
+                                break;
+                            case 'X':
+
+                                richTextBox1.Text += arrxx[ran.Next(0, arrxx.Length)];
+                                break;
+                            case 'Y':
+
+                                richTextBox1.Text += arryy[ran.Next(0, arryy.Length)];
+                                break;
+                            case 'Z':
+
+                                richTextBox1.Text += arrzz[ran.Next(0, arrzz.Length)];
+                                break;
+                            case 'a':
+
+                                richTextBox1.Text += arra[ran.Next(0, arra.Length)];
+                                break;
+                            case 'b':
+
+                                richTextBox1.Text += arrb[ran.Next(0, arrb.Length)];
+                                break;
+                            case 'c':
+
+                                richTextBox1.Text += arrc[ran.Next(0, arrc.Length)];
+                                break;
+                            case 'd':
+
+                                richTextBox1.Text += arrd[ran.Next(0, arrd.Length)];
+                                break;
+                            case 'e':
+
+                                richTextBox1.Text += arre[ran.Next(0, arre.Length)];
+                                break;
+                            case 'f':
+
+                                richTextBox1.Text += arrf[ran.Next(0, arrf.Length)];
+                                break;
+                            case 'g':
+
+                                richTextBox1.Text += arrg[ran.Next(0, arrg.Length)];
+                                break;
+                            case 'h':
+
+                                richTextBox1.Text += arrh[ran.Next(0, arrh.Length)];
+                                break;
+                            case 'i':
+
+                                richTextBox1.Text += arri[ran.Next(0, arri.Length)];
+                                break;
+                            case 'j':
+
+                                richTextBox1.Text += arrj[ran.Next(0, arrj.Length)];
+                                break;
+                            case 'k':
+
+                                richTextBox1.Text += arrk[ran.Next(0, arrk.Length)];
+                                break;
+                            case 'l':
+
+                                richTextBox1.Text += arrl[ran.Next(0, arrl.Length)];
+                                break;
+                            case 'm':
+
+                                richTextBox1.Text += arrm[ran.Next(0, arrm.Length)];
+                                break;
+                            case 'n':
+
+                                richTextBox1.Text += arrn[ran.Next(0, arrn.Length)];
+                                break;
+                            case 'o':
+
+                                richTextBox1.Text += arro[ran.Next(0, arro.Length)];
+                                break;
+                            case 'p':
+
+                                richTextBox1.Text += arrp[ran.Next(0, arrp.Length)];
+                                break;
+                            case 'q':
+
+                                richTextBox1.Text += arrq[ran.Next(0, arrq.Length)];
+                                break;
+                            case 'r':
+
+                                richTextBox1.Text += arrr[ran.Next(0, arrr.Length)];
+                                break;
+                            case 's':
+
+                                richTextBox1.Text += arrs[ran.Next(0, arrs.Length)];
+                                break;
+                            case 't':
+
+                                richTextBox1.Text += arrt[ran.Next(0, arrt.Length)];
+                                break;
+                            case 'u':
+
+                                richTextBox1.Text += arru[ran.Next(0, arru.Length)];
+                                break;
+                            case 'v':
+
+                                richTextBox1.Text += arrv[ran.Next(0, arrv.Length)];
+                                break;
+                            case 'w':
+
+                                richTextBox1.Text += arrw[ran.Next(0, arrw.Length)];
+                                break;
+                            case 'x':
+
+                                richTextBox1.Text += arrx[ran.Next(0, arrx.Length)];
+                                break;
+                            case 'y':
+
+                                richTextBox1.Text += arry[ran.Next(0, arry.Length)];
+                                break;
+                            case 'z':
+
+                                richTextBox1.Text += arrz[ran.Next(0, arrz.Length)];
+                                break;
+                            default:
+                                richTextBox1.Text += c;
+                                break;
                         }
                         #endregion
                         probar += (double)100 / richTextBox2.Text.Length;
@@ -520,7 +520,7 @@ namespace luanma
         private void GenerateChars(List<int> ids)
         {
             if (ids.Count == 0) return;
-            switch (ids[new Random().Next(0, ids.Count-1)])
+            switch (ids[new Random().Next(0, ids.Count)])
             {
                 case 0: richTextBox1.Text += characters[ran.Next(characters.Length)];break;
                 case 1: richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();break;
@@ -528,23 +528,23 @@ namespace luanma
                 case 3: richTextBox1.Text += GetRandomChinese(1); break;
                 case 4: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0400, 0x052F)); break;
                 case 5: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x10000,0x1FFFF,5));break;
-                case 6: /*if (checkBox9.Checked) richTextBox1.Text += deUnicode("20" + );*/break;
+                case 6: richTextBox1.Text += "";/*if (checkBox9.Checked) richTextBox1.Text += deUnicode("20" + );*/break;
                 case 7: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x3040, 0x30FF)); break;
-                case 8: break;
+                case 8: richTextBox1.Text += "";break;
                 case 9: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2800,0x28FF));break;
-                case 10:richTextBox1.Text += "Math"; break;
-                case 11:richTextBox1.Text += ""; break;
-                case 12:break;
-                case 13:break;
-                case 14:break;
+                case 10:richTextBox1.Text += "Math";break;
+                case 11:richTextBox1.Text += "";break;
+                case 12:richTextBox1.Text += "";break;
+                case 13:richTextBox1.Text += "";break;
+                case 14:richTextBox1.Text += "";break;
                 case 15:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x3100,0x312F));break;
                 case 16:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2300,0x23FF));break;
-                case 17:richTextBox1.Text += GetRandomArrows(); break;
-                case 18:break;
+                case 17:richTextBox1.Text += GetRandomArrows();break;
+                case 18:richTextBox1.Text += "";break;
                 case 19:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2500, 0x257F));break;
                 case 20:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2580, 0x259F));break;
-                case 21:break;
-                case 22:break;
+                case 21:richTextBox1.Text += "";break;
+                case 22:richTextBox1.Text += "";break;
                 default:richTextBox1.Text += "错误!找不到生成参数\n";throw new ArgumentException("找不到生成选项");
             }
         }
