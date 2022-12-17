@@ -17,60 +17,61 @@ namespace luanma
         Thread thread;
         bool[] bools = new bool[15];
         string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        #region arrs
-        readonly string[] arra = { "ä", "ā", "á", "ǎ", "à", "ă", "å", "ǻ", "ǟ", "ǡ", "ǻ", "ȁ", "ȃ", "ȧ", "ᶏ", "ḁ", "ẚ", "ạ", "ả", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "ɑ", "α", "ά", "ὰ", "ἀ", "ἁ", "ἂ", "ἃ", "ἆ", "ἇ", "ᾂ", "ᾃ", "ᾰ", "ᾱ", "ᾲ", "ᾳ", "ᾴ", "ᾶ", "ᾷ", "ⱥ", "𐓘", "𐓙", "𐓚" };
-        readonly string[] arraa = { "Ā", "Á", "Ǎ", "À", "Â", "Ã", "Ä", "Å", "Ǻ", "Ά", "Ă", "Δ", "Λ", "Д", "Ą" };
-        readonly string[] arrb = { "b", "ь", "в", "Ъ", "Б", "б", "β", "ƀ", "ƃ", "ɓ", "ᵬ", "ᶀ", "ḃ", "ḅ", "ḇ", "ꞗ" };
-        readonly string[] arrbb = { "ß", "฿" };
-        readonly string[] arrc = { "c", "ç", "ς", "ĉ", "č", "ċ", "ć", "ĉ", "ċ", "ƈ", "ȼ", "¢", "ɕ", "ḉ", "ꞓ", "ꞔ" };
-        readonly string[] arrcc = { "Č", "Ç", "Ĉ", "Ć", "€" };
-        readonly string[] arrd = { "d", "ď", "đ", "₫", "ð", "δ" };
-        readonly string[] arrdd = { "Ď", "Ð" };
-        readonly string[] arre = { "e", "ē", "é", "ě", "è", "ê", "ĕ", "ė", "ë", "ę", "з", "ε", "έ", "э", "℮" };
-        readonly string[] arree = { "E", "Ē", "É", "Ě", "È", "Ĕ", "Ё", "Σ", "Έ", "Є", "Э", "З" };
-        readonly string[] arrf = { "f", "ƒ" };
-        readonly string[] arrff = { "F", "₣" };
-        readonly string[] arrg = { "ḡ", "ģ", "ǧ", "ĝ", "ğ", "ġ", "ǥ", "ǵ", "ɠ", "ᶃ", "ꞡ" };
-        readonly string[] arrgg = { "Ḡ", "Ǵ", "Ǧ", "Ĝ", "Ğ", "Ģ", "Ġ", "Ɠ", "Ǥ", "Ꞡ" };
-        readonly string[] arrh = { "ĥ", "ħ", "ђ", "н" };
-        readonly string[] arrhh = { "H", "Ĥ", "Ħ" };
-        readonly string[] arri = { "ı", "ī", "í", "ǐ", "ì", "ĭ", "î", "ï", "ί", "į", "ΐ" };
-        readonly string[] arrii = { "Ī", "Í", "Ǐ", "Ì", "Î", "Ï", "Ĭ", "Ί" };
-        readonly string[] arrj = { "j" };
-        readonly string[] arrjj = { "J", "Ĵ" };
-        readonly string[] arrk = { "ƙ", "κ" };
-        readonly string[] arrkk = { "К" };
-        readonly string[] arrl = { "ŀ", "ļ", "ℓ", "ĺ", "ļ", "ľ", "ł", "ι" };
-        readonly string[] arrll = { "Ŀ", "£", "Ļ", "Ł", "Ĺ" };
-        readonly string[] arrm = { "m", "₥", "м" };
-        readonly string[] arrmm = { "M" };
-        readonly string[] arrn = { "ń", "ň", "ŉ", "η", "ή", "и", "й", "ñ", "л", "п", "π" };
-        readonly string[] arrnn = { "Ń", "Ň", "И", "Й", "Π", "Л" };
-        readonly string[] arro = { "ō", "ó", "ŏ", "ò", "ô", "õ", "ö", "ő", "σ", "ø", "ǿ" };
-        readonly string[] arroo = { "Ō", "Ó", "Ǒ", "Ò", "Ô", "Õ", "Ö", "Ό", "Θ", "Ǿ" };
-        readonly string[] arrp = { "p", "ρ", "ƥ", "φ" };
-        readonly string[] arrpp = { "P", "Þ", "₽" };
-        readonly string[] arrq = { "q", "ʠ", "ɋ" };
-        readonly string[] arrqq = { "Q", "Ɋ" };
-        readonly string[] arrr = { "ř", "ŗ", "г", "ѓ", "ґ", "я" };
-        readonly string[] arrrr = { "Ř", "Я", "Г", "Ґ" };
-        readonly string[] arrs = { "ś", "š", "ŝ", "ș", "ş", "ƨ" };
-        readonly string[] arrss = { "Š", "Ş", "Ș", "§" };
-        readonly string[] arrt = { "ț", "ţ", "ť", "ŧ", "т", "τ" };
-        readonly string[] arrtt = { "Ť", "Ţ", "Ț", "Ŧ" };
-        readonly string[] arru = { "ū", "ú", "ǔ", "ù", "û", "ũ", "ů", "ų", "ü", "ǖ", "ǘ", "ǚ", "ǜ", "ύ", "ϋ", "ΰ", "µ", "ц", "џ" };
-        readonly string[] arruu = { "Ū", "Ǔ", "Ǖ", "Ǘ", "Ǚ", "Ǜ", "Ц" };
-        readonly string[] arrv = { "ν" };
-        readonly string[] arrvv = { "V", "V", "Ṽ", "Ṿ", "Ꝟ" };
-        readonly string[] arrw = { "ẃ", "ẁ", "ẅ", "ŵ", "ш", "щ", "ω", "ώ" };
-        readonly string[] arrww = { "Ẁ", "Ẃ", "Ẅ", "Ŵ", "Ш", "Щ" };
-        readonly string[] arrx = { "x", "ж" };
-        readonly string[] arrxx = { "X", "Ж" };
-        readonly string[] arry = { "y", "ỳ", "ŷ", "ч", "γ" };
-        readonly string[] arryy = { "Ϋ", "Ÿ", "Ŷ", "Ỳ", "Ύ", "Ψ", "￥", "У", "Ў", "Ч" };
-        readonly string[] arrz = { "z", "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" };
-        readonly string[] arrzz = { "Z", "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" };
-        #endregion
+        readonly Dictionary<char, string[]> words = new Dictionary<char, string[]>()
+        {
+            { 'a',new string[] { "ä", "ā", "á", "ǎ", "à", "ă", "å", "ǻ", "ǟ", "ǡ", "ǻ", "ȁ", "ȃ", "ȧ", "ᶏ", "ḁ", "ẚ", "ạ", "ả", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "ɑ", "α", "ά", "ὰ", "ἀ", "ἁ", "ἂ", "ἃ", "ἆ", "ἇ", "ᾂ", "ᾃ", "ᾰ", "ᾱ", "ᾲ", "ᾳ", "ᾴ", "ᾶ", "ᾷ", "ⱥ", "𐓘", "𐓙", "𐓚" } },
+            { 'A',new string[] { "Ā", "Á", "Ǎ", "À", "Â", "Ã", "Ä", "Å", "Ǻ", "Ά", "Ă", "Δ", "Λ", "Д", "Ą" } },
+            { 'b',new string[] { "b", "ь", "в", "Ъ", "Б", "б", "β", "ƀ", "ƃ", "ɓ", "ᵬ", "ᶀ", "ḃ", "ḅ", "ḇ", "ꞗ" } },
+            { 'B',new string[] { "ß", "฿" } },
+            { 'c',new string[] { "ç", "ς", "ĉ", "č", "ċ", "ć", "ĉ", "ċ", "ƈ", "ȼ", "¢", "ɕ", "ḉ", "ꞓ", "ꞔ" } },
+            { 'C',new string[] { "Č", "Ç", "Ĉ", "Ć", "€" } },
+            { 'd',new string[] { "d", "ď", "đ", "₫", "ð", "δ" } },
+            { 'D',new string[] { "Ď", "Ð" } },
+            { 'e',new string[] { "ē", "é", "ě", "è", "ê", "ĕ", "ė", "ë", "ę", "з", "ε", "έ", "э", "℮" } },
+            { 'E',new string[] { "Ē", "É", "Ě", "È", "Ĕ", "Ё", "Σ", "Έ", "Є", "Э", "З" } },
+            { 'f',new string[] { "ƒ" } },
+            { 'F',new string[] { "₣" } },
+            { 'g',new string[] { "ḡ", "ģ", "ǧ", "ĝ", "ğ", "ġ", "ǥ", "ǵ", "ɠ", "ᶃ", "ꞡ" } },
+            { 'G',new string[] { "Ḡ", "Ǵ", "Ǧ", "Ĝ", "Ğ", "Ģ", "Ġ", "Ɠ", "Ǥ", "Ꞡ" } },
+            { 'h',new string[] { "ĥ", "ħ", "ђ", "н" } },
+            { 'H',new string[] { "Ĥ", "Ħ" } },
+            { 'i',new string[] { "ı", "ī", "í", "ǐ", "ì", "ĭ", "î", "ï", "ί", "į", "ΐ" } },
+            { 'I',new string[] { "Ī", "Í", "Ǐ", "Ì", "Î", "Ï", "Ĭ", "Ί" } },
+            { 'j',new string[] { "j" } },
+            { 'J',new string[] { "Ĵ" } },
+            { 'k',new string[] { "ƙ", "κ" } },
+            { 'K',new string[] { "К" } },
+            { 'l',new string[] { "ŀ", "ļ", "ℓ", "ĺ", "ļ", "ľ", "ł", "ι" } },
+            { 'L',new string[] { "Ŀ", "£", "Ļ", "Ł", "Ĺ" } },
+            { 'm',new string[] { "₥", "м" } },
+            { 'M',new string[] { "M" } },
+            { 'n',new string[] { "ń", "ň", "ŉ", "η", "ή", "и", "й", "ñ", "л", "п", "π" } },
+            { 'N',new string[] { "Ń", "Ň", "И", "Й", "Π", "Л" } },
+            { 'o',new string[] { "ō", "ó", "ŏ", "ò", "ô", "õ", "ö", "ő", "σ", "ø", "ǿ" } },
+            { 'O',new string[] { "Ō", "Ó", "Ǒ", "Ò", "Ô", "Õ", "Ö", "Ό", "Θ", "Ǿ" } },
+            { 'p',new string[] { "ρ", "ƥ", "φ" } },
+            { 'P',new string[] { "Þ", "₽" } },
+            { 'q',new string[] { "ʠ", "ɋ" } },
+            { 'Q',new string[] { "Ɋ" } },
+            { 'r',new string[] { "ř", "ŗ", "г", "ѓ", "ґ", "я" } },
+            { 'R',new string[] { "Ř", "Я", "Г", "Ґ" } },
+            { 's',new string[] { "ś", "š", "ŝ", "ș", "ş", "ƨ" } },
+            { 'S',new string[] { "Š", "Ş", "Ș", "§" } },
+            { 't',new string[] { "ț", "ţ", "ť", "ŧ", "т", "τ" } },
+            { 'T',new string[] { "Ť", "Ţ", "Ț", "Ŧ" } },
+            { 'u',new string[] { "ū", "ú", "ǔ", "ù", "û", "ũ", "ů", "ų", "ü", "ǖ", "ǘ", "ǚ", "ǜ", "ύ", "ϋ", "ΰ", "µ", "ц", "џ" } },
+            { 'U',new string[] { "Ū", "Ǔ", "Ǖ", "Ǘ", "Ǚ", "Ǜ", "Ц" } },
+            { 'v',new string[] { "ν" } },
+            { 'V',new string[] { "Ṽ", "Ṿ", "Ꝟ" } },
+            { 'w',new string[] { "ẃ", "ẁ", "ẅ", "ŵ", "ш", "щ", "ω", "ώ" } },
+            { 'W',new string[] { "Ẁ", "Ẃ", "Ẅ", "Ŵ", "Ш", "Щ" } },
+            { 'x',new string[] { "ж" } },
+            { 'X',new string[] { "Ж" } },
+            { 'y',new string[] { "ỳ", "ŷ", "ч", "γ" } },
+            { 'Y',new string[] { "Ϋ", "Ÿ", "Ŷ", "Ỳ", "Ύ", "Ψ", "￥", "У", "Ў", "Ч" } },
+            { 'z',new string[] { "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" } },
+            { 'Z',new string[] { "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" } }
+        };
 
         public Form1()
         {
@@ -143,220 +144,8 @@ namespace luanma
                     double probar = 0d;
                     foreach (char c in richTextBox2.Text)
                     {
-                        #region switch
-                        switch (c)
-                        {
-                            case 'A':
-                                richTextBox1.Text += arraa[ran.Next(0, arraa.Length)];
-                                break;
-                            case 'B':
-                                richTextBox1.Text += arrbb[ran.Next(0, arrbb.Length)];
-                                break;
-                            case 'C':
-
-                                richTextBox1.Text += arrcc[ran.Next(0, arrcc.Length)];
-                                break;
-                            case 'D':
-
-                                richTextBox1.Text += arrdd[ran.Next(0, arrdd.Length)];
-                                break;
-                            case 'E':
-
-                                richTextBox1.Text += arree[ran.Next(0, arree.Length)];
-                                break;
-                            case 'F':
-
-                                richTextBox1.Text += arrff[ran.Next(0, arra.Length)];
-                                break;
-                            case 'G':
-
-                                richTextBox1.Text += arrgg[ran.Next(0, arrgg.Length)];
-                                break;
-                            case 'H':
-
-                                richTextBox1.Text += arrhh[ran.Next(0, arrhh.Length)];
-                                break;
-                            case 'I':
-
-                                richTextBox1.Text += arrii[ran.Next(0, arrii.Length)];
-                                break;
-                            case 'J':
-
-                                richTextBox1.Text += arrjj[ran.Next(0, arrjj.Length)];
-                                break;
-                            case 'K':
-
-                                richTextBox1.Text += arrkk[ran.Next(0, arrkk.Length)];
-                                break;
-                            case 'L':
-
-                                richTextBox1.Text += arrll[ran.Next(0, arrll.Length)];
-                                break;
-                            case 'M':
-
-                                richTextBox1.Text += arrmm[ran.Next(0, arrmm.Length)];
-                                break;
-                            case 'N':
-
-                                richTextBox1.Text += arrnn[ran.Next(0, arrnn.Length)];
-                                break;
-                            case 'O':
-
-                                richTextBox1.Text += arroo[ran.Next(0, arroo.Length)];
-                                break;
-                            case 'P':
-
-                                richTextBox1.Text += arrpp[ran.Next(0, arrpp.Length)];
-                                break;
-                            case 'Q':
-
-                                richTextBox1.Text += arrqq[ran.Next(0, arrqq.Length)];
-                                break;
-                            case 'R':
-
-                                richTextBox1.Text += arrrr[ran.Next(0, arrrr.Length)];
-                                break;
-                            case 'S':
-
-                                richTextBox1.Text += arrss[ran.Next(0, arrss.Length)];
-                                break;
-                            case 'T':
-
-                                richTextBox1.Text += arrtt[ran.Next(0, arrtt.Length)];
-                                break;
-                            case 'U':
-
-                                richTextBox1.Text += arruu[ran.Next(0, arruu.Length)];
-                                break;
-                            case 'V':
-
-                                richTextBox1.Text += arrvv[ran.Next(0, arrvv.Length)];
-                                break;
-                            case 'W':
-
-                                richTextBox1.Text += arrww[ran.Next(0, arrww.Length)];
-                                break;
-                            case 'X':
-
-                                richTextBox1.Text += arrxx[ran.Next(0, arrxx.Length)];
-                                break;
-                            case 'Y':
-
-                                richTextBox1.Text += arryy[ran.Next(0, arryy.Length)];
-                                break;
-                            case 'Z':
-
-                                richTextBox1.Text += arrzz[ran.Next(0, arrzz.Length)];
-                                break;
-                            case 'a':
-
-                                richTextBox1.Text += arra[ran.Next(0, arra.Length)];
-                                break;
-                            case 'b':
-
-                                richTextBox1.Text += arrb[ran.Next(0, arrb.Length)];
-                                break;
-                            case 'c':
-
-                                richTextBox1.Text += arrc[ran.Next(0, arrc.Length)];
-                                break;
-                            case 'd':
-
-                                richTextBox1.Text += arrd[ran.Next(0, arrd.Length)];
-                                break;
-                            case 'e':
-
-                                richTextBox1.Text += arre[ran.Next(0, arre.Length)];
-                                break;
-                            case 'f':
-
-                                richTextBox1.Text += arrf[ran.Next(0, arrf.Length)];
-                                break;
-                            case 'g':
-
-                                richTextBox1.Text += arrg[ran.Next(0, arrg.Length)];
-                                break;
-                            case 'h':
-
-                                richTextBox1.Text += arrh[ran.Next(0, arrh.Length)];
-                                break;
-                            case 'i':
-
-                                richTextBox1.Text += arri[ran.Next(0, arri.Length)];
-                                break;
-                            case 'j':
-
-                                richTextBox1.Text += arrj[ran.Next(0, arrj.Length)];
-                                break;
-                            case 'k':
-
-                                richTextBox1.Text += arrk[ran.Next(0, arrk.Length)];
-                                break;
-                            case 'l':
-
-                                richTextBox1.Text += arrl[ran.Next(0, arrl.Length)];
-                                break;
-                            case 'm':
-
-                                richTextBox1.Text += arrm[ran.Next(0, arrm.Length)];
-                                break;
-                            case 'n':
-
-                                richTextBox1.Text += arrn[ran.Next(0, arrn.Length)];
-                                break;
-                            case 'o':
-
-                                richTextBox1.Text += arro[ran.Next(0, arro.Length)];
-                                break;
-                            case 'p':
-
-                                richTextBox1.Text += arrp[ran.Next(0, arrp.Length)];
-                                break;
-                            case 'q':
-
-                                richTextBox1.Text += arrq[ran.Next(0, arrq.Length)];
-                                break;
-                            case 'r':
-
-                                richTextBox1.Text += arrr[ran.Next(0, arrr.Length)];
-                                break;
-                            case 's':
-
-                                richTextBox1.Text += arrs[ran.Next(0, arrs.Length)];
-                                break;
-                            case 't':
-
-                                richTextBox1.Text += arrt[ran.Next(0, arrt.Length)];
-                                break;
-                            case 'u':
-
-                                richTextBox1.Text += arru[ran.Next(0, arru.Length)];
-                                break;
-                            case 'v':
-
-                                richTextBox1.Text += arrv[ran.Next(0, arrv.Length)];
-                                break;
-                            case 'w':
-
-                                richTextBox1.Text += arrw[ran.Next(0, arrw.Length)];
-                                break;
-                            case 'x':
-
-                                richTextBox1.Text += arrx[ran.Next(0, arrx.Length)];
-                                break;
-                            case 'y':
-
-                                richTextBox1.Text += arry[ran.Next(0, arry.Length)];
-                                break;
-                            case 'z':
-
-                                richTextBox1.Text += arrz[ran.Next(0, arrz.Length)];
-                                break;
-                            default:
-                                richTextBox1.Text += c;
-                                break;
-                        }
-                        #endregion
+                        try { richTextBox1.Text += words[c][ran.Next(words[c].Length)]; }
+                        catch (KeyNotFoundException) { richTextBox1.Text += c; }
                         probar += (double)100 / richTextBox2.Text.Length;
                         progressBar1.Value = (int)probar;
                     }
