@@ -49,8 +49,6 @@
             this.c1 = new System.Windows.Forms.CheckBox();
             this.c3 = new System.Windows.Forms.CheckBox();
             this.c5 = new System.Windows.Forms.CheckBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
@@ -67,6 +65,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button6 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -75,6 +77,7 @@
             this.panel1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -92,8 +95,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(4, 19);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -129,8 +130,8 @@
             this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(48, 29);
-            this.button5.TabIndex = 18;
-            this.button5.Text = "其它";
+            this.button5.TabIndex = 13;
+            this.button5.Text = "更多";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -152,7 +153,7 @@
             this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 14;
+            this.radioButton2.TabIndex = 4;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "选择";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -164,7 +165,7 @@
             this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 13;
+            this.radioButton1.TabIndex = 3;
             this.radioButton1.Text = "所有";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
@@ -197,7 +198,7 @@
             0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(478, 21);
-            this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.TabIndex = 2;
             this.numericUpDown2.Value = new decimal(new int[] {
             1,
             0,
@@ -210,7 +211,7 @@
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(106, 20);
-            this.checkBox1.TabIndex = 3;
+            this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "是否换行，每";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -271,7 +272,7 @@
             this.c8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c8.Name = "c8";
             this.c8.Size = new System.Drawing.Size(48, 16);
-            this.c8.TabIndex = 16;
+            this.c8.TabIndex = 12;
             this.c8.Text = "日文";
             this.c8.UseVisualStyleBackColor = true;
             // 
@@ -282,7 +283,7 @@
             this.c7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c7.Name = "c7";
             this.c7.Size = new System.Drawing.Size(72, 16);
-            this.c7.TabIndex = 12;
+            this.c7.TabIndex = 11;
             this.c7.Text = "标点符号";
             this.c7.UseVisualStyleBackColor = true;
             // 
@@ -293,7 +294,7 @@
             this.c6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c6.Name = "c6";
             this.c6.Size = new System.Drawing.Size(78, 16);
-            this.c6.TabIndex = 11;
+            this.c6.TabIndex = 10;
             this.c6.Text = "表情/图形";
             this.c6.UseVisualStyleBackColor = true;
             // 
@@ -304,7 +305,7 @@
             this.c4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c4.Name = "c4";
             this.c4.Size = new System.Drawing.Size(48, 16);
-            this.c4.TabIndex = 9;
+            this.c4.TabIndex = 8;
             this.c4.Text = "中文";
             this.c4.UseVisualStyleBackColor = true;
             // 
@@ -315,7 +316,7 @@
             this.c2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c2.Name = "c2";
             this.c2.Size = new System.Drawing.Size(96, 16);
-            this.c2.TabIndex = 7;
+            this.c2.TabIndex = 6;
             this.c2.Text = "字母（小写）";
             this.c2.UseVisualStyleBackColor = true;
             // 
@@ -326,7 +327,7 @@
             this.c1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c1.Name = "c1";
             this.c1.Size = new System.Drawing.Size(96, 16);
-            this.c1.TabIndex = 6;
+            this.c1.TabIndex = 5;
             this.c1.Text = "字母（大写）";
             this.c1.UseVisualStyleBackColor = true;
             // 
@@ -337,7 +338,7 @@
             this.c3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c3.Name = "c3";
             this.c3.Size = new System.Drawing.Size(84, 16);
-            this.c3.TabIndex = 8;
+            this.c3.TabIndex = 7;
             this.c3.Text = "阿拉伯数字";
             this.c3.UseVisualStyleBackColor = true;
             // 
@@ -348,31 +349,9 @@
             this.c5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.c5.Name = "c5";
             this.c5.Size = new System.Drawing.Size(84, 16);
-            this.c5.TabIndex = 10;
+            this.c5.TabIndex = 9;
             this.c5.Text = "西里尔字母";
             this.c5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(653, 107);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "打乱";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Size = new System.Drawing.Size(653, 107);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "随机删除内容";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -455,7 +434,7 @@
             this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(48, 18);
-            this.checkBox2.TabIndex = 4;
+            this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "追加";
             this.checkBox2.UseVisualStyleBackColor = false;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -466,7 +445,7 @@
             this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(169, 30);
-            this.button4.TabIndex = 3;
+            this.button4.TabIndex = 2;
             this.button4.Text = "保存为文件";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -477,7 +456,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(203, 30);
-            this.button3.TabIndex = 2;
+            this.button3.TabIndex = 4;
             this.button3.Text = "更多";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -488,7 +467,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(223, 30);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 3;
             this.button2.Text = "复制";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -503,6 +482,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(656, 90);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.DoubleClick += new System.EventHandler(this.richTextBox1_DoubleClick);
             // 
             // progressBar1
             // 
@@ -519,8 +499,8 @@
             this.button1.Location = new System.Drawing.Point(9, 325);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(484, 26);
-            this.button1.TabIndex = 2;
+            this.button1.Size = new System.Drawing.Size(484, 35);
+            this.button1.TabIndex = 5;
             this.button1.Text = "开始";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -528,20 +508,54 @@
             // button6
             // 
             this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(497, 323);
+            this.button6.Location = new System.Drawing.Point(500, 325);
             this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(181, 26);
-            this.button6.TabIndex = 3;
+            this.button6.Size = new System.Drawing.Size(181, 35);
+            this.button6.TabIndex = 6;
             this.button6.Text = "取消";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 362);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(690, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(32, 17);
+            this.toolStripStatusLabel1.Text = "就绪";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(75, 16);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(26, 17);
+            this.toolStripStatusLabel2.Text = "0%";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 360);
+            this.ClientSize = new System.Drawing.Size(690, 384);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
@@ -565,7 +579,10 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -576,7 +593,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -595,7 +611,6 @@
         private System.Windows.Forms.CheckBox c5;
         private System.Windows.Forms.CheckBox c6;
         private System.Windows.Forms.CheckBox c7;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label3;
@@ -610,6 +625,10 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 

@@ -14,8 +14,50 @@ namespace luanma
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// 一句话里有几个字母
+        /// </summary>
+        RandomArgs Sentence = new RandomArgs();
+
+        /// <summary>
+        /// 启动Main的线程
+        /// </summary>
         Thread thread;
-        bool[] bools = new bool[15];
+
+        /// <summary>
+        /// 每个CheckBox的选择情况
+        /// </summary>
+        bool[] bools = new bool[17];
+
+        /// <summary>
+        /// 是否在句首添加大写字母
+        /// </summary>
+        bool CapsAtFront = false;
+        /// <summary>
+        /// 是否在句尾添加句号
+        /// </summary>
+        bool AddPeriod = false;
+        /// <summary>
+        /// 是否在句尾添加句号（全角）
+        /// </summary>
+        bool AddfullPeriod = false;
+
+        /// <summary>
+        /// 随机生成的参数类
+        /// Max: 最大
+        /// Mini: 最小
+        /// Enabled: 是否启用
+        /// </summary>
+        public class RandomArgs
+        {
+            public int Max;
+            public int Mini;
+            public bool Enabled;
+        }
+
+        /// <summary>
+        /// 后面用来生成字母用的
+        /// </summary>
         string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         readonly Dictionary<char, string[]> words = new Dictionary<char, string[]>()
         {
@@ -72,23 +114,24 @@ namespace luanma
             { 'z',new string[] { "ź", "ż", "ž", "ƶ", "ȥ", "ʐ", "ᵶ", "ᶎ", "ẑ", "ẓ", "ẕ", "ⱬ" } },
             { 'Z',new string[] { "Ź", "Ż", "Ž", "Ƶ", "Ȥ", "Ẓ", "Ẕ", "Ẑ", "Ⱬ" } }
         };
-
+        RandomArgs Space = new RandomArgs();
+        RandomArgs Return = new RandomArgs();
         public Form1()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 主生成函数，使用多线程启动
+        /// </summary>
         private void Main()
         {
             try
             {
-                button1.Enabled = false;
-                button6.Enabled = true;
-                tabControl1.Enabled = false;
-                progressBar1.Value = 0;
-                numericUpDown1.Enabled = false;
-                numericUpDown2.Enabled = false;
-                checkBox1.Enabled = false;
+                info("运行中");
+                toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
+                toolStripProgressBar1.Value = progressBar1.Value = 0;
+                numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
                 richTextBox1.Text = "";
                 if (tabControl1.SelectedIndex == 0)
                 {
@@ -105,28 +148,45 @@ namespace luanma
                         }
                         for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 8);
                         double probar = 0d;
+                        int NextSpace = ran.Next(Space.Mini,Space.Max+1), NextReturn = ran.Next(Return.Mini, Return.Max+1),NextSentence = ran.Next(Sentence.Mini, Sentence.Max+1);
                         for (int i = 0; i < numericUpDown1.Value; i++)
                         {
-                            //if (!c1.Checked && !c2.Checked && !c3.Checked && !c4.Checked && !c5.Checked && !c6.Checked && !c7.Checked && !c8.Checked && !a && !b && !c && !d && !this.e && !f && !g && !h) break;
                             Thread.Sleep(10);
-                            GenerateChars(ints);
+                            if (ints.Count == 0) break;
+                            richTextBox1.Text += GenerateChars(ints[new Random().Next(0, ints.Count)]);
+                            toolStripProgressBar1.Value = (int)probar;
+                            toolStripStatusLabel2.Text = (int)probar + "%";
                             probar += 100 / (double)numericUpDown1.Value;
                             progressBar1.Value = (int)probar;
+                            if (Space.Enabled && NextSpace == 0)
+                            {
+                                NextSpace = ran.Next(Space.Mini, Space.Max) + 1;
+                                richTextBox1.Text += " ";
+                            }
+                            if (Return.Enabled && NextReturn == 0) 
+                            {
+                                NextReturn = ran.Next(Return.Mini, Return.Max) + 1;
+                                richTextBox1.Text += "\n";
+                            }
+                            if (NextSentence == 0)
+                            {
+                                NextSentence = ran.Next(Sentence.Mini, Sentence.Max) + 1;
+                                if (AddPeriod)richTextBox1.Text += ". ";
+                            }
+                            NextReturn--;
+                            NextSpace--;
+                            NextSentence--;
                         }
+                        //if (CapsAtFront)if (!string.IsNullOrEmpty(richTextBox1.Text))richTextBox1.Text = richTextBox1.Text[0].ToString().ToUpper() + richTextBox1.Text.TrimStart(richTextBox1.Text[0]);
                     }
                     else
                     {
                         double probar = 0d;
                         for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
                         {
-                            if (ran.Next(0, 1) == 0)
-                            {
-                                richTextBox1.Text += deUnicode(GetRandomHexNumber(5));
-                            }
-                            else
-                            {
-                                richTextBox1.Text += deUnicode(GetRandomHexNumber(4));
-                            }
+                            toolStripProgressBar1.Value = (int)probar;
+                            richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0000,0xFFFFF));
+                            toolStripStatusLabel2.Text = (int)probar + "%";
                             probar += 100 / (double)numericUpDown1.Value;
                             progressBar1.Value = (int)probar;
                         }
@@ -138,7 +198,7 @@ namespace luanma
                         richTextBox1.Text = String.Join("\n", strs);
                     }
                 }
-                else if (tabControl1.SelectedIndex == 3)
+                else if (tabControl1.SelectedIndex == 1)
                 {
                     if (checkBox12.Checked) richTextBox1.Text += "[";
                     double probar = 0d;
@@ -147,6 +207,8 @@ namespace luanma
                         try { richTextBox1.Text += words[c][ran.Next(words[c].Length)]; }
                         catch (KeyNotFoundException) { richTextBox1.Text += c; }
                         probar += (double)100 / richTextBox2.Text.Length;
+                        toolStripProgressBar1.Value = (int)probar;
+                        toolStripStatusLabel2.Text = (int)probar + "%";
                         progressBar1.Value = (int)probar;
                     }
                     if (checkBox13.Checked)
@@ -165,28 +227,33 @@ namespace luanma
                     }
                     if (checkBox12.Checked) richTextBox1.Text += "]";
                 }
+                toolStripStatusLabel1.Text = "完成!";
             }
             catch (ThreadAbortException)
             {
-                MessageBox.Show("进程被用户终止", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                info("线程错误: 进程被用户终止", true);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误!\n原因: " + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                info("线程错误: " + ex.Message, true);
             }
             finally
             {
-                numericUpDown1.Enabled = true;
-                numericUpDown2.Enabled = true;
-                checkBox1.Enabled = true;
+                toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
+                tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
                 progressBar1.Value = 100;
-                tabControl1.Enabled = true;
-                button6.Enabled = false;
-                button1.Enabled = true;
+                new Thread(() =>
+                {
+                    Thread.Sleep(3000);
+                    info("就绪");
+                }).Start();
             }
 
         }
 
+        /// <summary>
+        /// 保存文件
+        /// </summary>
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -205,7 +272,7 @@ namespace luanma
                             sw.Close();
                             fs.Close();
                         }
-                        MessageBox.Show("成功保存为文件“" + saveFileDialog1.FileName + "”", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        info("成功保存为文件“" + saveFileDialog1.FileName + "”");
                     }
                 }
                 else
@@ -215,47 +282,13 @@ namespace luanma
                         StreamWriter sw = File.AppendText(openFileDialog1.FileName);
                         sw.WriteLine(richTextBox1.Text.Trim());
                         sw.Close();
-                        MessageBox.Show("成功保存为文件“" + openFileDialog1.FileName + "”", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        info("成功保存为文件“" + openFileDialog1.FileName + "”");
                     }
                 }
             }
             catch (Exception ex)
             {
-                DialogResult dialogResult = MessageBox.Show("NO！\n发生了一个错误！\n原因：" + ex.Message, "错误", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
-                if (dialogResult == DialogResult.Retry)
-                {
-                    button4_Click(sender, e);
-                }
-                else if (dialogResult == DialogResult.Ignore)
-                {
-                    if (!checkBox2.Checked)
-                    {
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-                            if (!File.Exists(saveFileDialog1.FileName))
-                            {
-                                FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.ReadWrite);
-                                StreamWriter sw = new StreamWriter(fs);
-                                sw.WriteLine(richTextBox1.Text.Trim());
-                                sw.Flush();
-                                sw.Dispose();
-                                sw.Close();
-                                fs.Close();
-                            }
-                            MessageBox.Show("成功保存为文件“" + saveFileDialog1.FileName + "”", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                    {
-                        if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-                            StreamWriter sw = File.AppendText(openFileDialog1.FileName);
-                            sw.WriteLine(richTextBox1.Text.Trim());
-                            sw.Close();
-                            MessageBox.Show("成功保存为文件“" + openFileDialog1.FileName + "”", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }
+                info("保存错误: " + ex.Message);
             }
         }
 
@@ -272,12 +305,18 @@ namespace luanma
         }
         Random ran = new Random();
 
+        /// <summary>
+        /// 开始键按动
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             thread = new Thread(new ThreadStart(Main));
             thread.Start();
         }
 
+        /// <summary>
+        /// 获取随机箭头符
+        /// </summary>
         public string GetRandomArrows()
         {
             switch (new Random().Next(0,3))
@@ -294,6 +333,10 @@ namespace luanma
             }
         }
 
+        /// <summary>
+        /// 获取随机十六进制
+        /// <para><paramref name="digits"/>: 生成的随机数的位数</para>
+        /// </summary>
         public static string GetRandomHexNumber(int digits)
         {
             Random random = new Random();
@@ -306,38 +349,44 @@ namespace luanma
             return result + random.Next(16).ToString("X");
         }
 
-        private void GenerateChars(List<int> ids)
+        /// <summary>
+        /// 选择生成什么字符
+        /// </summary>
+        private string GenerateChars(int id)
         {
-            if (ids.Count == 0) return;
-            switch (ids[new Random().Next(0, ids.Count)])
+            switch (id)
             {
-                case 0: richTextBox1.Text += characters[ran.Next(characters.Length)];break;
-                case 1: richTextBox1.Text += characters[ran.Next(characters.Length)].ToString().ToLower();break;
-                case 2: richTextBox1.Text += ran.Next(0, 9); break;
-                case 3: richTextBox1.Text += GetRandomChinese(1); break;
-                case 4: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0400, 0x052F)); break;
-                case 5: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x10000,0x1FFFF,5));break;
-                case 6: richTextBox1.Text += "";/*if (checkBox9.Checked) richTextBox1.Text += deUnicode("20" + );*/break;
-                case 7: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x3040, 0x30FF)); break;
-                case 8: richTextBox1.Text += "";break;
-                case 9: richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2800,0x28FF));break;
-                case 10:richTextBox1.Text += "Math";break;
-                case 11:richTextBox1.Text += "";break;
-                case 12:richTextBox1.Text += "";break;
-                case 13:richTextBox1.Text += "";break;
-                case 14:richTextBox1.Text += "";break;
-                case 15:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x3100,0x312F));break;
-                case 16:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2300,0x23FF));break;
-                case 17:richTextBox1.Text += GetRandomArrows();break;
-                case 18:richTextBox1.Text += "";break;
-                case 19:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2500, 0x257F));break;
-                case 20:richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x2580, 0x259F));break;
-                case 21:richTextBox1.Text += "";break;
-                case 22:richTextBox1.Text += "";break;
-                default:richTextBox1.Text += "错误!找不到生成参数\n";throw new ArgumentException("找不到生成选项");
+                case 0: return characters[ran.Next(characters.Length)].ToString();
+                case 1: return characters[ran.Next(characters.Length)].ToString().ToLower();
+                case 2: return ran.Next(0, 10).ToString();
+                case 3: return GetRandomChinese(1);
+                case 4: return deUnicode(GetRandomHexNumberEx(0x0400, 0x052F));
+                case 5: return deUnicode(GetRandomHexNumberEx(0x10000, 0x1FFFF, 5));
+                case 6: return "";/*if (checkBox9.Checked) return deUnicode("20" + );*/
+                case 7: return deUnicode(GetRandomHexNumberEx(0x3040, 0x30FF));
+                case 8: return "";
+                case 9: return deUnicode(GetRandomHexNumberEx(0x2800, 0x28FF));
+                case 10: return "Math";
+                case 11: return "";
+                case 12: return "";
+                case 13: return "";
+                case 14: return "";
+                case 15: return deUnicode(GetRandomHexNumberEx(0x3100, 0x312F));
+                case 16: return deUnicode(GetRandomHexNumberEx(0x2300, 0x23FF));
+                case 17: return GetRandomArrows();
+                case 18: return "";
+                case 19: return deUnicode(GetRandomHexNumberEx(0x2500, 0x257F));
+                case 20: return deUnicode(GetRandomHexNumberEx(0x2580, 0x259F));
+                case 21: return "";
+                case 22: return "";
+                case 23: return ran.Next(0, 2).ToString();
+                default: return "错误!找不到生成参数\n".ToString(); throw new ArgumentException("找不到生成选项");
             }
         }
 
+        /// <summary>
+        /// 将十六进制用Unicode转码为字符串
+        /// </summary>
         public static string deUnicode(string content)
         {
             string enUnicode = null;
@@ -362,7 +411,7 @@ namespace luanma
             }
             catch (Exception ex)
             {
-                MessageBox.Show("复制到剪贴板失败！\n原因：" + ex.Message);
+                info("复制错误: " + ex.Message,true);
             }
         }
 
@@ -393,6 +442,10 @@ namespace luanma
             checkBox1.Checked = true;
         }
 
+        /// <summary>
+        /// 获取随机中文
+        /// <para><paramref name="strlength"/>: 长度</para>
+        /// </summary>
         public string GetRandomChinese(int strlength)
         {
             // 获取GB2312编码页（表）
@@ -410,6 +463,9 @@ namespace luanma
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 生成区码位
+        /// </summary>
         private object[] CreateRegionCode(int strlength)
         {
             //定义一个字符串数组储存汉字编码的组成元素
@@ -518,6 +574,8 @@ namespace luanma
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            toolStripProgressBar1.Visible = false;
+            toolStripStatusLabel2.Visible = false;
             /*new Task(() =>
             {
                 while (true)
@@ -526,13 +584,30 @@ namespace luanma
             }).Start();*/
         }
 
+        /// <summary>
+        /// 更多按钮被按下
+        /// </summary>
         private void button5_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3(bools);
+            Form3 form3 = new Form3(bools,Space,Return,radioButton2.Checked,CapsAtFront,AddPeriod,AddfullPeriod,Sentence);
             form3.ShowDialog();
-            for (int i = 0; i < bools.Length; i++) bools[i] = form3.bools[i];
+            Space = form3.Space;
+            Return = form3.Return;
+            AddfullPeriod = form3.AddfullPeriod;
+            CapsAtFront = form3.CapsAtFront;
+            AddPeriod = form3.AddPeriod;
+            Space = form3.WordsInSentence;
+            for (int i = 0; i < bools.Length-1; i++) bools[i] = form3.bools[i];
         }
 
+        private void richTextBox1_DoubleClick(object sender, EventArgs e)
+        {
+            button3_Click(sender, e);
+        }
+
+        /// <summary>
+        /// 取消按钮被按下
+        /// </summary>
         private void button6_Click(object sender, EventArgs e)
         {
             button6.Enabled = false;
@@ -542,9 +617,37 @@ namespace luanma
             button6.Text = "取消";
         }
 
+        /// <summary>
+        /// 获取随机十六进制Ex版
+        /// <para><paramref name="minValue"/>: 随机生成的数的最小值</para>
+        /// <para><paramref name="maxValue"/>: 随机生成的数的最大值</para>
+        /// <para><paramref name="length"/>: 随机生成的数的长度（不足补零）</para>
+        /// </summary>
         public string GetRandomHexNumberEx(int minValue,int maxValue, int length = 4)
         {
             return Convert.ToString(new Random().Next(int.Parse(Convert.ToString(minValue, 10)), int.Parse(Convert.ToString(maxValue, 10))), 16).PadLeft(length, '0');
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetDataObject(toolStripStatusLabel1.Text);
+            }
+            catch (Exception ex)
+            {
+                info("复制错误: " + ex.Message,true);
+            }
+        }
+        private void info(string Text, bool error = false)
+        {
+            if (error)
+            {
+                MessageBox.Show(Text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toolStripStatusLabel1.ForeColor = Color.Red;
+            }
+            else toolStripStatusLabel1.ForeColor = Color.Black;
+            toolStripStatusLabel1.Text = Text;
         }
     }
 }
