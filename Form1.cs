@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace luanma
 {
@@ -129,6 +130,7 @@ namespace luanma
             try
             {
                 info("运行中");
+                TaskbarManager.SetProgressState(TaskbarProgressBarState.Normal);
                 toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
                 toolStripProgressBar1.Value = progressBar1.Value = 0;
                 numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
@@ -156,6 +158,7 @@ namespace luanma
                             richTextBox1.Text += GenerateChars(ints[new Random().Next(0, ints.Count)]);
                             toolStripProgressBar1.Value = (int)probar;
                             toolStripStatusLabel2.Text = (int)probar + "%";
+                            TaskbarManager.SetProgressValue((int)probar,100);
                             probar += 100 / (double)numericUpDown1.Value;
                             progressBar1.Value = (int)probar;
                             if (Space.Enabled && NextSpace == 0)
@@ -188,6 +191,7 @@ namespace luanma
                             richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0000,0xFFFFF));
                             toolStripStatusLabel2.Text = (int)probar + "%";
                             probar += 100 / (double)numericUpDown1.Value;
+                            TaskbarManager.SetProgressValue((int)probar, 100);
                             progressBar1.Value = (int)probar;
                         }
                     }
@@ -209,6 +213,7 @@ namespace luanma
                         probar += (double)100 / richTextBox2.Text.Length;
                         toolStripProgressBar1.Value = (int)probar;
                         toolStripStatusLabel2.Text = (int)probar + "%";
+                        TaskbarManager.SetProgressValue((int)probar, 100);
                         progressBar1.Value = (int)probar;
                     }
                     if (checkBox13.Checked)
@@ -231,14 +236,17 @@ namespace luanma
             }
             catch (ThreadAbortException)
             {
+                TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
                 info("线程错误: 进程被用户终止", true);
             }
             catch (Exception ex)
             {
+                TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
                 info("线程错误: " + ex.Message, true);
             }
             finally
             {
+                TaskbarManager.SetProgressState(TaskbarProgressBarState.NoProgress);
                 toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
                 tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
                 progressBar1.Value = 100;
@@ -574,6 +582,7 @@ namespace luanma
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Environment.OSVersion.Version.Major < 6) return;
             toolStripProgressBar1.Visible = false;
             toolStripStatusLabel2.Visible = false;
             /*new Task(() =>
