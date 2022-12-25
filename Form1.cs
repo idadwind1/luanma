@@ -232,7 +232,7 @@ namespace luanma
                     }
                     if (checkBox12.Checked) richTextBox1.Text += "]";
                 }
-                toolStripStatusLabel1.Text = "完成!";
+                info("完成!");
             }
             catch (ThreadAbortException)
             {
@@ -250,11 +250,11 @@ namespace luanma
                 toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
                 tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
                 progressBar1.Value = 100;
-                new Thread(() =>
+                /*new Thread(() =>
                 {
                     Thread.Sleep(3000);
                     info("就绪");
-                }).Start();
+                }).Start();*/
             }
 
         }
@@ -645,10 +645,11 @@ namespace luanma
             }
             catch (Exception ex)
             {
-                info("复制错误: " + ex.Message,true);
+                info("复制错误: " + ex.Message, true, false, 2000);
             }
+            toolStringStatusInfo("复制成功!", false, 2000);
         }
-        private void info(string Text, bool error = false)
+        private void info(string Text, bool error = false, bool Persistence = true, int PersistenceMS = 3000)
         {
             if (error)
             {
@@ -656,7 +657,28 @@ namespace luanma
                 toolStripStatusLabel1.ForeColor = Color.Red;
             }
             else toolStripStatusLabel1.ForeColor = Color.Black;
-            toolStripStatusLabel1.Text = Text;
+            toolStringStatusInfo(Text, Persistence, PersistenceMS, error);
+        }
+        
+        private void toolStringStatusInfo(string Text, bool Persistence = true, int PersistenceMS = 3000, bool error = false)
+        {
+            Color color = toolStripStatusLabel1.ForeColor;
+            if (error)toolStripStatusLabel1.ForeColor = Color.Red;
+            else toolStripStatusLabel1.ForeColor = Color.Black;
+            if (Persistence)
+            {
+                toolStripStatusLabel1.Text = Text;
+            }
+            else
+            {
+                new Thread(() =>
+                {
+                    string tmp = toolStripStatusLabel1.Text;
+                    toolStripStatusLabel1.Text = Text;
+                    Thread.Sleep(PersistenceMS);
+                    if (toolStripStatusLabel1.Text == Text) { toolStripStatusLabel1.Text = tmp; toolStripStatusLabel1.ForeColor = color; }
+                }).Start();
+            }
         }
     }
 }
