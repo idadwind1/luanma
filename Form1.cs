@@ -572,6 +572,7 @@ namespace luanma
             if (Environment.OSVersion.Version.Major < 6) return;
             toolStripProgressBar1.Visible = false;
             toolStripStatusLabel2.Visible = false;
+            IsClosed = false;
             /*new Task(() =>
             {
                 while (true)
@@ -790,6 +791,23 @@ namespace luanma
             if (e.KeyChar >= 'a' && e.KeyChar <= 'f') return;
             if (e.KeyChar == ',') return;
             e.Handled = true;
+        }
+
+        private void 清空ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+            progressBar1.Value = 0;
+        }
+
+        private void 重新生成窗体ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!button1.Enabled && MessageBox.Show("检测到正在运行的工作, 是否关闭?", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.Cancel) return;
+            IsClosed = true;
+            if (button6.Enabled)button6_Click(sender, e);
+            Controls.Clear();
+            InitializeComponent();
+            Form1_Load(sender, e);
+            IsClosed = false;
         }
     }
 }

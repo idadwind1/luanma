@@ -95,6 +95,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.重新生成窗体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -640,7 +643,9 @@
             this.toolStripSeparator3,
             this.复制输出ToolStripMenuItem,
             this.toolStripSeparator4,
-            this.更多输出ToolStripMenuItem});
+            this.更多输出ToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.清空ToolStripMenuItem});
             this.lToolStripMenuItem.Name = "lToolStripMenuItem";
             this.lToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
             this.lToolStripMenuItem.Text = "输出(&O)";
@@ -682,7 +687,8 @@
             this.置顶ToolStripMenuItem,
             this.toolStripSeparator2,
             this.退出EToolStripMenuItem,
-            this.强制退出不推荐ToolStripMenuItem});
+            this.强制退出不推荐ToolStripMenuItem,
+            this.重新生成窗体ToolStripMenuItem});
             this.控制ToolStripMenuItem.Name = "控制ToolStripMenuItem";
             this.控制ToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
             this.控制ToolStripMenuItem.Text = "控制(&C)";
@@ -786,8 +792,27 @@
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(640, 78);
             this.richTextBox3.TabIndex = 2;
-            this.richTextBox3.Text = "";
+            this.richTextBox3.Text = "4f60,597d";
             this.richTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
+            // 
+            // 清空ToolStripMenuItem
+            // 
+            this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
+            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.清空ToolStripMenuItem.Text = "清空输出(&C)";
+            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(205, 6);
+            // 
+            // 重新生成窗体ToolStripMenuItem
+            // 
+            this.重新生成窗体ToolStripMenuItem.Name = "重新生成窗体ToolStripMenuItem";
+            this.重新生成窗体ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.重新生成窗体ToolStripMenuItem.Text = "重新生成窗体";
+            this.重新生成窗体ToolStripMenuItem.Click += new System.EventHandler(this.重新生成窗体ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -896,6 +921,9 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem 重新生成窗体ToolStripMenuItem;
     }
 }
 
