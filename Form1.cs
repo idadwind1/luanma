@@ -237,6 +237,15 @@ namespace luanma
                     }
                     if (checkBox12.Checked) richTextBox1.Text += "]";
                 }
+                else if (tabControl1.SelectedIndex == 2)
+                {
+                    richTextBox3.Text = richTextBox3.Text.ToUpper();
+                    string[] spl = richTextBox3.Text.Split(',');
+                    foreach (string s in spl)
+                    {
+                        richTextBox1.Text += deUnicode(s);
+                    }
+                }
                 info("完成!");
             }
             catch (ThreadAbortException)
@@ -767,6 +776,20 @@ namespace luanma
         {
             TopMost = !TopMost;
             置顶ToolStripMenuItem.Checked = !置顶ToolStripMenuItem.Checked;
+        }
+
+        private void 随即生成16进制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripTextBox1.Text = GetRandomHexNumberEx(0x0000, 0xFFFF).ToUpper();
+        }
+
+        private void richTextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= '0' && e.KeyChar <= '9') return;
+            if (e.KeyChar >= 'A' && e.KeyChar <= 'F') return;
+            if (e.KeyChar >= 'a' && e.KeyChar <= 'f') return;
+            if (e.KeyChar == ',') return;
+            e.Handled = true;
         }
     }
 }
