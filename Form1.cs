@@ -762,5 +762,11 @@ namespace luanma
         {
             button3_Click(sender, e);
         }
+
+        private void 置顶ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+            置顶ToolStripMenuItem.Checked = !置顶ToolStripMenuItem.Checked;
+        }
     }
 }
