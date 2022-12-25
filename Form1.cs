@@ -16,6 +16,10 @@ namespace luanma
     public partial class Form1 : Form
     {
         /// <summary>
+        /// 窗体是否关闭
+        /// </summary>
+        bool IsClosed = false;
+        /// <summary>
         /// 一句话里有几个字母
         /// </summary>
         RandomArgs Sentence = new RandomArgs();
@@ -127,13 +131,14 @@ namespace luanma
         /// </summary>
         private void Main()
         {
+            DateTime StartTime = DateTime.Now;
             try
             {
                 info("运行中");
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.Normal);
-                toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
+                取消生成ToolStripMenuItem.Enabled = toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
                 toolStripProgressBar1.Value = progressBar1.Value = 0;
-                numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
+                开始生成ToolStripMenuItem.Enabled = numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
                 richTextBox1.Text = "";
                 if (tabControl1.SelectedIndex == 0)
                 {
@@ -237,24 +242,20 @@ namespace luanma
             catch (ThreadAbortException)
             {
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
-                info("线程错误: 进程被用户终止", true);
+                if (!IsClosed)info("线程错误: 进程被用户终止,", true);
             }
             catch (Exception ex)
             {
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
-                info("线程错误: " + ex.Message, true);
+                info("线程错误: " + ex.Message + ",", true);
             }
             finally
             {
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.NoProgress);
-                toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
-                tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
+                取消生成ToolStripMenuItem.Enabled = toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
+                开始生成ToolStripMenuItem.Enabled = tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
                 progressBar1.Value = 100;
-                /*new Thread(() =>
-                {
-                    Thread.Sleep(3000);
-                    info("就绪");
-                }).Start();*/
+                toolStripStatusLabel1.Text += " 线程运行耗时" +(DateTime.Now - StartTime).TotalMilliseconds + "ms";
             }
 
         }
@@ -264,39 +265,13 @@ namespace luanma
         /// </summary>
         private void button4_Click(object sender, EventArgs e)
         {
-            try
+            if (!checkBox2.Checked)
             {
-                if (!checkBox2.Checked)
-                {
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        if (!File.Exists(saveFileDialog1.FileName))
-                        {
-                            FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.ReadWrite);
-                            StreamWriter sw = new StreamWriter(fs);
-                            sw.WriteLine(richTextBox1.Text.Trim());
-                            sw.Flush();
-                            sw.Dispose();
-                            sw.Close();
-                            fs.Close();
-                        }
-                        info("成功保存为文件“" + saveFileDialog1.FileName + "”");
-                    }
-                }
-                else
-                {
-                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        StreamWriter sw = File.AppendText(openFileDialog1.FileName);
-                        sw.WriteLine(richTextBox1.Text.Trim());
-                        sw.Close();
-                        info("成功保存为文件“" + openFileDialog1.FileName + "”");
-                    }
-                }
+                保存输出为文件ToolStripMenuItem_Click(sender, e);
             }
-            catch (Exception ex)
+            else
             {
-                info("保存错误: " + ex.Message);
+                保存输出为文件追加ToolStripMenuItem_Click(sender, e);
             }
         }
 
@@ -421,6 +396,8 @@ namespace luanma
             {
                 info("复制错误: " + ex.Message,true);
             }
+
+            info("复制成功!", false, false, 2000);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -546,12 +523,13 @@ namespace luanma
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(0);
-        }
-
-        private void checkBox10_CheckedChanged(object sender, EventArgs e)
-        {
-
+            if (!button1.Enabled && MessageBox.Show("检测到正在运行的工作, 是否关闭?", "警告",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+                return;
+            }
+            IsClosed = true;
+            if (button6.Enabled)button6_Click(sender, e);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -619,11 +597,12 @@ namespace luanma
         /// </summary>
         private void button6_Click(object sender, EventArgs e)
         {
-            button6.Enabled = false;
-            button6.Text = "取消中...";
+            取消生成ToolStripMenuItem.Enabled = button6.Enabled = false;
+            取消生成ToolStripMenuItem.Text = button6.Text = "取消中...";
+            info("正在取消");
             thread.Abort();
             thread.Join();
-            button6.Text = "取消";
+            取消生成ToolStripMenuItem.Text = button6.Text = "取消";
         }
 
         /// <summary>
@@ -641,25 +620,41 @@ namespace luanma
         {
             try
             {
-                Clipboard.SetDataObject(toolStripStatusLabel1.Text);
+                if (toolStripStatusLabel2.Visible) Clipboard.SetDataObject(toolStripStatusLabel1.Text + ", " + toolStripStatusLabel2.Text);
+                else Clipboard.SetDataObject(toolStripStatusLabel1.Text);
             }
             catch (Exception ex)
             {
                 info("复制错误: " + ex.Message, true, false, 2000);
             }
-            toolStringStatusInfo("复制成功!", false, 2000);
+            info("复制成功!", false, false, 2000);
         }
+
+        /// <summary>
+        /// 更改toolStringStatusLabel上的字或弹出提示窗
+        /// <para><paramref name="Text"/>: toolStringStatusLabel.Text的新值</para>
+        /// <para><paramref name="Persistence"/>: 是否保持显示</para>
+        /// <para><paramref name="PersistenceMS"/>: 如果!<paramref name="Persistence"/>, 那么Text在toolStringStatusLabel上显示的时长(ms)</para>
+        /// <para><paramref name="error"/>: Text在toolStringStatusLabel上是否显示为红色, 以及是否弹出提示窗</para>
+        /// </summary>
         private void info(string Text, bool error = false, bool Persistence = true, int PersistenceMS = 3000)
         {
             if (error)
             {
-                MessageBox.Show(Text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new Thread(() => MessageBox.Show(Text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)).Start();
                 toolStripStatusLabel1.ForeColor = Color.Red;
             }
             else toolStripStatusLabel1.ForeColor = Color.Black;
             toolStringStatusInfo(Text, Persistence, PersistenceMS, error);
         }
-        
+
+        /// <summary>
+        /// 更改toolStringStatusLabel上的字
+        /// <para><paramref name="Text"/>: toolStringStatusLabel.Text的新值</para>
+        /// <para><paramref name="Persistence"/>: 是否保持显示</para>
+        /// <para><paramref name="PersistenceMS"/>: 如果!<paramref name="Persistence"/>, 那么Text在toolStringStatusLabel上显示的时长(ms)</para>
+        /// <para><paramref name="error"/>: Text在toolStringStatusLabel上是否显示为红色</para>
+        /// </summary>
         private void toolStringStatusInfo(string Text, bool Persistence = true, int PersistenceMS = 3000, bool error = false)
         {
             Color color = toolStripStatusLabel1.ForeColor;
@@ -679,6 +674,93 @@ namespace luanma
                     if (toolStripStatusLabel1.Text == Text) { toolStripStatusLabel1.Text = tmp; toolStripStatusLabel1.ForeColor = color; }
                 }).Start();
             }
+        }
+
+        /// <summary>
+        /// 将toolStripStatusLabel1重设回“就绪”状态
+        /// <para><paramref name="Time"/>: 过多久显示就绪</para>
+        /// </summary>
+        private void cleanInfo(int Time = 3000)
+        {
+            new Thread(() =>
+            {
+                string tmp = toolStripStatusLabel1.Text;
+                Thread.Sleep(Time);
+                if (toolStripStatusLabel1.Text == tmp) toolStringStatusInfo("就绪");
+            }).Start();
+        }
+
+        private void 复制输出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button2_Click(sender, e);
+        }
+
+        private void 保存输出为文件ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (!File.Exists(saveFileDialog1.FileName))
+                    {
+                        FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.ReadWrite);
+                        StreamWriter sw = new StreamWriter(fs);
+                        sw.WriteLine(richTextBox1.Text.Trim());
+                        sw.Flush();
+                        sw.Dispose();
+                        sw.Close();
+                        fs.Close();
+                    }
+                    info("成功保存为文件“" + saveFileDialog1.FileName + "”");
+                }
+            }
+            catch (Exception ex)
+            {
+                info("保存错误: " + ex.Message);
+            }
+        }
+
+        private void 保存输出为文件追加ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter sw = File.AppendText(openFileDialog1.FileName);
+                    sw.WriteLine(richTextBox1.Text.Trim());
+                    sw.Close();
+                    info("成功保存为文件“" + openFileDialog1.FileName + "”");
+                }
+            }
+            catch (Exception ex)
+            {
+                info("保存错误: " + ex.Message);
+            }
+        }
+
+        private void 开始生成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
+
+        private void 取消生成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button6_Click(sender, e);
+        }
+
+        private void 退出EToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void 强制退出不推荐ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("是否强制退出, 可能会造成错误","警告",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation) == DialogResult.OK)Environment.Exit(0);
+        }
+
+        private void 更多输出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button3_Click(sender, e);
         }
     }
 }
