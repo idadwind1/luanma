@@ -358,7 +358,7 @@ namespace luanma
                 case 7: return deUnicode(GetRandomHexNumberEx(0x3040, 0x30FF));
                 case 8: return "";
                 case 9: return deUnicode(GetRandomHexNumberEx(0x2800, 0x28FF));
-                case 10: return "Math";
+                case 10: return GetRandomMathematicalOperator();
                 case 11: return "";
                 case 12: return "";
                 case 13: return "";
@@ -808,6 +808,22 @@ namespace luanma
             InitializeComponent();
             Form1_Load(sender, e);
             IsClosed = false;
+        }
+
+        private string GetRandomMathematicalOperator()
+        {
+            switch (ran.Next(0, 3))
+            {
+                case 0:
+                    return deUnicode(GetRandomHexNumberEx(0x2200, 0x22FF));
+                case 1:
+                    return deUnicode(GetRandomHexNumberEx(0x27C0, 0x27EF));
+                case 2:
+                    return deUnicode(GetRandomHexNumberEx(0x2980, 0x29FF));
+                case 3:
+                    return deUnicode(GetRandomHexNumberEx(0x2A00, 0x2AFF));
+            }
+            return "";
         }
     }
 }

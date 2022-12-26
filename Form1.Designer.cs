@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -61,6 +62,9 @@
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -78,26 +82,23 @@
             this.lToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存输出为文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存输出为文件追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.复制输出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.更多输出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.控制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开始生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.取消生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.置顶ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.退出EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.强制退出不推荐ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.置顶ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.重新生成窗体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.随即生成16进制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.重新生成窗体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -106,11 +107,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -120,10 +121,10 @@
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 386);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 484);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(690, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(920, 26);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
@@ -131,30 +132,30 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(32, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 20);
             this.toolStripStatusLabel1.Text = "就绪";
             this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(75, 16);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 18);
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(26, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(31, 20);
             this.toolStripStatusLabel2.Text = "0%";
             this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tabControl1);
-            this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(672, 157);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(896, 196);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输入";
@@ -164,11 +165,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(4, 19);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(5, 24);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(661, 133);
+            this.tabControl1.Size = new System.Drawing.Size(881, 166);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -183,21 +184,21 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.numericUpDown1);
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(653, 107);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(873, 137);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "生成";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(602, 75);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Location = new System.Drawing.Point(803, 94);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(48, 29);
+            this.button5.Size = new System.Drawing.Size(64, 36);
             this.button5.TabIndex = 13;
             this.button5.Text = "更多";
             this.button5.UseVisualStyleBackColor = true;
@@ -206,10 +207,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(122, 75);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(163, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.Size = new System.Drawing.Size(82, 15);
             this.label3.TabIndex = 15;
             this.label3.Text = "包含字符：";
             // 
@@ -217,10 +217,10 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(454, 72);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton2.Location = new System.Drawing.Point(605, 90);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
+            this.radioButton2.Size = new System.Drawing.Size(58, 19);
             this.radioButton2.TabIndex = 4;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "选择";
@@ -229,10 +229,10 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(211, 72);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton1.Location = new System.Drawing.Point(281, 90);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
+            this.radioButton1.Size = new System.Drawing.Size(58, 19);
             this.radioButton1.TabIndex = 3;
             this.radioButton1.Text = "所有";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -240,10 +240,9 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(584, 51);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(779, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 20);
+            this.label2.Size = new System.Drawing.Size(89, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "个字换一行";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -252,8 +251,8 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Enabled = false;
-            this.numericUpDown2.Location = new System.Drawing.Point(100, 51);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown2.Location = new System.Drawing.Point(133, 64);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -265,7 +264,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(478, 21);
+            this.numericUpDown2.Size = new System.Drawing.Size(637, 25);
             this.numericUpDown2.TabIndex = 2;
             this.numericUpDown2.Value = new decimal(new int[] {
             1,
@@ -275,10 +274,10 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.Location = new System.Drawing.Point(4, 51);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox1.Location = new System.Drawing.Point(5, 64);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(106, 20);
+            this.checkBox1.Size = new System.Drawing.Size(141, 25);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "是否换行，每";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -286,18 +285,17 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(5, 2);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(7, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(645, 22);
+            this.label1.Size = new System.Drawing.Size(860, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "字数";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(4, 26);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown1.Location = new System.Drawing.Point(5, 32);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -309,7 +307,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(646, 21);
+            this.numericUpDown1.Size = new System.Drawing.Size(861, 25);
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -327,19 +325,19 @@
             this.panel1.Controls.Add(this.c1);
             this.panel1.Controls.Add(this.c3);
             this.panel1.Controls.Add(this.c5);
-            this.panel1.Location = new System.Drawing.Point(2, 89);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(3, 111);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(595, 15);
+            this.panel1.Size = new System.Drawing.Size(793, 19);
             this.panel1.TabIndex = 19;
             // 
             // c8
             // 
             this.c8.AutoSize = true;
-            this.c8.Location = new System.Drawing.Point(548, 1);
-            this.c8.Margin = new System.Windows.Forms.Padding(2);
+            this.c8.Location = new System.Drawing.Point(731, 1);
+            this.c8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c8.Name = "c8";
-            this.c8.Size = new System.Drawing.Size(48, 16);
+            this.c8.Size = new System.Drawing.Size(59, 19);
             this.c8.TabIndex = 12;
             this.c8.Text = "日文";
             this.c8.UseVisualStyleBackColor = true;
@@ -347,10 +345,10 @@
             // c7
             // 
             this.c7.AutoSize = true;
-            this.c7.Location = new System.Drawing.Point(479, 1);
-            this.c7.Margin = new System.Windows.Forms.Padding(2);
+            this.c7.Location = new System.Drawing.Point(639, 1);
+            this.c7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c7.Name = "c7";
-            this.c7.Size = new System.Drawing.Size(72, 16);
+            this.c7.Size = new System.Drawing.Size(89, 19);
             this.c7.TabIndex = 11;
             this.c7.Text = "标点符号";
             this.c7.UseVisualStyleBackColor = true;
@@ -358,10 +356,10 @@
             // c6
             // 
             this.c6.AutoSize = true;
-            this.c6.Location = new System.Drawing.Point(402, 1);
-            this.c6.Margin = new System.Windows.Forms.Padding(2);
+            this.c6.Location = new System.Drawing.Point(536, 1);
+            this.c6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c6.Name = "c6";
-            this.c6.Size = new System.Drawing.Size(78, 16);
+            this.c6.Size = new System.Drawing.Size(97, 19);
             this.c6.TabIndex = 10;
             this.c6.Text = "表情/图形";
             this.c6.UseVisualStyleBackColor = true;
@@ -369,10 +367,10 @@
             // c4
             // 
             this.c4.AutoSize = true;
-            this.c4.Location = new System.Drawing.Point(269, 0);
-            this.c4.Margin = new System.Windows.Forms.Padding(2);
+            this.c4.Location = new System.Drawing.Point(359, 0);
+            this.c4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c4.Name = "c4";
-            this.c4.Size = new System.Drawing.Size(48, 16);
+            this.c4.Size = new System.Drawing.Size(59, 19);
             this.c4.TabIndex = 8;
             this.c4.Text = "中文";
             this.c4.UseVisualStyleBackColor = true;
@@ -380,10 +378,10 @@
             // c2
             // 
             this.c2.AutoSize = true;
-            this.c2.Location = new System.Drawing.Point(89, 1);
-            this.c2.Margin = new System.Windows.Forms.Padding(2);
+            this.c2.Location = new System.Drawing.Point(119, 1);
+            this.c2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c2.Name = "c2";
-            this.c2.Size = new System.Drawing.Size(96, 16);
+            this.c2.Size = new System.Drawing.Size(119, 19);
             this.c2.TabIndex = 6;
             this.c2.Text = "字母（小写）";
             this.c2.UseVisualStyleBackColor = true;
@@ -391,10 +389,10 @@
             // c1
             // 
             this.c1.AutoSize = true;
-            this.c1.Location = new System.Drawing.Point(3, 1);
-            this.c1.Margin = new System.Windows.Forms.Padding(2);
+            this.c1.Location = new System.Drawing.Point(4, 1);
+            this.c1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c1.Name = "c1";
-            this.c1.Size = new System.Drawing.Size(96, 16);
+            this.c1.Size = new System.Drawing.Size(119, 19);
             this.c1.TabIndex = 5;
             this.c1.Text = "字母（大写）";
             this.c1.UseVisualStyleBackColor = true;
@@ -402,10 +400,10 @@
             // c3
             // 
             this.c3.AutoSize = true;
-            this.c3.Location = new System.Drawing.Point(186, 1);
-            this.c3.Margin = new System.Windows.Forms.Padding(2);
+            this.c3.Location = new System.Drawing.Point(248, 1);
+            this.c3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c3.Name = "c3";
-            this.c3.Size = new System.Drawing.Size(84, 16);
+            this.c3.Size = new System.Drawing.Size(104, 19);
             this.c3.TabIndex = 7;
             this.c3.Text = "阿拉伯数字";
             this.c3.UseVisualStyleBackColor = true;
@@ -413,10 +411,10 @@
             // c5
             // 
             this.c5.AutoSize = true;
-            this.c5.Location = new System.Drawing.Point(320, 0);
-            this.c5.Margin = new System.Windows.Forms.Padding(2);
+            this.c5.Location = new System.Drawing.Point(427, 0);
+            this.c5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.c5.Name = "c5";
-            this.c5.Size = new System.Drawing.Size(84, 16);
+            this.c5.Size = new System.Drawing.Size(104, 19);
             this.c5.TabIndex = 9;
             this.c5.Text = "西里尔字母";
             this.c5.UseVisualStyleBackColor = true;
@@ -427,11 +425,11 @@
             this.tabPage4.Controls.Add(this.checkBox12);
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.richTextBox2);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Size = new System.Drawing.Size(653, 107);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage4.Size = new System.Drawing.Size(873, 137);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "伪本地化";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -439,10 +437,10 @@
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(76, 90);
-            this.checkBox13.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox13.Location = new System.Drawing.Point(101, 112);
+            this.checkBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(84, 16);
+            this.checkBox13.Size = new System.Drawing.Size(104, 19);
             this.checkBox13.TabIndex = 3;
             this.checkBox13.Text = "添加感叹号";
             this.checkBox13.UseVisualStyleBackColor = true;
@@ -450,10 +448,10 @@
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(5, 90);
-            this.checkBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox12.Location = new System.Drawing.Point(7, 112);
+            this.checkBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(72, 16);
+            this.checkBox12.Size = new System.Drawing.Size(89, 19);
             this.checkBox12.TabIndex = 2;
             this.checkBox12.Text = "添加括号";
             this.checkBox12.UseVisualStyleBackColor = true;
@@ -461,21 +459,53 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 6);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(7, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(149, 12);
+            this.label5.Size = new System.Drawing.Size(187, 15);
             this.label5.TabIndex = 1;
             this.label5.Text = "需要转为伪本地化的文字：";
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(5, 20);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox2.Location = new System.Drawing.Point(7, 25);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(646, 66);
+            this.richTextBox2.Size = new System.Drawing.Size(860, 82);
             this.richTextBox2.TabIndex = 0;
             this.richTextBox2.Text = "";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.richTextBox3);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(873, 137);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "16进制Unicode转字符";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(9, 29);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(852, 96);
+            this.richTextBox3.TabIndex = 2;
+            this.richTextBox3.Text = "4f60,597d";
+            this.richTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(254, 15);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Unicode(可以用\",\"分隔两个字符): ";
             // 
             // groupBox2
             // 
@@ -485,11 +515,11 @@
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Controls.Add(this.progressBar1);
-            this.groupBox2.Location = new System.Drawing.Point(9, 171);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 214);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(672, 148);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(896, 185);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "输出";
@@ -498,21 +528,22 @@
             // 
             this.checkBox2.BackColor = System.Drawing.Color.Transparent;
             this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox2.Location = new System.Drawing.Point(8, 119);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox2.Location = new System.Drawing.Point(11, 149);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(48, 18);
+            this.checkBox2.Size = new System.Drawing.Size(64, 22);
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "追加";
+            this.checkBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.checkBox2.UseVisualStyleBackColor = false;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(60, 112);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Location = new System.Drawing.Point(80, 140);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(169, 30);
+            this.button4.Size = new System.Drawing.Size(225, 38);
             this.button4.TabIndex = 2;
             this.button4.Text = "保存为文件(&V)";
             this.button4.UseVisualStyleBackColor = true;
@@ -520,10 +551,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(461, 113);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(615, 141);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(203, 30);
+            this.button3.Size = new System.Drawing.Size(271, 38);
             this.button3.TabIndex = 4;
             this.button3.Text = "更多(&M)";
             this.button3.UseVisualStyleBackColor = true;
@@ -531,10 +562,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(233, 113);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(311, 141);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 30);
+            this.button2.Size = new System.Drawing.Size(297, 38);
             this.button2.TabIndex = 3;
             this.button2.Text = "复制(&P)";
             this.button2.UseVisualStyleBackColor = true;
@@ -544,10 +575,10 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(8, 20);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1.Location = new System.Drawing.Point(11, 25);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(656, 90);
+            this.richTextBox1.Size = new System.Drawing.Size(875, 112);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.DoubleClick += new System.EventHandler(this.richTextBox1_DoubleClick);
@@ -556,18 +587,18 @@
             // 
             this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(2, 16);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
+            this.progressBar1.Location = new System.Drawing.Point(3, 20);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(668, 130);
+            this.progressBar1.Size = new System.Drawing.Size(890, 163);
             this.progressBar1.TabIndex = 18;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(9, 325);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(12, 406);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(369, 35);
+            this.button1.Size = new System.Drawing.Size(492, 44);
             this.button1.TabIndex = 5;
             this.button1.Text = "开始(&S)";
             this.button1.UseVisualStyleBackColor = true;
@@ -576,10 +607,10 @@
             // button6
             // 
             this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(389, 325);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Location = new System.Drawing.Point(519, 406);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(158, 35);
+            this.button6.Size = new System.Drawing.Size(211, 44);
             this.button6.TabIndex = 6;
             this.button6.Text = "取消(&A)";
             this.button6.UseVisualStyleBackColor = true;
@@ -587,15 +618,17 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.强制退出不推荐ToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 58);
             // 
             // 强制退出不推荐ToolStripMenuItem1
             // 
+            this.强制退出不推荐ToolStripMenuItem1.Image = global::luanma.Properties.Resources.exit;
             this.强制退出不推荐ToolStripMenuItem1.Name = "强制退出不推荐ToolStripMenuItem1";
-            this.强制退出不推荐ToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.强制退出不推荐ToolStripMenuItem1.Size = new System.Drawing.Size(217, 26);
             this.强制退出不推荐ToolStripMenuItem1.Text = "强制退出（不推荐）";
             this.强制退出不推荐ToolStripMenuItem1.Click += new System.EventHandler(this.强制退出不推荐ToolStripMenuItem_Click);
             // 
@@ -606,18 +639,19 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Location = new System.Drawing.Point(0, 23);
+            this.panel2.Location = new System.Drawing.Point(0, 29);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(690, 363);
+            this.panel2.Size = new System.Drawing.Size(920, 454);
             this.panel2.TabIndex = 0;
             // 
             // button7
             // 
             this.button7.ContextMenuStrip = this.contextMenuStrip1;
-            this.button7.Location = new System.Drawing.Point(551, 325);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Location = new System.Drawing.Point(735, 406);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(130, 35);
+            this.button7.Size = new System.Drawing.Size(173, 44);
             this.button7.TabIndex = 7;
             this.button7.Text = "退出(&Q)";
             this.button7.UseVisualStyleBackColor = true;
@@ -625,13 +659,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lToolStripMenuItem,
             this.控制ToolStripMenuItem,
             this.随即生成16进制ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(690, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(920, 28);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -647,36 +682,61 @@
             this.toolStripSeparator5,
             this.清空ToolStripMenuItem});
             this.lToolStripMenuItem.Name = "lToolStripMenuItem";
-            this.lToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
+            this.lToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.lToolStripMenuItem.Text = "输出(&O)";
             // 
             // 保存输出为文件ToolStripMenuItem
             // 
+            this.保存输出为文件ToolStripMenuItem.Image = global::luanma.Properties.Resources.save;
             this.保存输出为文件ToolStripMenuItem.Name = "保存输出为文件ToolStripMenuItem";
-            this.保存输出为文件ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.保存输出为文件ToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.保存输出为文件ToolStripMenuItem.Text = "保存输出为文件(&V)";
             this.保存输出为文件ToolStripMenuItem.Click += new System.EventHandler(this.保存输出为文件ToolStripMenuItem_Click);
             // 
             // 保存输出为文件追加ToolStripMenuItem
             // 
+            this.保存输出为文件追加ToolStripMenuItem.Image = global::luanma.Properties.Resources.save;
             this.保存输出为文件追加ToolStripMenuItem.Name = "保存输出为文件追加ToolStripMenuItem";
-            this.保存输出为文件追加ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.保存输出为文件追加ToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.保存输出为文件追加ToolStripMenuItem.Text = "保存输出为文件（追加）";
             this.保存输出为文件追加ToolStripMenuItem.Click += new System.EventHandler(this.保存输出为文件追加ToolStripMenuItem_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(254, 6);
+            // 
             // 复制输出ToolStripMenuItem
             // 
+            this.复制输出ToolStripMenuItem.Image = global::luanma.Properties.Resources.copy;
             this.复制输出ToolStripMenuItem.Name = "复制输出ToolStripMenuItem";
-            this.复制输出ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.复制输出ToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.复制输出ToolStripMenuItem.Text = "复制输出(&P)";
             this.复制输出ToolStripMenuItem.Click += new System.EventHandler(this.复制输出ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(254, 6);
             // 
             // 更多输出ToolStripMenuItem
             // 
             this.更多输出ToolStripMenuItem.Name = "更多输出ToolStripMenuItem";
-            this.更多输出ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.更多输出ToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.更多输出ToolStripMenuItem.Text = "更多输出(&M)";
             this.更多输出ToolStripMenuItem.Click += new System.EventHandler(this.更多输出ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(254, 6);
+            // 
+            // 清空ToolStripMenuItem
+            // 
+            this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
+            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.清空ToolStripMenuItem.Text = "清空输出(&C)";
+            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
             // 
             // 控制ToolStripMenuItem
             // 
@@ -690,72 +750,76 @@
             this.强制退出不推荐ToolStripMenuItem,
             this.重新生成窗体ToolStripMenuItem});
             this.控制ToolStripMenuItem.Name = "控制ToolStripMenuItem";
-            this.控制ToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
+            this.控制ToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.控制ToolStripMenuItem.Text = "控制(&C)";
             // 
             // 开始生成ToolStripMenuItem
             // 
+            this.开始生成ToolStripMenuItem.Image = global::luanma.Properties.Resources.start;
             this.开始生成ToolStripMenuItem.Name = "开始生成ToolStripMenuItem";
-            this.开始生成ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.开始生成ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.开始生成ToolStripMenuItem.Text = "开始生成(&S)";
             this.开始生成ToolStripMenuItem.Click += new System.EventHandler(this.开始生成ToolStripMenuItem_Click);
             // 
             // 取消生成ToolStripMenuItem
             // 
             this.取消生成ToolStripMenuItem.Enabled = false;
+            this.取消生成ToolStripMenuItem.Image = global::luanma.Properties.Resources.cancel;
             this.取消生成ToolStripMenuItem.Name = "取消生成ToolStripMenuItem";
-            this.取消生成ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.取消生成ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.取消生成ToolStripMenuItem.Text = "取消生成(&A)";
             this.取消生成ToolStripMenuItem.Click += new System.EventHandler(this.取消生成ToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(224, 6);
+            // 
+            // 置顶ToolStripMenuItem
+            // 
+            this.置顶ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("置顶ToolStripMenuItem.Image")));
+            this.置顶ToolStripMenuItem.Name = "置顶ToolStripMenuItem";
+            this.置顶ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.置顶ToolStripMenuItem.Text = "置顶";
+            this.置顶ToolStripMenuItem.Click += new System.EventHandler(this.置顶ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(224, 6);
+            // 
             // 退出EToolStripMenuItem
             // 
+            this.退出EToolStripMenuItem.Image = global::luanma.Properties.Resources.exit;
             this.退出EToolStripMenuItem.Name = "退出EToolStripMenuItem";
-            this.退出EToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.退出EToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.退出EToolStripMenuItem.Text = "退出(&E)";
             this.退出EToolStripMenuItem.Click += new System.EventHandler(this.退出EToolStripMenuItem_Click);
             // 
             // 强制退出不推荐ToolStripMenuItem
             // 
+            this.强制退出不推荐ToolStripMenuItem.Image = global::luanma.Properties.Resources.exit;
             this.强制退出不推荐ToolStripMenuItem.Name = "强制退出不推荐ToolStripMenuItem";
-            this.强制退出不推荐ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.强制退出不推荐ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.强制退出不推荐ToolStripMenuItem.Text = "强制退出（不推荐）";
             this.强制退出不推荐ToolStripMenuItem.Click += new System.EventHandler(this.强制退出不推荐ToolStripMenuItem_Click);
             // 
-            // 置顶ToolStripMenuItem
+            // 重新生成窗体ToolStripMenuItem
             // 
-            this.置顶ToolStripMenuItem.Name = "置顶ToolStripMenuItem";
-            this.置顶ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.置顶ToolStripMenuItem.Text = "置顶";
-            this.置顶ToolStripMenuItem.Click += new System.EventHandler(this.置顶ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(205, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(205, 6);
+            this.重新生成窗体ToolStripMenuItem.Image = global::luanma.Properties.Resources.recycle;
+            this.重新生成窗体ToolStripMenuItem.Name = "重新生成窗体ToolStripMenuItem";
+            this.重新生成窗体ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.重新生成窗体ToolStripMenuItem.Text = "重新生成窗体";
+            this.重新生成窗体ToolStripMenuItem.Click += new System.EventHandler(this.重新生成窗体ToolStripMenuItem_Click);
             // 
             // 随即生成16进制ToolStripMenuItem
             // 
             this.随即生成16进制ToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.随即生成16进制ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox1});
+            this.随即生成16进制ToolStripMenuItem.Image = global::luanma.Properties.Resources.hex;
             this.随即生成16进制ToolStripMenuItem.Name = "随即生成16进制ToolStripMenuItem";
-            this.随即生成16进制ToolStripMenuItem.Size = new System.Drawing.Size(125, 21);
+            this.随即生成16进制ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.随即生成16进制ToolStripMenuItem.Text = "随机生成4位16进制";
             this.随即生成16进制ToolStripMenuItem.Click += new System.EventHandler(this.随即生成16进制ToolStripMenuItem_Click);
             // 
@@ -763,67 +827,18 @@
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.ReadOnly = true;
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.richTextBox3);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(653, 107);
-            this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "16进制Unicode转字符";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(197, 12);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Unicode(可以用\",\"分隔两个字符): ";
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Location = new System.Drawing.Point(7, 23);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(640, 78);
-            this.richTextBox3.TabIndex = 2;
-            this.richTextBox3.Text = "4f60,597d";
-            this.richTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
-            // 
-            // 清空ToolStripMenuItem
-            // 
-            this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
-            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.清空ToolStripMenuItem.Text = "清空输出(&C)";
-            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(205, 6);
-            // 
-            // 重新生成窗体ToolStripMenuItem
-            // 
-            this.重新生成窗体ToolStripMenuItem.Name = "重新生成窗体ToolStripMenuItem";
-            this.重新生成窗体ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.重新生成窗体ToolStripMenuItem.Text = "重新生成窗体";
-            this.重新生成窗体ToolStripMenuItem.Click += new System.EventHandler(this.重新生成窗体ToolStripMenuItem_Click);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 408);
+            this.ClientSize = new System.Drawing.Size(920, 510);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -842,13 +857,13 @@
             this.panel1.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
