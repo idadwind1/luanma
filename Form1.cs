@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices;
 
 namespace luanma
 {
@@ -27,7 +28,7 @@ namespace luanma
         /// <summary>
         /// 启动Main的线程
         /// </summary>
-        Thread thread;
+        static public Thread thread;
 
         /// <summary>
         /// 每个CheckBox的选择情况
@@ -127,18 +128,23 @@ namespace luanma
         }
 
         /// <summary>
+        /// 开始进程时的时间
+        /// </summary>
+        static public DateTime StartTime;
+
+        /// <summary>
         /// 主生成函数，使用多线程启动
         /// </summary>
         private void Main()
         {
-            DateTime StartTime = DateTime.Now;
+            StartTime = DateTime.Now;
             try
             {
                 info("运行中");
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.Normal);
-                取消生成ToolStripMenuItem.Enabled = toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
+                取消生成CToolStripMenuItem.Enabled = 取消生成ToolStripMenuItem.Enabled = toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
                 toolStripProgressBar1.Value = progressBar1.Value = 0;
-                开始生成ToolStripMenuItem.Enabled = numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
+                开始SToolStripMenuItem.Enabled = 开始生成ToolStripMenuItem.Enabled = numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
                 richTextBox1.Text = "";
                 if (tabControl1.SelectedIndex == 0)
                 {
@@ -161,11 +167,9 @@ namespace luanma
                             Thread.Sleep(10);
                             if (ints.Count == 0) break;
                             richTextBox1.Text += GenerateChars(ints[new Random().Next(0, ints.Count)]);
-                            toolStripProgressBar1.Value = (int)probar;
-                            toolStripStatusLabel2.Text = (int)probar + "%";
                             TaskbarManager.SetProgressValue((int)probar,100);
                             probar += 100 / (double)numericUpDown1.Value;
-                            progressBar1.Value = (int)probar;
+                            UpdateProbar(probar);
                             if (Space.Enabled && NextSpace == 0)
                             {
                                 NextSpace = ran.Next(Space.Mini, Space.Max) + 1;
@@ -192,12 +196,10 @@ namespace luanma
                         double probar = 0d;
                         for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
                         {
-                            toolStripProgressBar1.Value = (int)probar;
+                            UpdateProbar(probar);
                             richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0000,0xFFFFF));
-                            toolStripStatusLabel2.Text = (int)probar + "%";
                             probar += 100 / (double)numericUpDown1.Value;
                             TaskbarManager.SetProgressValue((int)probar, 100);
-                            progressBar1.Value = (int)probar;
                         }
                     }
                     if (checkBox1.Checked)
@@ -216,10 +218,8 @@ namespace luanma
                         try { richTextBox1.Text += words[c][ran.Next(words[c].Length)]; }
                         catch (KeyNotFoundException) { richTextBox1.Text += c; }
                         probar += (double)100 / richTextBox2.Text.Length;
-                        toolStripProgressBar1.Value = (int)probar;
-                        toolStripStatusLabel2.Text = (int)probar + "%";
+                        UpdateProbar(probar);
                         TaskbarManager.SetProgressValue((int)probar, 100);
-                        progressBar1.Value = (int)probar;
                     }
                     if (checkBox13.Checked)
                     {
@@ -239,10 +239,13 @@ namespace luanma
                 }
                 else if (tabControl1.SelectedIndex == 2)
                 {
+                    double probar = 0;
                     richTextBox3.Text = richTextBox3.Text.ToUpper();
                     string[] spl = richTextBox3.Text.Split(',');
                     foreach (string s in spl)
                     {
+                        probar += (double)100 / spl.Length;
+                        UpdateProbar(probar);
                         richTextBox1.Text += deUnicode(s);
                     }
                 }
@@ -251,21 +254,30 @@ namespace luanma
             catch (ThreadAbortException)
             {
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
-                if (!IsClosed)info("线程错误: 进程被用户终止,", true);
+                if (!IsClosed)info("线程错误: 进程被用户终止,",true, true);
             }
             catch (Exception ex)
             {
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
-                info("线程错误: " + ex.Message + ",", true);
+                info("线程错误: " + ex.Message + ",", true, true);
             }
             finally
             {
                 TaskbarManager.SetProgressState(TaskbarProgressBarState.NoProgress);
-                取消生成ToolStripMenuItem.Enabled = toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
-                开始生成ToolStripMenuItem.Enabled = tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
+                取消生成CToolStripMenuItem.Enabled = 取消生成ToolStripMenuItem.Enabled = toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
+                开始SToolStripMenuItem.Enabled = 开始生成ToolStripMenuItem.Enabled = tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
                 progressBar1.Value = 100;
-                toolStripStatusLabel1.Text += " 线程运行耗时" +(DateTime.Now - StartTime).TotalMilliseconds + "ms";
+                toolStripStatusLabel1.Text += " 线程运行耗时" + (DateTime.Now - StartTime).TotalMilliseconds + "ms";
             }
+        }
+
+        private void UpdateProbar(double value)
+        {
+            progressBar1.Value = (int)value;
+            toolStripProgressBar1.Value = (int)value;
+            toolStripStatusLabel2.Text = (int)value + "%";
+            int remaining = (int)((100 - value) * ((DateTime.Now - StartTime).TotalSeconds / value));if (remaining < 60) info("运行中, 剩余时间: " + remaining + "\"");
+            else if (remaining < 360) info("运行中, 剩余时间: " + (remaining / 60) + "'" + remaining % 60 + "\"");
 
         }
 
@@ -300,7 +312,7 @@ namespace luanma
         /// <summary>
         /// 开始键按动
         /// </summary>
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             thread = new Thread(new ThreadStart(Main));
             thread.Start();
@@ -403,10 +415,10 @@ namespace luanma
             }
             catch (Exception ex)
             {
-                info("复制错误: " + ex.Message,true);
+                info("复制错误: " + ex.Message, true, true);
             }
 
-            info("复制成功!", false, false, 2000);
+            info("复制成功!", false, false, false, 2000);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -573,12 +585,13 @@ namespace luanma
             toolStripProgressBar1.Visible = false;
             toolStripStatusLabel2.Visible = false;
             IsClosed = false;
-            /*new Task(() =>
+            new Task(() =>
             {
-                while (true)
+                while (!IsClosed)
                 {
+                    progress = progressBar1.Value;
                 }
-            }).Start();*/
+            }).Start();
         }
 
         /// <summary>
@@ -605,7 +618,7 @@ namespace luanma
         /// <summary>
         /// 取消按钮被按下
         /// </summary>
-        private void button6_Click(object sender, EventArgs e)
+        public void button6_Click(object sender, EventArgs e)
         {
             取消生成ToolStripMenuItem.Enabled = button6.Enabled = false;
             取消生成ToolStripMenuItem.Text = button6.Text = "取消中...";
@@ -635,9 +648,9 @@ namespace luanma
             }
             catch (Exception ex)
             {
-                info("复制错误: " + ex.Message, true, false, 2000);
+                info("复制错误: " + ex.Message,true, true, false, 2000);
             }
-            info("复制成功!", false, false, 2000);
+            info("复制成功!", false, false, false, 2000);
         }
 
         /// <summary>
@@ -645,17 +658,22 @@ namespace luanma
         /// <para><paramref name="Text"/>: toolStringStatusLabel.Text的新值</para>
         /// <para><paramref name="Persistence"/>: 是否保持显示</para>
         /// <para><paramref name="PersistenceMS"/>: 如果!<paramref name="Persistence"/>, 那么Text在toolStringStatusLabel上显示的时长(ms)</para>
-        /// <para><paramref name="error"/>: Text在toolStringStatusLabel上是否显示为红色, 以及是否弹出提示窗</para>
+        /// <para><paramref name="error"/>: Text在toolStringStatusLabel上是否显示为红色, 提示框上是否显示为错误</para>
+        /// <para><paramref name="Messagebox"/>: 是否弹出提示窗</para>
         /// </summary>
-        private void info(string Text, bool error = false, bool Persistence = true, int PersistenceMS = 3000)
+        private void info(string Text, bool Messagebox = false, bool error = false, bool Persistence = true, int PersistenceMS = 3000)
         {
+            toolStringStatusInfo(Text, Persistence, PersistenceMS, error);
             if (error)
             {
-                new Thread(() => MessageBox.Show(Text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)).Start();
+                if (Messagebox) new Thread(() => MessageBox.Show(Text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)).Start();
                 toolStripStatusLabel1.ForeColor = Color.Red;
             }
-            else toolStripStatusLabel1.ForeColor = Color.Black;
-            toolStringStatusInfo(Text, Persistence, PersistenceMS, error);
+            else
+            {
+                if (Messagebox) new Thread(() => MessageBox.Show(Text, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)).Start();
+                toolStripStatusLabel1.ForeColor = Color.Black;
+            }
         }
 
         /// <summary>
@@ -726,7 +744,7 @@ namespace luanma
             }
             catch (Exception ex)
             {
-                info("保存错误: " + ex.Message);
+                info("保存错误: " + ex.Message, true, true);
             }
         }
 
@@ -744,18 +762,8 @@ namespace luanma
             }
             catch (Exception ex)
             {
-                info("保存错误: " + ex.Message);
+                info("保存错误: " + ex.Message, true, true);
             }
-        }
-
-        private void 开始生成ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            button1_Click(sender, e);
-        }
-
-        private void 取消生成ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            button6_Click(sender, e);
         }
 
         private void 退出EToolStripMenuItem_Click(object sender, EventArgs e)
@@ -777,11 +785,6 @@ namespace luanma
         {
             TopMost = !TopMost;
             置顶ToolStripMenuItem.Checked = !置顶ToolStripMenuItem.Checked;
-        }
-
-        private void 随即生成16进制ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStripTextBox1.Text = GetRandomHexNumberEx(0x0000, 0xFFFF).ToUpper();
         }
 
         private void richTextBox3_KeyPress(object sender, KeyPressEventArgs e)
@@ -824,6 +827,42 @@ namespace luanma
                     return deUnicode(GetRandomHexNumberEx(0x2A00, 0x2AFF));
             }
             return "";
+        }
+
+        private void toolStripTextBox1_Paint(object sender, PaintEventArgs e)
+        {
+            toolStripTextBox1.Text = GetRandomHexNumberEx(0x0000, 0xFFFF).ToUpper();
+        }
+
+        private void 最小化到托盘ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = true;
+            Hide();
+        }
+
+        private void 显示主窗口ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible ^= true;
+            Show();
+        }
+
+        private void toolStripStatusLabel1_TextChanged(object sender, EventArgs e)
+        {
+            if (toolStripStatusLabel2.Visible) notifyIcon1.Text = "胡言乱语生成器\n" + toolStripStatusLabel1.Text + "\n" + toolStripStatusLabel2.Text;
+            else notifyIcon1.Text = "胡言乱语生成器\n" + toolStripStatusLabel1.Text;
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            notifyIcon1.Visible ^= true;
+            Show();
+        }
+        static public int progress = 0;
+
+        private void toolStripProgressBar1_Click(object sender, EventArgs e)
+        {
+            new Form4().ShowDialog();
         }
     }
 }
