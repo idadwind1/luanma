@@ -26,10 +26,11 @@ namespace luanma
             {
                 while (!IsClosed)
                 {
-                    int progress = progressBar1.Value, remaining = 100 - progress;
                     DateTime startTime = Form1.StartTime;
-                    double pass = (DateTime.Now - startTime).TotalMilliseconds, speed = pass / progress,
+                    double progress = Form1.probar, pass = (DateTime.Now - startTime).TotalMilliseconds, speed = pass / progress,
                     speed2 = progress / pass;
+                    int remaining = 100 - (int)progress;
+                    progressBar1.Value = (int)progress;
                     if (!Form1.thread.IsAlive)
                     {
                         label2.Text = "";
@@ -41,11 +42,11 @@ namespace luanma
                         label2.Text = progressBar1.Value + "%";
                         progressBar1.ForeColor = Color.FromArgb(6, 176, 37); 
                         if (speed == 0 || speed.ToString() == "∞") label1.Text = "进度百分比: " + label2.Text +
-                        "\r\n剩余百分比: " + remaining +
-                        "%\r\n进度开始时间: " + startTime.ToString("yyyy/MM/dd hh:mm:ss.FFFFFFF") +
-                        "\r\n已运行: " + pass +
-                        "ms\r\n速度: " + speed +
-                        "\r\n预估剩余时间: [无法计算]";
+                            "\r\n剩余百分比: " + remaining +
+                            "%\r\n进度开始时间: " + startTime.ToString("yyyy/MM/dd hh:mm:ss.FFFFFFF") +
+                            "\r\n已运行: " + pass +
+                            "ms\r\n速度: " + speed +
+                            "\r\n预估剩余时间: [无法计算]";
                         else label1.Text = "进度百分比: " + label2.Text +
                             "\r\n剩余百分比: " + remaining +
                             "%\r\n进度开始时间: " + startTime.ToString("yyyy/MM/dd hh:mm:ss.FFFFFFF") +
@@ -60,7 +61,6 @@ namespace luanma
                             "m)";
                     }
                     label2.Location = new Point(ClientRectangle.Right - label2.Width, ClientRectangle.Bottom - label2.Height);
-                    progressBar1.Value = Form1.progress;
                     System.Threading.Thread.Sleep(10);
                 }
             }).Start();

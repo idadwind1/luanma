@@ -11,15 +11,23 @@ using System.IO;
 using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.InteropServices;
+using Microsoft.WindowsAPICodePack.Taskbar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace luanma
 {
     public partial class Form1 : Form
     {
         /// <summary>
+        /// ProgressBar.Value存的是int，自己定义一个double用来定义带小数点的ProgressBar.Value
+        /// </summary>
+        static public double probar = 0;
+
+        /// <summary>
         /// 窗体是否关闭
         /// </summary>
         bool IsClosed = false;
+
         /// <summary>
         /// 一句话里有几个字母
         /// </summary>
@@ -122,6 +130,7 @@ namespace luanma
         };
         RandomArgs Space = new RandomArgs();
         RandomArgs Return = new RandomArgs();
+
         public Form1()
         {
             InitializeComponent();
@@ -141,9 +150,9 @@ namespace luanma
             try
             {
                 info("运行中");
-                TaskbarManager.SetProgressState(TaskbarProgressBarState.Normal);
+                TaskbarManager1.SetProgressState(TaskbarProgressBarState.Normal);
                 取消生成CToolStripMenuItem.Enabled = 取消生成ToolStripMenuItem.Enabled = toolStripStatusLabel2.Visible = toolStripProgressBar1.Visible = button6.Enabled = true;
-                toolStripProgressBar1.Value = progressBar1.Value = 0;
+                probar = toolStripProgressBar1.Value = progressBar1.Value = 0;
                 开始SToolStripMenuItem.Enabled = 开始生成ToolStripMenuItem.Enabled = numericUpDown1.Enabled = numericUpDown2.Enabled = checkBox1.Enabled = tabControl1.Enabled = button1.Enabled = false;
                 richTextBox1.Text = "";
                 if (tabControl1.SelectedIndex == 0)
@@ -160,14 +169,13 @@ namespace luanma
                             }
                         }
                         for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 8);
-                        double probar = 0d;
+                        probar = 0d;
                         int NextSpace = ran.Next(Space.Mini,Space.Max+1), NextReturn = ran.Next(Return.Mini, Return.Max+1),NextSentence = ran.Next(Sentence.Mini, Sentence.Max+1);
                         for (int i = 0; i < numericUpDown1.Value; i++)
                         {
                             Thread.Sleep(10);
                             if (ints.Count == 0) break;
                             richTextBox1.Text += GenerateChars(ints[new Random().Next(0, ints.Count)]);
-                            TaskbarManager.SetProgressValue((int)probar,100);
                             probar += 100 / (double)numericUpDown1.Value;
                             UpdateProbar(probar);
                             if (Space.Enabled && NextSpace == 0)
@@ -193,13 +201,13 @@ namespace luanma
                     }
                     else
                     {
-                        double probar = 0d;
+                        probar = 0d;
                         for (int i2 = 0; i2 < numericUpDown1.Value; i2++)
                         {
                             UpdateProbar(probar);
                             richTextBox1.Text += deUnicode(GetRandomHexNumberEx(0x0000,0xFFFFF));
                             probar += 100 / (double)numericUpDown1.Value;
-                            TaskbarManager.SetProgressValue((int)probar, 100);
+                            Thread.Sleep(1);
                         }
                     }
                     if (checkBox1.Checked)
@@ -212,14 +220,13 @@ namespace luanma
                 else if (tabControl1.SelectedIndex == 1)
                 {
                     if (checkBox12.Checked) richTextBox1.Text += "[";
-                    double probar = 0d;
+                    probar = 0d;
                     foreach (char c in richTextBox2.Text)
                     {
                         try { richTextBox1.Text += words[c][ran.Next(words[c].Length)]; }
                         catch (KeyNotFoundException) { richTextBox1.Text += c; }
                         probar += (double)100 / richTextBox2.Text.Length;
                         UpdateProbar(probar);
-                        TaskbarManager.SetProgressValue((int)probar, 100);
                     }
                     if (checkBox13.Checked)
                     {
@@ -239,7 +246,7 @@ namespace luanma
                 }
                 else if (tabControl1.SelectedIndex == 2)
                 {
-                    double probar = 0;
+                    probar = 0;
                     richTextBox3.Text = richTextBox3.Text.ToUpper();
                     string[] spl = richTextBox3.Text.Split(',');
                     foreach (string s in spl)
@@ -253,20 +260,20 @@ namespace luanma
             }
             catch (ThreadAbortException)
             {
-                TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
+                TaskbarManager1.SetProgressState(TaskbarProgressBarState.Error);
                 if (!IsClosed)info("线程错误: 进程被用户终止,",true, true);
             }
             catch (Exception ex)
             {
-                TaskbarManager.SetProgressState(TaskbarProgressBarState.Error);
+                TaskbarManager1.SetProgressState(TaskbarProgressBarState.Error);
                 info("线程错误: " + ex.Message + ",", true, true);
             }
             finally
             {
-                TaskbarManager.SetProgressState(TaskbarProgressBarState.NoProgress);
+                TaskbarManager1.SetProgressState(TaskbarProgressBarState.NoProgress);
                 取消生成CToolStripMenuItem.Enabled = 取消生成ToolStripMenuItem.Enabled = toolStripProgressBar1.Visible = toolStripStatusLabel2.Visible = button6.Enabled = false;
                 开始SToolStripMenuItem.Enabled = 开始生成ToolStripMenuItem.Enabled = tabControl1.Enabled = checkBox1.Enabled = numericUpDown2.Enabled = numericUpDown1.Enabled = button1.Enabled = true;
-                progressBar1.Value = 100;
+                probar = progressBar1.Value = 100;
                 toolStripStatusLabel1.Text += " 线程运行耗时" + (DateTime.Now - StartTime).TotalMilliseconds + "ms";
             }
         }
@@ -274,11 +281,12 @@ namespace luanma
         private void UpdateProbar(double value)
         {
             progressBar1.Value = (int)value;
+            TaskbarManager1.SetProgressValue((int)probar, 100);
             toolStripProgressBar1.Value = (int)value;
             toolStripStatusLabel2.Text = (int)value + "%";
-            int remaining = (int)((100 - value) * ((DateTime.Now - StartTime).TotalSeconds / value));if (remaining < 60) info("运行中, 剩余时间: " + remaining + "\"");
-            else if (remaining < 360) info("运行中, 剩余时间: " + (remaining / 60) + "'" + remaining % 60 + "\"");
-
+            double remaining = (100 - value) * ((DateTime.Now - StartTime).TotalMilliseconds / value) / 1000;
+            if (remaining < 60) info("运行中, 剩余时间: " + Math.Floor(remaining) + "\"");
+            else if (remaining < 360) info("运行中, 剩余时间: " + Math.Floor(remaining / 60) + "'" + Math.Floor(remaining % 60) + "\"");
         }
 
         /// <summary>
@@ -582,14 +590,16 @@ namespace luanma
         private void Form1_Load(object sender, EventArgs e)
         {
             if (Environment.OSVersion.Version.Major < 6) return;
+            thread = new Thread(() => { });
             toolStripProgressBar1.Visible = false;
             toolStripStatusLabel2.Visible = false;
-            IsClosed = false;
+            IsClosed = false; probar = 0; 
             new Task(() =>
             {
                 while (!IsClosed)
                 {
                     progress = progressBar1.Value;
+                    Thread.Sleep(10);
                 }
             }).Start();
         }
@@ -864,5 +874,18 @@ namespace luanma
         {
             new Form4().ShowDialog();
         }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            /*ThumbnailToolBarButton Cancelbutton = new ThumbnailToolBarButton(Properties.Resources.cancelIcon, "取消");
+            Cancelbutton.Click += Cancelbutton_Click;
+            TaskbarManager.Instance.ThumbnailToolBars.AddButtons(Handle, Cancelbutton);
+            TaskbarManager.Instance.TabbedThumbnail.SetThumbnailClip(Handle, new Rectangle(richTextBox1.Location.X, richTextBox1.Location.Y, richTextBox1.Size.Width, richTextBox1.Size.Height));*/
+        }
+
+        /*private void Cancelbutton_Click(object sender, ThumbnailButtonClickedEventArgs e)
+        {
+            e.ThumbnailButton.Enabled = false;
+        }*/
     }
 }

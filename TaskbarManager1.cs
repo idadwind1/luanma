@@ -7,7 +7,7 @@ namespace luanma
     /// <summary>
     /// Represents an instance of the Windows taskbar
     /// </summary>
-    public static class TaskbarManager
+    public static class TaskbarManager1
     {
         /// <summary>
         /// Sets the handle of the window whose taskbar button will be used
@@ -15,7 +15,7 @@ namespace luanma
         /// </summary>
         private static IntPtr ownerHandle = IntPtr.Zero;
 
-        static TaskbarManager()
+        static TaskbarManager1()
         {
             var currentProcess = Process.GetCurrentProcess();
             if (currentProcess != null && currentProcess.MainWindowHandle != IntPtr.Zero)
