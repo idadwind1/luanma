@@ -18,6 +18,7 @@ namespace luanma
         public bool CapsAtFront, AddPeriod,AddfullPeriod;
         public Form1.RandomArgs Space = new Form1.RandomArgs();
         public Form1.RandomArgs Return = new Form1.RandomArgs();
+
         private void button2_Click_1(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -27,7 +28,7 @@ namespace luanma
         {
             if (DialogResult == DialogResult.Cancel) return;
             if (checkBox5.Checked && !radioButton1.Checked && !radioButton2.Checked) { MessageBox.Show("请选择全角或半角句号", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); e.Cancel = true; }
-            for (int i = 0; i < bools.Length-1; i++) bools[i] = checkedListBox1.GetItemChecked(i);
+            for (int i = 0; i < bools.Length; i++) bools[i] = checkedListBox1.GetItemChecked(i);
             Space.Enabled = checkBox1.Checked;
             Space.Max = (int)numericUpDown2.Value;
             Space.Mini = (int)numericUpDown1.Value;
@@ -68,7 +69,7 @@ namespace luanma
         private void Form3_Load(object sender, EventArgs e)
         {
             Size = new Size(345, 188);
-            for (int i = 0; i < bools.Length-1; i++) checkedListBox1.SetItemChecked(i, bools[i]);
+            for (int i = 0; i < bools.Length; i++) checkedListBox1.SetItemChecked(i, bools[i]);
             checkBox1.Checked = Space.Enabled;
             checkBox3.Checked = Return.Enabled;
             numericUpDown2.Value = Space.Max;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -9,10 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Runtime.InteropServices;
-using Microsoft.WindowsAPICodePack.Taskbar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace luanma
 {
@@ -41,7 +36,7 @@ namespace luanma
         /// <summary>
         /// 每个CheckBox的选择情况
         /// </summary>
-        bool[] bools = new bool[17];
+        bool[] bools = new bool[18];
 
         /// <summary>
         /// 是否在句首添加大写字母
@@ -168,7 +163,7 @@ namespace luanma
                                 ints.Add(int.Parse(checkBox.Name.Replace("c", string.Empty)) - 1);
                             }
                         }
-                        for (int i = 0; i < bools.Length - 1; i++) if (bools[i]) ints.Add(i + 8);
+                        for (int i = 0; i < bools.Length; i++) if (bools[i]) ints.Add(i + 8);
                         probar = 0d;
                         int NextSpace = ran.Next(Space.Mini,Space.Max+1), NextReturn = ran.Next(Return.Mini, Return.Max+1),NextSentence = ran.Next(Sentence.Mini, Sentence.Max+1);
                         for (int i = 0; i < numericUpDown1.Value; i++)
@@ -386,13 +381,15 @@ namespace luanma
                 case 15: return deUnicode(GetRandomHexNumberEx(0x3100, 0x312F));
                 case 16: return deUnicode(GetRandomHexNumberEx(0x2300, 0x23FF));
                 case 17: return GetRandomArrows();
-                case 18: return "";
+                case 18: return deUnicode(GetRandomHexNumberEx(0x25A0, 0x25FF));
                 case 19: return deUnicode(GetRandomHexNumberEx(0x2500, 0x257F));
                 case 20: return deUnicode(GetRandomHexNumberEx(0x2580, 0x259F));
                 case 21: return "";
                 case 22: return "";
                 case 23: return ran.Next(0, 2).ToString();
-                default: return "错误!找不到生成参数\n".ToString(); throw new ArgumentException("找不到生成选项");
+                case 24: return deUnicode(GetRandomHexNumberEx(0x2440, 0x245F));
+                case 25: return deUnicode(GetRandomHexNumberEx(0x2460, 0x24FF));
+                default: throw new ArgumentException("找不到生成选项:“" + id + "”");
             }
         }
 
@@ -605,7 +602,7 @@ namespace luanma
         }
 
         /// <summary>
-        /// 更多按钮被按下
+        /// “更多”按钮被按下
         /// </summary>
         private void button5_Click(object sender, EventArgs e)
         {
@@ -617,7 +614,7 @@ namespace luanma
             CapsAtFront = form3.CapsAtFront;
             AddPeriod = form3.AddPeriod;
             Space = form3.WordsInSentence;
-            for (int i = 0; i < bools.Length-1; i++) bools[i] = form3.bools[i];
+            for (int i = 0; i < bools.Length; i++) bools[i] = form3.bools[i];
         }
 
         private void richTextBox1_DoubleClick(object sender, EventArgs e)
